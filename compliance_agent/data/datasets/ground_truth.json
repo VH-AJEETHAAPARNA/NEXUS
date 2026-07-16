@@ -1,0 +1,115 @@
+[
+  {
+    "vendor_id": "VENDOR-001",
+    "product": "Galaxy VX",
+    "overall_status": "FAIL",
+    "expected_score": 55,
+    "critical": [
+      {
+        "field": "capacity_kva",
+        "expected": 1500,
+        "actual": 1200,
+        "severity": "Critical"
+      }
+    ],
+    "major": [
+      {
+        "field": "efficiency",
+        "expected": "99%",
+        "actual": "97%",
+        "severity": "Major"
+      }
+    ],
+    "minor": [
+      {
+        "field": "frequency",
+        "expected": "50/60 Hz",
+        "actual": "50 Hz",
+        "severity": "Minor"
+      },
+      {
+        "field": "weight",
+        "expected": "1950 kg",
+        "actual": "1920 kg",
+        "severity": "Minor"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VENDOR-002",
+    "product": "Galaxy VL",
+    "overall_status": "FAIL",
+    "expected_score": 75,
+    "critical": [],
+    "major": [
+      {
+        "field": "efficiency",
+        "expected": "99%",
+        "actual": "98%",
+        "severity": "Major"
+      }
+    ],
+    "minor": [
+      {
+        "field": "frequency",
+        "expected": "50/60 Hz",
+        "actual": "50 Hz",
+        "severity": "Minor"
+      },
+      {
+        "field": "weight",
+        "expected": "950 kg",
+        "actual": "960 kg",
+        "severity": "Minor"
+      }
+    ]
+  },
+  {
+    "vendor_id": "VENDOR-003",
+    "product": "Galaxy VS",
+    "overall_status": "FAIL",
+    "expected_score": 40,
+    "critical": [
+      {
+        "field": "capacity_kva",
+        "expected": 200,
+        "actual": 160,
+        "severity": "Critical"
+      }
+    ],
+    "major": [
+      {
+        "field": "input_voltage",
+        "expected": "380/400/415 Vac",
+        "actual": "380 Vac",
+        "severity": "Major"
+      },
+      {
+        "field": "output_voltage",
+        "expected": "380/400/415 Vac",
+        "actual": "380 Vac",
+        "severity": "Major"
+      },
+      {
+        "field": "efficiency",
+        "expected": "97%",
+        "actual": "96%",
+        "severity": "Major"
+      }
+    ],
+    "minor": [
+      {
+        "field": "frequency",
+        "expected": "50/60 Hz",
+        "actual": "50 Hz",
+        "severity": "Minor"
+      },
+      {
+        "field": "weight",
+        "expected": "650 kg",
+        "actual": "620 kg",
+        "severity": "Minor"
+      }
+    ]
+  }
+]

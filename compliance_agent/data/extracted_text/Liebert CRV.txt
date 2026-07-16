@@ -1,0 +1,197 @@
+Vertiv™ Liebert® CRV
+Product Family Brochure
+Vertiv™ Liebert® CRV
+2
+Small Footprint, 
+Large Impact
+Here at Vertiv™, we envision a world where critical technologies always work. The Vertiv™ Liebert® CRV in-row cooling system 
+provides highly eﬀ icient cooling directly in front of a row of IT racks, delivering precision cooled air where it's needed most to keep 
+your IT deployments online and functioning at the highest level. Available in a range of capacities, sizes, and heat rejection 
+methods, the Liebert® CRV family oﬀ ers the perfect solution for your IT space, whether that's a network closet, a small server room, 
+or a medium to large data center.
+High cooling eﬀ iciency
+Cooling has been optimized to get the 
+most out of the unit. With a high sensible 
+cooling capacity, little energy is used to 
+remove humidity from the surrounding 
+area, focusing primarily on changing the 
+temperature of the room. This maximizes 
+your energy eﬀ iciency and minimizes 
+operational costs.
+Built-in capacity 
+modulation
+Each DX model was designed with 
+20-100% capacity modulation and CW 
+model with 0-100% capacity modulation. 
+As your system traﬀ ic varies throughout 
+the day and is pushed to its limits, rest 
+at ease knowing the Liebert® CRV is 
+keeping up with those changing 
+demands, optimizing operating 
+conditions in the room and extending 
+the life of the equipment.
+Wide operating range
+Installing thermal equipment is already 
+hard enough. With longer refrigerant 
+pipe runs, wider operating temperature 
+ranges, and multiple heat rejection 
+methods available, the Liebert® CRV 
+provides a flexible solution to match 
+almost any building architecture.
+Seamless Integration - From Aesthetics to Functionality
+We understand that there is a lot of pride in having a data center that looks 
+great. The Vertiv™ Liebert® CRV was designed to fit seamlessly in a row of VR 
+racks, providing the same look and feel across the row. But it's not enough to 
+just have equipment that looks sharp, it needs to deliver high performance 
+and availability to keep critical systems running.
+The Vertiv™ Liebert® CRV also has integrated unit-to-unit teamworking 
+capabilities, allowing up to 16 units to be connected together and run as a 
+group. When set up in this way, there are four functions available: Standby, 
+Rotation, Anti-Competition, and Cascading.
+Scalable Cooling Capacity with a Minimal Footprint
+Invest in solutions that look great 
+and perform even better
+Standby: one (or several) units can 
+be put on standby and are run at 
+20% fan speed. If a unit running at 
+full capacity fails, the standby unit 
+will start to run.
+Rotation: each unit will have an 
+equal runtime, extending the life 
+of all units.
+Cascade: the standby unit will 
+only begin to run if the heat load 
+exceeds the capacity of  the 
+onduty units.
+Anti-Competition: units will avoid 
+performing conflicting operations, 
+such as one unit heating while 
+another is cooling.
+3
+Monitoring & Control
+The Liebert® CRV comes standard with 
+monitoring and control capabilities, further 
+increasing the reliability, eﬀ iciency, and 
+longevity of the system, all while providing 
+more space of mind.
+Display Screen
+A large 7" touch screen display provides easy 
+to use controls and system status reporting. 
+Customize set points and alarms to fit your 
+needs with the friendly user interface.
+Unit-to-Unit Teamworking
+When full system integration is required, 
+the Liebert® CRV stands up to the 
+challenge with unit-to-unit 
+communication providing higher full IT 
+system eﬀ iciency and reliability.
+Rich Standard Features
+Going above and beyond typical standard 
+features, the CRV DX oﬀ ers electric reheat, 
+humidification (select models), and dual 
+power supply for added functionality 
+andcontrol over your IT deployment.
+Available in Multiple Configurations
+Build Your Total Infrastructure Solution with Vertiv
+Discover expert designed IT infrastructure solutions with proven success in diverse environments and countless applications.
+Vertiv™ VR Racks
+Server racks designed 
+to simplify equipment 
+installation and provide 
+additional security to 
+your IT deployments.
+Vertiv™ Aisle 
+Containment
+Maximize your eﬀ iciency 
+and capacity from the 
+core to the edge with 
+hot/cold aisle 
+containment systems, 
+designed specifically with 
+a simplified installation to 
+speed up deployments.
+Vertiv™ Liebert® UPS
+Help protect mission
+critical equipment from
+all power disturbances
+due to blackouts,
+brownouts, sags, surges or 
+noise interference.
+Vertiv™ Liebert® CRV
+With increasing heat
+densities, keeping IT
+equipment running at
+optimal temperatures is
+more important than
+ever. Ensure peace of
+mind with highly eﬀ icient,
+row-based cooling.
+BEGIN WITH 
+A RACK
+CONTAIN YOUR 
+EQUIPMENT
+REMAIN 
+CONNECTED
+STAY COOL
+Fully integrated
+ IT deployments
+Flexible installation to 
+fit your needs
+Worry-Free Operation 
+with Remote Monitoring
+Scalable Cooling Capacity
+Each model is capable of at least 
+20-100% (0-100% for CW units)  
+capacity modulation, meeting the ever-
+changing demands of the system at all 
+times and providing high cooling 
+availability.
+Top or bottom connections
+All models come standard with top and 
+bottom connections for easy connection 
+and flexible installation regardless of  
+building architecture.
+Directional Air Baﬀ les
+Improve system performance and deliver 
+ideal air distribution with directional air 
+baﬀ les that provide cool air exactly here 
+it's needed most.
+Multiple heat rejection options
+Available as a DX or Chilled Water 
+system, the Liebert® CRV provides 
+multiple options depending on your 
+preferred heat rejection method.
+Model
+CRD10
+CRD25
+CRD35
+Sensible Cooling Capacity
+10 kW
+25 kW
+35 kW
+Unit Width (mm)
+300
+300
+600
+Model
+CRC30
+CRC60
+CR040
+CR050
+Sensible Cooling Capacity
+30 kW
+39 kW
+40 kW
+50 kW
+Unit Width (mm)
+300
+300
+600
+600
+Direct Expansion
+Chilled Water
+SL-11997  (R05/22)
+Vertiv.com   | Vertiv Headquarters, 1050 Dearborn Drive, Columbus, OH, 43085, USA
+© 2022 Vertiv Group Corp. All rights reserved. Vertiv™ and the Vertiv logo are trademarks or registered trademarks of Vertiv Group Corp. All other names and logos referred to are trade names, trademarks or registered trademarks of their respective owners. While every 
+precaution has been taken to ensure accuracy and completeness here, Vertiv Group Corp. assumes no responsibility, and disclaims all liability, for damages resulting from use of this information or for any errors or omissions. Specifications, rebates and other promotional 
+oﬀ ers are subject to change at Vertiv’s sole discretion upon notice.

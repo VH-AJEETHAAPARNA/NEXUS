@@ -1,0 +1,473 @@
+Resumen
+La pequeña solución de UPS trifásicos
+Cortes 
+Transientes
+Caídas de tensión
+Desviación de 
+Frecuencia
+Sobretensiones
+Baja
+tensión
+Picos
+Sobre-
+tensión
+Armónicos
+Ruido
+Proteja los sistemas de TI 
+contra todas las principales 
+amenazas eléctricas
+Ahorre ahora y en el futuro. 
+En comparación con los modelos 
+de la competencia.           
+ 
+y
+Menores costos iniciales
+ 
+y
+Menores costos operativos
+ 
+y
+Costos de periodos de 
+inactividad mínimos
+ 
+y
+Menor costo total de propiedad (TCO)
+Flexible, confiable y funcional
+El Vertiv Liebert ITA2 ofrece un diseño con ahorro de espacio para satisfacer sus 
+necesidades de alimentación. Hay opciones disponibles para tiempos operativos 
+específicos, así como para necesidades de disponibilidad y distribución determinadas
+Alimentación montaje en rack más sencilla
+ 
+y
+Sistema compacto de UPS con un panel de 
+control intuitivo
+ 
+y
+Los módulos optimizados minimizan el espacio 
+ocupado en el rack
+ 
+y
+De fácil configuración  
+Colocación vertical/en torre
+ 
+y
+La base de soporte permite colocarlo de forma 
+conveniente y estable sobre el piso
+ 
+y
+La pantalla de visualización ajustable garantiza la 
+legibilidad y un uso sencillo
+ 
+y
+La configuración abarca fácilmente las baterías y el 
+gabinete de bypass de mantenimiento
+Se muestra el Liebert® ITA2 con 
+(2) gabinetes de baterías
+Se muestra el UPS y el gabinete de baterías en una instalación en torre.
+UPS Vertiv™ Liebert® ITA2
+8 y 10 kVA, 208/220 V, trifásico 
+Para los sistemas críticos trifásicos menores a 10 kVA, considere el UPS Vertiv™ Liebert® 
+ITA2. Este equipo estabiliza y protege el suministro eléctrico, garantizando la seguridad 
+de los sistemas y la integridad de los datos. Además, permite a los profesionales 
+configurar la solución ideal para cumplir con los requerimientos de rendimiento en TI.
+El Vertiv™ Liebert® ITA2 es un UPS en 
+línea diseñado para alimentar sistemas 
+de TI trifásicos (entrada/salida), de 
+208/220 V de forma sencilla, confiable 
+y económica.
+Principales beneficios
+ 
+y
+Flexibilidad de ubicación. Puede 
+usarse dentro de un rack o en 
+una configuración de torre
+ 
+y
+Densidad de potencia elevada y 
+compacta 
+ 
+y
+Fácil de instalar y gestionar
+ 
+y
+El elevado factor de potencia 
+maximiza la potencia utilizable
+ 
+y
+Funciona de manera eficiente 
+para ahorrar energía 
+ 
+y
+El módulo de bypass optimizado 
+mantiene la alimentación, incluso 
+durante el mantenimiento 
+(opcional) 
+ 
+y
+Autonomías extendidas por 
+medio de módulos de baterías 
+(opcional) 
+ 
+y
+Distribución eléctrica flexible y 
+de fácil configuración 
+Ideal para alimentar muchos 
+sistemas de TI
+ 
+y
+Armarios de TI, servidores y más
+ 
+y
+Sistemas de TI pequeños y 
+medianos, y sucursales
+ 
+y
+Equipos médicos/laboratorios de 
+pruebas 
+ 
+y
+Voz sobre protocolo de internet 
+(VoIP)
+ 
+y
+Aplicaciones de RDSI y de 
+retransmisión de tramas
+ 
+y
+Sistemas de almacenamiento   
+ 
+y
+Sistemas de seguridad
+ 
+y
+Industria ligera
+ 
+y
+Reemplazo de UPS más 
+antiguos 
+1
+Más de lo que necesita: Una alta densidad de potencia
+El Vertiv™ Liebert® ITA2 ha sido diseñado para ofrecer un alto factor de potencia y ocupar menos espacio. Esta mayor densidad de 
+potencia maximiza la potencia activa utilizable para satisfacer las necesidades avanzadas de sus  operaciones de TI.
+El gabinete de bypass de mantenimiento facilita la disponibilidad y la flexibilidad 
+Puede utilizar la opción de bypass de mantenimiento optimizado para mejorar la disponibilidad y mantener sus sistemas críticos en 
+funcionamiento durante los reemplazos o mantenimientos de rutina. Un interbloqueo del bypass de mantenimiento garantiza un 
+funcionamiento adecuado del bypass.
+Distribución eléctrica: Implementaciones más sencillas, más rápidas y menos costosas  
+Las opciones de distribución de potencia de salida son rápidas, flexibles y fáciles de implementar. Además, pueden adaptarse 
+rápidamente según las necesidades específicas de alimentación.  El cableado fijo es estándar, con una gran cantidad de opciones 
+integradas para una conectividad conveniente a través de los receptáculos. 
+Liebert 
+ITA2 UPS
+Brand E
+kW
+UPS
+Obtenga hasta un 10% más 
+de potencia
+Gabinete de baterías
+Puede combinar el montaje de las PDO para alimentar las diferentes cargas. Para más detalles, consulte su unidad de distribución de energía en rack.
+ La vista delantera (con el panel desconectado) permite 
+acceder fácilmente a los disyuntores
+Vista trasera con conexiones de salida/entrada y opciones de 
+distribución de potencia de salida (cableado fijo y/o PDO)
+ Opción de distribución
+Cant. de receptáculos
+Número de parte
+      Cableado
+-
+No aplica
+   L21-30R
+2
+PD3-001
+   L21-20R
+2
+PD3-009
+   L6-30R
+6
+PD3-002
+   L6-20R
+6
+PD3-006
+   L5-30R
+6
+PD3-003
+   L5-20R
+6
+PD3-005
+   L15-30R
+6
+PD3-007
+   L15-20R
+6
+PD3-010
+   CS8364C
+1
+PD3-008
+IEC60309 3W+G
+1
+PD3-004
+IEC60309 4W+G
+1
+PD3-011
+UPS Vertiv™ Liebert® ITA2
+UPS 
+Liebert® 
+ITA2
+Marca E
+2
+Servicio y soporte
+Lo ayudamos a empezar y a mantenerse en marcha. Solamente la Organización de 
+Servicios de Vertiv puede ofrecer el grado de asistencia necesaria para garantizar la 
+disponibilidad de los sistemas críticos. Contamos con una gran cantidad de programas 
+para satisfacer sus necesidades operativas. 
+Tarjeta de unidad IntelliSlot: compatible con 
+el monitoreo ambiental remoto y local. 
+Compatible con la plataforma Trellis™, 
+Liebert Nform™ y Liebert SiteScan™. Se 
+puede conectar con las redes de TI y los 
+sistemas de administración del edificio 
+(BACNET/MODBUS). 
+Comunicaciones inteligentes
+El Vertiv™ Liebert® ITA2 ofrece un panel de control intuitivo, una tarjeta de 
+comunicaciones de red y un software de monitoreo opcional, los cuales han diseñados 
+para garantizar la visualización, el control y la tranquilidad en ubicaciones con o sin 
+personal. Incluso puede monitorear las principales condiciones ambientales y de la sala.  
+El Paquete de Garantía de Potencia 
+(Power Assurance Package) de los 
+Servicios de Vertiv le ofrece un socio 
+confiable y una solución de protección del 
+suministro eléctrico completa y libre de 
+preocupaciones, para garantizar el 
+funcionamiento en sus instalaciones de TI 
+pequeñas o remotas.
+Paquete de Garantía de Potencia
+Servicios LIFE™ de Vertiv™
+Los Servicios LIFE™ de Vertiv ofrecen un 
+monitoreo seguro y remoto por parte de 
+los expertos para una detección y una 
+respuesta tempranas. 
+Además, Vertiv cuenta con una 
+línea completa de racks y 
+unidades de distribución de 
+energía en rack.
+Este UPS puede supervisar:
+Capacidad
+Temperatura
+Humedad
+Acceso
+Fugas
+Power
+Assurance
+Package
+Liebert® ITA2™ UPS
+5
+-Y
+e
+a
+r 
+C
+o
+v
+e
+ra
+g
+e
+  
+S
+ta
+rt
+u
+p 
+S
+e
+r
+vi
+c
+e
+s
+ L
+IF
+E
+™
+ S
+e
+r
+vi
+c
+e
+s
+  
+  
+  
+  
+  
+C
+o
+v
+e
+r
+a
+g
+e
+1
+0
+0
+%
+  
+P
+ar
+t
+s 
+&
+ L
+a
+b
+o
+r
+  
+  
+  
+  
+2
+4
+x
+7 
+O
+n
+-
+S
+it
+e
+   
+   
+Em
+er
+ge
+n
+c
+y 
+S
+u
+p
+p
+o
+r
+t
+Liebert® ITA2 UPS
+Vertiv™ Power Insight 
+Vertiv™ Power Insight es una aplicación que 
+puede monitorear sus sistemas de UPS 
+Vertiv™ Liebert® y mostrar las tendencias en 
+tiempo real para la gestión del rendimiento de 
+los UPS críticos. En caso de que requiera 
+apagar el UPS, el software garantiza una rutina 
+de apagado seguro para evitar dañar los datos 
+o los sistemas.
+3
+ITEM
+8KVA
+10KVA
+Entrada trifásica
+Voltaje nominal
+208/220 VCA (trifásico, 4 cables + tierra)
+Rango de voltaje
+96 VCA ~ 144VCA
+Frecuencia nominal
+60Hz
+Rango de frecuencia
+40Hz~70Hz
+Factor de potencia
+≥0.99, a carga plena; ≥0.98, a media carga
+Salida trifásica
+Potencia nominal
+7.2kW
+10kW
+Factor de potencia
+.9
+1
+Voltaje
+208/120 VCA o 220/127 VCA (trifásico, 4 cables + tierra)
+Rango de sincronización de frecuencia
+Frecuencia nominal ± 3 Hz. Rango configurable: ±0.5 Hz~±5 Hz
+Rapidez de respuesta de frecuencia
+0.5Hz/s. Rango configurable: 0.2/0.5/1 Hz/s (UPS individual), 0.2Hz/s (sistema en paralelo)
+Factor de cresta
+3:1
+Distorsión harmónica de voltaje
+<4 % (carga lineal); <5 % (carga no lineal)
+Tiempo de recuperación de respuesta dinámica
+60ms
+Capacidad de sobrecarga
+A 25˚C: 105 % ~ 125 %, 5 min; 125 % ~ 150 %, 1 min; 150 %, 200 ms
+Voltaje de bypass
+Límite superior: +10%. Límite inferior: -10 %, -15 %, -20 %; predeterminado de -10 %
+Eficiencia CA-CA
+Hasta un 93 %
+Tipo
+Sellada, plomo-ácido, libre de mantenimiento
+Batería
+N.º de celdas
+192 de forma predeterminada
+Voltaje nominal
+384 VCD
+Corriente máxima de carga, A
+<3,5 A
+Red eléctrica a batería
+1.8
+3.5
+Tiempo de transferencia
+Inversor al bypass
+Transferencia síncrona: ≤0 ms. Transferencia asíncrona (predeterminada): 
+≤20 ms o 40 ms, 60 ms, 80 ms, 100 ms y 200 ms disponibles
+Ruido
+<55 dB
+Modo de la pantalla del panel
+LCD a color
+Seguridad
+IEC/EN62040-1; UL/CSA, cULus (UL 1778 5ta edición, CSA No. 22.2 107.3)
+Compatibilidad electromagnética
+Emisión de la conducción
+IEC/EN62040-2
+Corriente armónica
+IEC/EN61000-3-12
+Protección contra sobretensiones
+IEC/EN-61000-4-5, nivel de resistencia 4 (4 kV) (línea viva a tierra),  
+Nivel 3 (2kV) (durante línea vivas); ANSI C62.41, 6 kV/20 hms
+Nivel de protección
+IP20
+Condiciones ambientales
+Temperatura operativa
+32~122˚F (0~50˚C) (0.7 será reducido por encima de 122˚F [50˚]
+Temperatura de almacenamiento
+32 ~ 122 °F (0 ~ 50 °C),
+sin reducción de capacidad
+32 ~ 122 °F (0 ~ 50 °C),
+reducción automática 
+Humedad relativa
+5 % de HR ~ 95 % de HR, sin condensación
+a 8 kVA/kW por encima de 104 °F (40 °C)
+Altitud, ft (m)
+Nivel del mar a 10000 ft (3000 m) sin reducción de capacidad nominal
+Dimensiones, anch, x fond. 
+x Alt., pulg. (mm)
+UPS
+16.9 x 25.8 x 5.1 (430 x 656 x 130)
+Gabinete de baterías (se requiere un mínimo de 2)
+16.9 x 29.6 x 3.3 (430 x 751 x 85)
+Gabinete de bypass de mantenimiento (MBC)
+16.9 x 22.4 x 10.3 (430 x 570 x 261)
+UPS
+Neto 50.7 (23)           Envío: 70,5 (32)
+Peso, lb (kg)
+Gabinetes de baterías
+Neto 115 (52.2) Cada uno        Envío: 306,4 (139)
+MBC
+Neto 39.7 (18.02)      Envío: 59,5 (27) 
+Especificaciones del UPS Vertiv™ Liebert® ITA2
+4
+Vertiv.com   |	 Sede de Vertiv, 1050 Dearborn Drive, Columbus, OH, 43085, EE. UU.
+© 2025 Vertiv Group Corp. Todos los derechos reservados. Vertiv™ y el logo de Vertiv son marcas o marcas registradas de Vertiv Group Corp. Todos los demás nombres y logos a los que se hace referencia son nombres comerciales, marcas, o marcas registradas de sus 
+dueños respectivos. Aunque se tomaron todas las precauciones para asegurar que esta literatura esté completa y exacta, Vertiv Group Corp. no asume ninguna responsabilidad y renuncia a cualquier demanda por daños como resultado del uso de esta información o de 
+cualquier error u omisión. Las especificaciones, los reembolsos y otras ofertas promocionales están sujetas a cambio a la entera discreción de Vertiv y mediante notificación.
+SL-26254-SP (R11/25)
+UPS Vertiv™ Liebert® ITA2

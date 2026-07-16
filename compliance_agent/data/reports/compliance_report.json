@@ -1,0 +1,165 @@
+[
+    {
+        "vendor": "ABC Power Systems",
+        "product": "Galaxy VX",
+        "critical": 1,
+        "major": 1,
+        "minor": 2,
+        "score": 55,
+        "status": "FAIL",
+        "findings": [
+            [
+                "Critical",
+                "capacity_kva",
+                1500,
+                1200
+            ],
+            [
+                "Minor",
+                "frequency",
+                "50/60 Hz",
+                "50 Hz"
+            ],
+            [
+                "Major",
+                "efficiency",
+                "99%",
+                "97%"
+            ],
+            [
+                "Minor",
+                "weight",
+                "1950 kg",
+                "1920 kg"
+            ]
+        ]
+    },
+    {
+        "vendor": "XYZ Data Solutions",
+        "product": "Galaxy VL",
+        "critical": 0,
+        "major": 1,
+        "minor": 2,
+        "score": 80,
+        "status": "FAIL",
+        "findings": [
+            [
+                "Minor",
+                "frequency",
+                "50/60 Hz",
+                "50 Hz"
+            ],
+            [
+                "Major",
+                "efficiency",
+                "99%",
+                "98%"
+            ],
+            [
+                "Minor",
+                "weight",
+                "950 kg",
+                "960 kg"
+            ]
+        ]
+    },
+    {
+        "vendor": "PowerTech Ltd",
+        "product": "Galaxy VS",
+        "critical": 1,
+        "major": 3,
+        "minor": 2,
+        "score": 35,
+        "status": "FAIL",
+        "findings": [
+            [
+                "Critical",
+                "capacity_kva",
+                200,
+                160
+            ],
+            [
+                "Major",
+                "input_voltage",
+                "380/400/415 Vac",
+                "380 Vac"
+            ],
+            [
+                "Major",
+                "output_voltage",
+                "380/400/415 Vac",
+                "380 Vac"
+            ],
+            [
+                "Minor",
+                "frequency",
+                "50/60 Hz",
+                "50 Hz"
+            ],
+            [
+                "Major",
+                "efficiency",
+                "97%",
+                "96%"
+            ],
+            [
+                "Minor",
+                "weight",
+                "650 kg",
+                "620 kg"
+            ]
+        ]
+    },
+    {
+        "vendor": "VertiPower",
+        "product": "Liebert EXM",
+        "critical": 0,
+        "major": 1,
+        "minor": 1,
+        "score": 85,
+        "status": "FAIL",
+        "findings": [
+            [
+                "Major",
+                "efficiency",
+                "97%",
+                "96%"
+            ],
+            [
+                "Minor",
+                "weight",
+                "890 kg",
+                "900 kg"
+            ]
+        ]
+    },
+    {
+        "vendor": "EPC Solutions",
+        "product": "93PM",
+        "critical": 1,
+        "major": 1,
+        "minor": 1,
+        "score": 60,
+        "status": "FAIL",
+        "findings": [
+            [
+                "Critical",
+                "capacity_kva",
+                500,
+                400
+            ],
+            [
+                "Major",
+                "efficiency",
+                "97%",
+                "96%"
+            ],
+            [
+                "Minor",
+                "weight",
+                "1100 kg",
+                "1050 kg"
+            ]
+        ]
+    }
+]

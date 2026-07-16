@@ -1,0 +1,72 @@
+Product data sheet
+Characteristics
+SRT011
+APC Smart-UPS SRT Power Distribution Unit,
+3000VA, 208V, 3x NEMA L6-30R outlets
+Main
+Product or component type
+PDU
+Provided equipment
+Installation guide
+ Warranty card
+Range of product
+Smart-UPS Accessories
+Physical
+Height
+79 Mm
+Width
+192 Mm
+Depth
+192 Mm
+Product weight
+0.46 Kg
+Mounting location
+Front
+Mounting preference
+No preference
+Mounting mode
+Not rack-mountable
+Packing Units
+Unit Type of Package 1
+PCE
+Number of Units in Package 1
+1
+Package 1 Height
+14.1 Cm
+Package 1 Width
+25.4 Cm
+Package 1 Length
+17.8 Cm
+Package 1 Weight
+0.8 Kg
+Offer Sustainability
+Lead free
+Yes
+Mercury free
+Yes
+Sustainable packaging
+No
+Packaging made with recycled cardboard
+Yes
+Packaging without single use plastic
+No
+SCIP Number
+5ac12844-46eb-471b-94f1-318e06a714a6
+REACh Regulation
+Reference contains Substances of Very High Concern above the threshold
+EU RoHS Directive
+Compliant By Exemption
+End of life manual availability
+End Of Life Information
+10-Jul-2026
+1
+Take-back
+No
+WEEE Label
+The product must be disposed on European Union markets following specific waste collection and 
+Contractual warranty
+Warranty (in months)
+24
+Product Life Status :
+Commercialised
+2

@@ -1,0 +1,810 @@
+Vertiv™ Liebert® PDX 
+with Variable Speed 
+Compressors
+Direct Expansion Perimeter Unit 
+from 15 to 165 kW
+Liebert® PDX, equipped with variable speed compressors and 
+Liebert® iCOM™ control, has been designed to be the most 
+efficient, reliable, flexible and smart direct expansion cooling 
+solution for data centers.
+Liebert PDX maximizes part load efficiency, compared to most common direct 
+expansion cooling systems, therefore significantly reducing running costs.
+Liebert PDX ensures precise and constant control of airflow, temperature and humidity. 
+Thanks to its innovative design and use of advanced technologies, it matches 
+requirements for cooling continuity coming from the most trusted and adopted 
+certification authorities for data center design and operation.
+Liebert PDX enhances the inherent scalability of direct expansion systems, even on 
+those data centers where the initial heat load is very low or subject to fluctuation.  
+Its wider operating range allows Liebert PDX to be a step ahead of the new challenges 
+posed by data center requirements and climate change.
+Liebert PDX smart control manages and optimizes the overall system,  
+is fully-programable via an advanced and user-friendly touch display and can  
+be linked with common BMS protocols, allowing remote supervision.
+Configurations
+ 
+• From 15 to 165 kW
+ 
+• From 1 to 4 fans
+ 
+• Single or Double Circuit
+ 
+• More than 4 air delivery configurations
+ 
+• Compatible with Liebert EconoPhase™ 
+Pumped Refrigerant Economizer
+Main Options: 
+ 
+• High-Definition Touch Screen Display
+ 
+• Dual power supply  
+(Alternate or Parallel)
+ 
+• Wide range of compatible heat 
+rejection condensers equipped  
+with EC fans and available also  
+with micro-channel coil
+ 
+• Low temperature version to operate 
+down to -30°C outdoor air temperature
+ 
+• Electrical heating
+ 
+• Electrode, Infrared and Ultrasonic 
+humidifiers available
+ 
+• Air Economizer for direct freecooling
+Liebert® PDX Versions
+Vertiv™ Liebert® PDX with Variable Speed Compressors
+annual pPUE
+Value of Liebert® PDX Range
+Features
+ 
+• Variable speed scroll compressors
+ 
+• Direct control of condensers 
+from indoor unit
+ 
+• Fast start logic
+ 
+• Equivalent piping length between unit 
+and remote condenser up to 100m.
+ 
+• Virtual Display 
+ 
+• Eurovent certified performance
+How You Benefit
+ 
+• Power consumption is reduced by  
+up to 35% compared to a fixed speed 
+compressor unit and the extra cost can 
+be recovered in less than one year
+ 
+• Integrated systems maximize overall 
+system annual efficiency
+ 
+• Ensuring fast unit restoration after 
+a power outage and minimizing  
+cooling interruption
+ 
+• Extreme flexibility on the connections’ 
+layout with remote condenser
+ 
+• All the functionalities of the standard 
+display can be replicated through a web 
+browser for easy remote monitoring
+ 
+• Delivers performance rating accuracy, 
+certified by an independent organization
+At Vertiv we believe that being mindful 
+of product design, development, use, 
+and disposal are important to the 
+longevity of our industry.
+Checkout these environmentally 
+conscious features of the  
+Liebert® PDX:
+	• Inverter scroll compressor 
+technology improves annual 
+efficiency by up to 35% compared 
+to a fixed speed compressor.
+	• New generation of heat rejection 
+condensers equipped with EC 
+fans reduce even further power 
+consumption and noise emissions.
+	• With EconoPhase™ pumped 
+refrigerant economizer version, 
+compressors’ working hours are 
+significantly minimized resulting  
+in increased energy savings.
+Liebert® PDX
+Flexibility
+Liebert® PDX remains the product with the widest 
+range of air configurations available in the market
+and a full set of options and accessories to adapt  
+to any type of data center design.
+Smart Liebert® iCOMTM Control
+Liebert® iCOM™ control is the heart of the direct expansion 
+cooling system, managing not only Liebert® PDX  
+units but also outdoor heat rejection components 
+(Liebert® MC or Liebert HCR condensers). Furthermore, 
+it features a new 7” touch screen display for quicker and 
+easier data readability.
+Cooling Continuity
+Liebert® PDX guarantees enhanced availability and 
+redundancy features; it can automatically manage 
+power failures and restore quickly requested working 
+conditions when power is back.  Downtime is also 
+minimized through the prevention of alarms and 
+failures and real-time optimization and adaptation of 
+working parameters.
+Energy Efficiency
+Liebert® PDX, thanks to variable speed drive 
+compressors, increases full and part load efficiency, 
+reduces starting current and improves power factor; 
+as a result, power consumption and energy bills are
+considerably lowered. Liebert PDX cooling density 
+has been maximized, allowing for reduced footprint 
+and leaving more space for customers to install their 
+IT equipment.
+Energy Efficiency
+ 
+y
+Variable speed scroll compressor technology is the best solution in terms of variable cooling capacity, 
+with a minimum compressor speed down to 25% of maximum value. It improves annual efficiency even 
+when requested cooling load is low, such as in the early stage of a data center life, or when the IT 
+equipment usage is subject to big fluctuations; this reduces the cooling equipment’s total cost of 
+ownership and payback time.
+ 
+y
+New EC fan generation with extended speed modulation range (minimum speed down to 30% of 
+maximum value) in order to guarantee the requested supply air temperature at any moment.
+ 
+y
+New generation of heat rejection condensers equipped with EC fans to reduce even further power 
+consumptions and reduce noise at the same time.
+ 
+y
+Eurovent certified performance guarantees independent testing, thus delivering rating accuracy and 
+enhancing the unit’s reliability. The new IT Cooling program updates performance tolerance, 
+introducing stricter values than previous ones.*
+ 
+y
+Liebert® PDX is fit for extreme working conditions and environments; the extended working range 
+allows a maximum external temperature of 55°C and a minimum of -30°C, with an internal return air 
+temperature up to 40°C. 
+ 
+y
+Liebert® PDX extended compressor’s and evaporator fan’s speed modulation range improves system 
+scalability, particularly in case of variable data center load.
+ 
+y
+Liebert® PDX units adapt perfectly to all kinds of installations; maximum equivalent piping length 
+between unit and condenser can reach 100 m. Two different coil treatments (epoxy coating and 
+electrofin) are available for the entire range of Liebert® condensers, making their installation possible 
+also in critical conditions.
+ 
+y
+More than 4 airflow configurations allow the units to adapt to any data center layout and 
+configuration.
+Flexibility
+ 
+y
+Ready for Teamwork of up to 32 units connected in a common network, with optimization based on 
+installation type; furthermore it allows for advanced control functionality (sharing sensor’s data, standby 
+rotation, lead-lag, cascade operation and rotating master function). A single display can be used as a ‘team 
+display’ to manage up to 32 units, optimizing and harmonizing the parameters of all systems through one 
+single display.
+ 
+y
+The Liebert® iCOM™ software embeds a comprehensive algorithm library with more than 10 different 
+strategies to control temperature/humidity & airflow adapting perfectly to the different data center solutions.
+ 
+y
+A virtual display can replicate, through a web browser, all the functionalities of the standard display, either 
+remotely or connecting a laptop on the ethernet port directly to the frontal door.
+ 
+y
+The unit can communicate with the user’s BMS system with extended parameter availability, and it can also 
+be connected to Vertiv™ LIFE™ remote diagnostic and preventive monitoring Services. Extended parameter 
+availability to customer BMS through different protocols (Modbus IP, BACnet IP, SNMP and HTTP).
+Smart Liebert® iCOM™ Control 
+ 
+y
+Liebert® PDX can automatically manage a power failure for 60 seconds, keeping the Liebert iCOM™ 
+control board and the BMS communication on and permitting system supervision during a power 
+outage event. When power is restored, the intelligent Liebert iCOM™ control adopts a fast restart, 
+recovering in less than 40 seconds at the requested operating condition.
+ 
+y
+Electrically, units can be fed with two power sources combined with an ATS for full back-up or with 
+two separate lines, one for control and fans and the other for compressors and other equipments.
+ 
+y
+The airflow continuity is guaranteed until the last unit fan is able to run, both in the indoor and 
+outdoor unit.
+ 
+y
+In case of control sensor failure, the unit automatically adapts in order to grant the necessary cooling/
+airflow continuity. A redundant sensor can be installed and activated only if the first one breaks or is 
+missing.
+Cooling Continuity 
+*  Check ongoing Eurovent certification validity: www.eurovent-certification.com 
+Vertiv™ Liebert® PDX with Variable Speed Compressors
+Our Presence
+Global Presence
+Manuf. and Assembly Locations 28 
+Service Centers 250+
+Service Field Engineers 2,650+
+Technical Support/Response 300+ 
+Customer Experience Centers/Labs 16
+US and Canada
+Manuf. and Assembly Locations 13 
+Service Centers 100+
+Service Field Engineers 850+ 
+Technical Support/Response 120+ 
+Customer Experience Centers/Labs 4
+Latin America
+Manuf. and Assembly Locations 1 
+Service Centers 20+
+Service Field Engineers 240+ 
+Technical Support/Response 20+ 
+Customer Experience Centers/Labs 2
+Europe, Middle East And Africa
+Manuf. and Assembly Locations 9
+Service Centers 70+
+Service Field Engineers 590+ 
+Technical Support/Response 90+
+Customer Experience Centers/Labs 5
+Asia Pacific
+Manuf. and Assembly Locations 5 
+Service Centers 60+
+Service Field Engineers 970+ 
+Technical Support/Response 80+ 
+Customer Experience Centers/Labs 5
+Rely on a Higher Level of Service Expertise for Thermal Management in Your Data Center
+Who is better prepared to meet the service needs for your 
+thermal management system than the company that 
+pioneered the precision air conditioning market? We’re a 
+world leader in research and development of innovative 
+products that protect mission-critical thermal applications 
+and have supported data centers around the world for 
+decades.
+After all, there’s a vast difference in the expertise necessary to address the comfort 
+cooling needs of a normal building and the thermal management needs of your 
+sensitive and sophisticated data center. An incorrect repair procedure by improperly 
+trained technicians, or the use of non-genuine parts, can have a profound effect on 
+your equipment performance, your data center availability, and your energy costs. 
+The factory trained and certified technicians of Vertiv know the difference. We are 
+equipped to maximize the performance and efficiency of your thermal management 
+system as no one else can.
+Supporting Your Business Around 
+the Globe
+We bring our combination of strengths 
+to life on a global scale, ensuring that 
+we’re able to serve you wherever you do 
+business. Vertiv has the largest factory-
+trained service force with more than 
+2,700 field engineers together with the 
+capability to support you remotely with a 
+comprehensive range of remote Services 
+and Software Solutions. Our service 
+team members are located in virtually 
+every major country across the globe 
+and are backed by more than 330 
+technical support/response personnel. 
+This means that no matter where you 
+operate, you are covered by the most 
+knowledgeable engineers and 
+technicians available, giving you relief 
+from any concern.
+Vertiv™ Liebert® PDX with Variable Speed Compressors
+Single circuit models
+PI015
+PI021
+PI025
+PI031
+PI033
+PI041
+PI045
+PI047
+PI051
+PI057
+PI075
+PI059
+Maximum net sensible cooling capacity (*)
+kW
+19,2
+23,9
+29,1
+32,7
+37,0
+50,9
+56,4
+52,5
+60,9
+62,4
+77,5
+70,4
+Minimum net sensible cooling capacity (*)
+kW
+5,9
+7,0
+8,5
+9,6
+11,8
+15,4
+18,1
+15,8
+18,2
+17,5
+23,3
+13,0
+Compressor 
+modulation 80% (*)
+Nom. ESP
+Pa
+20
+20
+20
+20
+20
+20
+20
+20
+20
+20
+20
+20
+Net Total Cooling Capacity
+kW
+15,8
+19,8
+24,5
+27,8
+31,9
+43,2
+49,3
+43,7
+51,1
+52,0
+65,4
+60,6
+Net Sensible Cooling Capacity
+kW
+15,8
+19,8
+24,5
+27,8
+31,9
+43,2
+49,3
+43,7
+51,1
+52,0
+65,4
+60,6
+nSHR
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Unit Net Sensible EER
+4,63
+4,49
+4,11
+3,54
+3,36
+3,91
+3,66
+4,02
+3,86
+4,17
+3,71
+3,53
+Airflow
+m3/h
+4049
+5040
+6217
+7126
+8163
+11080
+12608
+11199
+13104
+13273
+16745
+13191
+Compressor 
+modulation  40% (*)
+Net Total Cooling Capacity
+kW
+8,3
+10,5
+13,4
+15,3
+18,2
+23,8
+27,8
+23,7
+28,1
+27,8
+36,2
+35,4
+Net Sensible Cooling Capacity
+kW
+8,3
+10,5
+13,4
+15,3
+18,2
+23,8
+27,8
+23,7
+28,1
+27,8
+36,2
+35,4
+nSHR
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Unit Net Sensible EER
+5,46
+5,20
+5,17
+4,77
+4,76
+5,25
+5,05
+4,95
+4,92
+5,25
+4,99
+4,64
+Airflow
+m3/h
+2112
+2669
+3372
+3911
+4665
+6086
+7099
+6047
+7166
+7118
+9222
+9045
+Dimensions (W x D)
+mm
+840x890
+1200x890
+1750x890
+1200x890
+Height (H)
+mm
+1970
+2570
+Weight
+kg
+315
+316
+336
+358
+358
+471
+472
+640
+641
+688
+754
+584
+Aiflow Delivery
+Down Flow UP - Fans Over the Raised Floor
+•
+•
+•
+Down Flow UP - Frontal air delivery
+•
+•
+•
+Down Flow UP - Back air Delivery
+•
+Down Flow Down - Fans in the Raised Floor
+•
+•
+Up Flow
+•
+•
+•
+Cooling Version:
+Air Cooled
+•
+•
+•
+Water Cooled
+Dual fluid (Chilled water + DX Air Cooled)
+Dual fluid - Chilled water + DX Water Cooled
+Freecooling
+EconoPhase
+* Performance at RAT 30°C / RH 35% - Condensing temperature 45°C - Downflow up air configuration. CE units - Power supply 400V/3ph/50Hz - High Power EC Fans - Refrigerant R410A
+* Performance at RAT 30°C / RH 35% - Condensing temperature 45°C - Downflow up air configuration. CE units - Power supply 400V/3ph/50Hz - High Power EC Fans - Refrigerant R410A
+The Liebert EconoPhase pumped refrigerant economizer is compatible with the Liebert PDX indoor unit and the Liebert MC 
+condenser to improve overall system efficiency.
+Double circuit models
+PI044
+PI054
+PI062
+PI074
+PI068
+PI082
+PI094
+PI104
+PI120
+PI092
+PI150
+PI165
+Maximum net sensible cooling capacity (*)
+kW
+56,0
+62,0
+73,1
+82,9
+78,5
+97,4
+105,1
+112,8
+136,2
+94,3
+169,3
+176,2
+Minimum net sensible cooling capacity (*)
+kW
+8,6
+9,4
+11,3
+13,1
+12,5
+13,5
+15,1
+16,8
+22,2
+13,5
+22,2
+24,9
+Compressor 
+modulation 80% (*)
+Nom. ESP
+Pa
+20
+20
+20
+20
+20
+20
+20
+20
+20
+20
+20
+20
+Net Total Cooling Capacity
+kW
+45,2
+51,1
+60,4
+70,5
+64,8
+79,2
+87,1
+95,4
+119,8
+80,7
+146,4
+153,7
+Net Sensible Cooling Capacity
+kW
+45,2
+51,1
+60,4
+70,5
+64,8
+79,2
+87,1
+95,4
+119,8
+80,7
+146,4
+153,7
+nSHR
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Unit Net Sensible EER
+4,42
+4,32
+3,99
+3,66
+4,71
+4,15
+4,04
+3,91
+3,35
+3,69
+3,65
+3,51
+Airflow
+m3/h
+11546
+13093
+15414
+18134
+16921
+20667
+22769
+24854
+31292
+20603
+38428
+40076
+Compressor 
+modulation  40% (*)
+Net Total Cooling Capacity
+kW
+21,8
+23,8
+28,6
+32,8
+31,2
+45,2
+49,5
+55,1
+69,8
+36,3
+83,3
+90,1
+Net Sensible Cooling Capacity
+kW
+21,8
+23,8
+28,6
+32,8
+31,2
+45,2
+49,5
+55,1
+69,8
+36,3
+83,3
+90,1
+nSHR
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Unit Net Sensible EER
+4,14
+4,20
+4,03
+3,94
+4,53
+5,10
+5,10
+5,04
+4,66
+4,21
+4,99
+4,83
+Airflow
+m3/h
+5590
+6113
+7311
+8490
+8129
+11686
+12881
+13984
+18157
+9239
+21719
+23299
+Dimensions (W x D)
+mm
+1750x890
+2550x890
+1750x890
+3350x890
+Height (H)
+mm
+1970
+2570
+Weight
+kg
+671
+682
+723
+708
+935
+957
+967
+987
+1006
+811
+1496
+1544
+Aiflow Delivery
+Down Flow UP - Fans Over the Raised Floor
+•
+•
+•
+•
+Down Flow UP - Frontal air delivery
+•
+•
+•
+Down Flow UP - Back air Delivery
+•
+•
+Down Flow Down - Fans in the Raised Floor
+•
+•
+•
+•
+Up Flow
+•
+•
+•
+Cooling Version:
+Air Cooled
+•
+•
+•
+•
+•
+Water Cooled
+Dual fluid (Chilled water + DX Air Cooled)
+Dual fluid - Chilled water + DX Water Cooled
+Freecooling
+EconoPhase
+•
+•
+Vertiv.com   |	 Vertiv Infrastructure Limited, George Curl Way, Southampton, SO18 2RY, VAT Number: GB188146827
+© 2022 Vertiv Group Corp. All rights reserved. Vertiv™ and the Vertiv logo are trademarks or registered trademarks of Vertiv Group Corp. All other names and logos referred to are trade names, trademarks or registered trademarks of their respective owners. While 
+every precaution has been taken to ensure accuracy and completeness herein, Vertiv Group Corp. assumes no responsibility, and disclaims all liability, for damages resulting from use of this information or for any errors or omissions. Specifications are subject to 
+change without notice.
+MKA4L0UKPDXPI – Rev.5 – 08/2022

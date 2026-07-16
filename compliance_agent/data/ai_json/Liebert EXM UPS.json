@@ -1,0 +1,11 @@
+{
+  "manufacturer": "Vertiv",
+  "product": "Liebert EXM 3-Phase UPS",
+  "capacity": "50-250 kVA/kW",
+  "input_voltage": "480 VAC, 3-phase, 3-wire plus ground",
+  "output_voltage": "480 VAC, 3-phase, 3-wire plus ground",
+  "frequency": "60 Hz",
+  "efficiency": "Not Found",
+  "weight": "Not Found",
+  "ip_rating": "Not Found"
+}

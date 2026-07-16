@@ -1,0 +1,679 @@
+Vertiv™ Liebert®  
+APM Plus
+50 to 500 kW
+The Next Generation Versatile 
+and Modular UPS Fit for Row 
+and Room Applications
+Vertiv™ Liebert® APM Plus | 50 to 500 kW
+Vertiv brings together hardware, software, analytics, and ongoing services to ensure its customers’ 
+vital applications run continuously, perform optimally and grow with their business needs. Vertiv 
+solves the most important challenges faced by today’s data centers, communication networks, and 
+commercial and industrial facilities with a portfolio of power, cooling, and IT infrastructure solutions 
+and services that extends from the cloud to the edge of the network. Headquartered in Columbus, 
+Ohio, USA, Vertiv employs around 31,000 people and does business in more than 130 countries. For 
+more information, and for the latest news and content from Vertiv, visit Vertiv.com.
+About Vertiv
+OUR PURPOSE 
+We believe there is a better way to meet the world’s accelerating demand for data - one driven 
+by passion and innovation.
+OUR PRESENCE  
+Headquartered in Westerville, Ohio, USA, Vertiv does business in more than 130 countries.
+Worldwide
+Manuf. and Assembly Locations: 24
+Service Centers: 310+
+Service Field Engineers: ~4,000 
+Technical Support/Response: ~300 
+Customer Experience Centers/Labs: 27
+Americas
+Manuf. and Assembly Locations: 9
+Service Centers: 170+
+Service Field Engineers: ~1,750 
+Technical Support/Response: ~120 
+Customer Experience Centers/Labs: 4
+Europe, Middle East, and Africa
+Manuf. and Assembly Locations: 9
+Service Centers: 60+
+Service Field Engineers: ~650 
+Technical Support/Response: ~130 
+Customer Experience Centers/Labs: 12
+Asia Pacific
+Manuf. and Assembly Locations: 6
+Service Centers: 80+
+Service Field Engineers: ~1,600 
+Technical Support/Response: ~50 
+Customer Experience Centers/Labs: 11
+3
+Vertiv™ Liebert® APM Plus, the Next Generation Versatile and Modular UPS  
+Fit for Row and Room Applications
+HIGHLIGHTS 
+ 
+y
+Remarkable double conversion 
+efficiency - up to 97%
+ 
+y
+Dynamic online mode efficiency - up to 
+98.8%
+ 
+y
+Flat efficiency curve
+ 
+y
+High power density
+ 
+y
+Fit for the row or room applications
+ 
+y
+Modular and scalable
+ 
+y
+Hot-swappable power modules and 
+bypass module
+ 
+y
+Distributed module control system
+ 
+y
+Unitary output power factor and 
+symmetrical power factor diagram
+ 
+y
+Reliability boosters- Robust air 
+channels, PCBs embedded with 
+conformal coating  
+ 
+y
+Integrated parallel and load bus 
+synchronization
+ 
+y
+Intelligent paralleling function
+ 
+y
+User-friendly 9-inch LCD touch screen 
+display
+ 
+y
+Supports UPS self-capacity test 
+without load banks
+ 
+y
+AC input phase reversal correction
+APPLICATIONS
+ 
+y
+Enterprise Data Centers
+ 
+y
+Cloud and Colo Data Centers
+ 
+y
+Telecom IDC
+ 
+y
+Process Control Centers
+ 
+y
+Workstations
+The all-new Vertiv™ Liebert®      
+APM Plus is a modular high density 
+transformer-free UPS which 
+brings exceptional features for 
+mission-critical applications. 
+Its' extraordinary double conversion 
+efficiency of up to 97% provides 
+remarkable operational cost savings, 
+reducing both the Total Cost of 
+Ownership (TCO) and the 
+environmental impact. 
+The built-in scalability of the Liebert 
+APM Plus also allows for fast, simple 
+progression in system capacity 
+through featured FlexPower 
+technology. Each power module 
+combines scalable power with 
+independent DSP control to 
+auto-regulate operation, thus 
+enhancing overall availability. 
+The Liebert® APM Plus UPS offers 
+ultra high-density power modules of 
+size 3U and occupies the smallest 
+footprint of 0.6 m2 (500 kVA) in its 
+range. It saves up to 20-50% floor 
+space depending on the different 
+configurations over the competition 
+and conventional UPS system. 
+The Liebert® APM Plus features 
+a large multilingual touch scree 
+LCD display giving users access to key 
+operating information including alarm 
+status, configuration, start-up/
+shutdown, transfer, and advanced 
+metering. It offers network connectivity 
+communications card, and optional 
+software monitoring, all designed 
+to provide visibility, control, and 
+peace of mind for manned 
+or unmanned locations.
+LIB
+Lithium ion
+LIB Compatible 
+Vertiv™ Liebert® APM Plus | 50 to 500 kW
+Modular, Scalable Configuration
+Liebert® APM Plus 50-250 kW
+Liebert® APM Plus 50-500 kW
+The modular architecture of the Vertiv™ Liebert® APM Plus allows a single unit capacity to be scaled up to a 
+maximum of 500 kW in one single unit. There are two different frames available, each with a specific maximum 
+cabinet capacity.
+Liebert APM Plus 50 kW - 250 kW
+Reaching up to 250 kW with 50 kW power increments 
+in a frame same as a server rack cabinet, with the 
+ability to extend runtime with dedicated 
+battery cabinets.
+Liebert APM Plus 50 kW - 500 kW
+Reaching up to 500 kW with 50 kW power increments 
+in a frame same as a server rack cabinet, with the 
+ability to extend runtime with dedicated 
+battery cabinets.
+5
+Highly Efficient and Lowest TCO 
+Vertiv™ Liebert® APM Plus delivers 
+an outstanding Double 
+conversion efficiency of up to 
+97%, which further increases up to 
+98.8% with the Dynamic online 
+mode, consequently reducing 
+operating costs and energy 
+dissipation (kW) to a minimum. 
+This significantly minimizes the 
+consumption of the cooling system, 
+providing an overall TCO reduction 
+and rapid payback time.
+Furthermore, the Liebert APM Plus 
+can optimize efficiency at partial 
+load thereby attaining additional 
+cost savings through the intelligent 
+paralleling feature. The efficiency 
+and electricity cost savings of 
+Liebert APM Plus can be attributed to:
+ 
+y
+Latest generation IGBT
+ 
+y
+Adoption of a three-level T-type 
+converter topology
+ 
+y
+DC controlled fan speed
+ 
+y
+Intelligent paralleling mode
+ 
+y
+Advanced digital technology 
+and fast transfer
+The seamless activation of Liebert APM 
+Plus’s functioning modes delivers the 
+highest level of efficiency without 
+compromising power quality and 
+availability. The Dynamic online mode 
+maintains Class 1* output performance 
+under most stringent conditions:
+ 
+y
+Network fault (voltage 
+variation, high/ low impedance 
+mains failures)
+ 
+y
+Load fault (short circuit 
+downstream of the UPS)
+ 
+y
+Type of load connected (PDU 
+transformer)
+The unit discriminates between various 
+interferences and responds rapidly, while 
+also maintaining compatibility with 
+downstream equipment (such as 
+Transformers, STS, mechanical loads, 
+etc).
+Dynamic online mode:  
+No more availability tradeoff with efficiency
+Maximum energy saving (VFD)
+Detects when conditioning is not 
+required and allows the energy flow 
+to passthrough he bypass line.
+Dynamic Online, high efficiency  
+& power conditioning (VI)
+Compensates the load THDi, PF  
+and main sags and swells, ensuring  
+fast transfer output performance.
+Maximum power control (VFI) 
+Provides the highest level of power 
+conditioning and protects the load from 
+all electrical network disturbances.
+Dynamic online mode is the latest high 
+efficiency mode of operation offered by 
+Vertiv, developed for those that do not 
+want to trade off any level of availability 
+for incremental gains in efficiency.
+Dynamic online mode enables  
+operating efficiency up to 98.8% 
+without sacrificing availability.  
+In fact, while in this mode, the inverter 
+can instantaneously assume the load 
+and maintain the output voltage within 
+the IEC 62040 Class 1* specification, 
+thus offering the same level of availability 
+typically achieved in a double conversion 
+operating mode.
+Dynamic online mode is therefore able  
+to combine the superior availability of a 
+Double conversion operating mode with 
+the excellent energy cost savings of a 
+high efficiency mode for a reduced total 
+cost of ownership.
+TYPICAL FUNCTIONING MODES OF A UPS SYSTEM
+DOUBLE CONVERSION 
+MODE (VFI)
+ECO MODE  
+(VFD)
+Power quality not ensured
+Above 99% Efficiency
+Highest level of efficiency  
+up to 97.5%
+DYNAMIC ONLINE MODE  
+(VI with VFI support)
+Maximum Availability  
+with Class 1* UPS
+Up to 99% Efficiency
+*Conditions apply
+Maximum Availability  
+with Class 1 UPS
+Vertiv™ Liebert® APM Plus | 50 to 500 kW
+Robust and Proven Design 
+Proven Hot-swappable Design
+Reliable contactors in conjunction 
+with sophisticated software and 
+independent control architecture 
+enables seamless swapping      
+capabilities resulting in reduced      
+MTTR.
+Innovative Internal Air Channel
+Designed in a way that internal hot 
+air drives directly towards heat sink 
+without distressing the PCBs and other 
+internal sensitive circuits, improving 
+the service life of components and 
+UPS reliability.
+Conformal Coating
+Applied as a standard feature for all 
+PCBs in Liebert® APM Plus. Its 
+primary purpose is to protect the 
+electronics from environmental 
+elements and corrosion. The 
+coating acts as both a protective 
+shield and insulative material for a 
+PCB.
+Tolerates Higher Ambient 
+Temperatures
+Internal components and circuitry 
+of Liebert APM Plus are designed 
+to seamlessly operate up to 40 °C 
+without any capacity impact and 
+further can sustain high ambient 
+temperature up to 50 °C with 
+auto-derating.
+AC input phase reversal correction
+Enables continuous inverter operation 
+without switching to battery during 
+phase reversal, eliminating the need 
+for an external accessory kit and 
+enhancing system efficiency 
+and reliability.
+Integrated Backfeed Contacts 
+Backfeed prevents any potential 
+risk from electric shock on the 
+UPS mains and bypass input AC 
+terminals in the event of a failure of 
+the rectifier and bypass static 
+switch SCR. The control circuit 
+includes output dry contacts that 
+activate an external isolating 
+device (optional) upon backfeed 
+detection. 
+Scalable up to 2 MW
+4 units of intelligent paralleling      
+help to achieve maximum 
+capacity up to 2 MW. Comes with 
+integrated parallel and LBS 
+communication ports, and allows a 
+single touch to initiate inverter ON/
+OFF for all parallel connected UPS 
+system.
+Symmetrical Power Factor 
+Compatibility  
+Liebert APM Plus is fully adapted 
+to meet diverse system 
+requirements in terms of power 
+capacity and redundancy allowing 
+different system designs.
+ 
+y
+Output Power Factor up to 1
+ 
+y
+No power derating from 
+0.5 lagging to 0.5 leading
+ 
+y
+Optimum space/power ratio
+Flexible Battery Configuration
+Compatible with numerous battery 
+configurations that includes 
+traditional external battery banks 
+with string lengths varying 
+between 28 and 44 batteries.
+In a parallel system, batteries can 
+be installed in a common bank to 
+maximize cost-effectiveness and 
+minimize floor space. Extended 
+battery life is further achieved through 
+a temperature compensated charging 
+algorithm which prevents battery 
+damage, thus prolonging life span.
+Higher Short Circuit Handling
+Capacity
+During the short circuit, the load will be 
+transferred via bypass to clear higher 
+short circuit currents.
+Fuse is considered optionally to clear 
+short circuit capacity of up to 65 kA. 
+It is available for selected models only.
+7
+User Interface and Advanced Diagnostic
+Vertiv™ Liebert® APM Plus makes 
+your mission-critical space a 
+peaceful place through its 
+advanced diagnostic capability, 
+measuring and logging, enhanced 
+event analysis as well as an 
+intelligent colored multi-language 
+touch screen display.
+Liebert APM Plus advanced DSP 
+control platform together with the 
+patented Vector Control 
+technology enables increased 
+performance of three-level power 
+converters and real-time control 
+of output power quality, 
+guaranteeing continuous 
+operation and premium 
+protection for your business.
+Bypass Input 
+Voltage and frequency 
+measurements.
+Mains Input
+Current, voltage, and frequency 
+values of the three input phases.
+Warning/fault
+Alerts of anomalies on bypass, 
+rectifier, inverter, booster/charger, 
+battery, and load.
+Events log
+Date and time of important UPS 
+events, alarms, and other warnings.
+Measurements
+Voltage, current, and frequency 
+values of each internal functional 
+block.
+Battery
+Status/values including 
+temperature, cell voltage, capacity 
+run time, and testing.
+Vertiv™ LIFE™ Services
+Status of Vertiv LIFE Services 
+connections.
+Tools
+LCD settings and language 
+selection.
+Output
+Voltage, current, frequency, and 
+battery measurements.
+Vertiv™ Liebert® APM Plus | 50 to 500 kW
+Flexible Monitoring and Management Options 
+Hardware Connectivity
+Vertiv™ Liebert® APM Plus allows for 
+the monitoring and control of 
+networked UPS through different 
+protocol options.
+The integration of UPS with network 
+management systems, via SNMP 
+protocol, and building management 
+systems, via MODBUS TCP/RTU and 
+BacNET MSTP/IP. As an option, 
+environmental sensors can also be 
+attached to the UPS via monitoring 
+card.
+The integration with synoptic panels 
+via a dry contact board.
+Software
+Vertiv connects and protects your 
+network with core-to-edge solutions 
+and unmatched expertise.
+For maximum visibility and effective 
+monitoring in one view, pair your 
+Vertiv™ UPS with a software solution.
+Designed for Easy Service and Maintenance
+Designed for ease of service 
+Vertiv™ Liebert® APM Plus is designed to 
+allow access to cable terminal blocks, 
+switches and all the replaceable components 
+including power modules, bypass module, and 
+communications from the front side for both 
+installation and maintenance purposes.
+Hot-swappable Design 
+Hot-swappable building blocks sub-assembly 
+enables an easy and fast on-site replacement, 
+thus reducing MTTR.
+Vertiv™ Environet™ Alert
+Vertiv™ Environet™ Alert 
+provides industry companies 
+with critical facility monitoring 
+software that is affordable and 
+easy to use. This solution 
+delivers superior monitoring, 
+alerting, trending, and data 
+organization. Get monitoring, 
+alerting, and trending at a 
+price that’s right for your 
+business.
+9
+Vertiv™ Life™ Services Remote Diagnostic and Preventive Monitoring
+Vertiv's service program is designed to 
+maintain that your critical power 
+protection system is maintained in an 
+optimum state of readiness at all times. 
+The Vertiv™ Life™ Services remote 
+diagnostic and preventive monitoring 
+service provides early warning of UPS 
+conditions and out of tolerances. This 
+allows effective proactive maintenance, 
+fast incident response and remote 
+troubleshooting, giving customers 
+complete security and peace of 
+mind. With Vertiv Life Services you will 
+beneﬁt from:
+Uptime Assurance
+Constant monitoring of UPS 
+parameters, thus maximizing the 
+system’s availability.
+First Time Fix Rate
+Proactive monitoring and data 
+measuring help verify that when our 
+customer engineers are dispatched 
+on-site, they arrive prepared for 
+first-time resolution.
+Proactive Analysis
+From Vertiv Life Service centers, our 
+experts proactively analyze the 
+data and trends of your equipment, 
+to recommend actions to optimize 
+their performance. 
+Minimized Total Cost of 
+Ownership of Your Equipment
+The continuous monitoring of all 
+relevant parameters in turn 
+maximizes unit performance, 
+reduces on-site maintenance and 
+extends the life of your 
+equipment.
+Fast Incident Response
+Vertiv Life Services allow for the  
+immediate deﬁnition of the best 
+course of action, as a result of the 
+regular communication between 
+your Liebert® APM Plus system 
+and our Vertiv Life Service centers.
+Reporting
+You will receive a comprehensive 
+report detailing the working order 
+of your equipment and its 
+operational performance.
+Vertiv™ Liebert® APM Plus | 50 to 500 kW
+1. Switch Assembly Cabinet
+It comes with integrated 
+switches to bring the isolation 
+at the edge of the UPS. Enables 
+bottom entry for cable 
+terminations in 500 kVA frame.
+2. Top Cable Entry Cabinet
+It enables top cable entry 
+access in 250 kVA frame.  
+3. Seismic Anchor kit
+It avoids and reduces the 
+damage to UPS caused by the 
+earthquake vibration.
+4. BCB Box
+It protects the battery string 
+from short circuit and end of 
+discharge and isolates during 
+emergency power off (EPO). 
+1
+5
+2
+4
+Flexible Optional Subassemblies that Meets the Customer Infrastructural Needs
+5. Top Fan Subassembly 
+It enables the airflow from front to top side and eliminates the need for 
+rear space for maintenance. Applicable for 250 kVA frame.
+3
+Delivered as a Complete Integrated Solution - Vertiv™ Liebert® APT
+Liebert® APT Comes with
+ 
++ Upstream Distribution
+ 
++ Liebert® APM Plus
+ 
++ Downstream Distribution
+ 
++ Top-notch Power Train 	
+	
+Manager Console 
+11
+Nominal Ratings (kVA/kW)
+50-250 
+50-500 
+Input
+Nominal input voltage (V)
+380/400/415 (three-phase and sharing neutral with the bypass input)
+Input voltage range without 
+battery discharge (V)*
+228 to 478
+Nominal input frequency (Hz)
+50/60
+Input frequency range (Hz)
+40 to 70
+Bypass voltage tolerance (%)
+Upper limit: +10, +15, or +20, default: +15 
+Lower limit: -10, -20, -30, -40, default: -20
+Bypass frequency tolerance (%)
+±10
+Input power factor (kW/kVA)
+0.99
+Input THDi*
+<3% (full load)
+Battery
+Battery blocks per string
+28-44*
+Battery charger max. (A)
+75
+150
+Output
+Nominal output voltage (V)
+380/400/415 
+(three-phase and sharing neutral with the bypass input)
+Nominal output frequency (Hz)
+50/60
+Power factor @ 40 Deg C
+Unity 
+THDv with 100% linear load (%)
+2
+Inverter overload capacity
+≤105% Continuous; 105% to 110% for 60 min; 110% to 125% for 10 min; 125% to 150% for 1 min; >150% to 200% for 200 ms
+Efficiency*
+Double conversion mode
+Up to 97%
+Dynamic online mode
+Up to 98.8%
+Eco mode
+Up to 99%
+Dimensions and weight1
+Dimensions (W x D x H), mm
+600 x 850 x 2000
+600 x 1000 x 2000 (single/no switch);
+1200 x 1000 x 2000 (four switches)
+Shipping dimensions (W x D x H), mm
+800 x 1000 x 2180
+710 x 1120 x 2200 (single/no switch);
+1310 x 1120 x 2200 (four switches)
+Weight, kg
+447
+600 (no switch); 608 (single switch); 
+824 (four switches)
+Shipping weight, kg
+455
+610 (no switch); 618 (single switch); 
+847 (four switches)
+General
+Noise within 1 m at the front according to 
+ISO7779, dBA2
+68
+<70
+Altitude
+1500 m no derating, 1500 to 3000 m derate power by 1% per each 100 m increase
+Protection level
+IP20 (IP21, IP31 optional)
+IP20
+General and safety requirements for UPS
+ IEC 62040-1
+EMC requirements for UPS
+IEC 62040-2
+UPS classification according to                                         
+IEC EN 62040-3
+VFI-SS-111
+Environmental aspects- requirements and 
+reporting 
+IEC 62040-4
+Technical Specifications
+* Conditions apply
+1. 250kVA frame details are without side cabinet and top fan subassembly
+2. With standard unit only
+SL-80331 (12/25)
+Vertiv.com  |	
+Asia Pacific
+© 2025 Vertiv Group Corp.  All rights reserved. Vertiv™ and the Vertiv logo are trademarks or registered trademarks of Vertiv Group Corp. While every precaution has been taken to ensure accuracy and completeness herein, Vertiv Group Corp. assumes no 
+responsibility, and disclaims all liability, for damages resulting from use of this information or for any errors or omissions. Specifications are subject to change without notice.

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "STD-001",
+    "standard": "TIA-942",
+    "section": "Power Infrastructure",
+    "clause": "Data centres shall provide redundant power paths to improve availability.",
+    "keywords": [
+      "power",
+      "redundancy",
+      "UPS",
+      "availability"
+    ]
+  },
+  {
+    "id": "STD-002",
+    "standard": "TIA-942",
+    "section": "Cooling",
+    "clause": "Cooling systems shall maintain environmental conditions suitable for continuous IT equipment operation.",
+    "keywords": [
+      "cooling",
+      "temperature",
+      "HVAC"
+    ]
+  },
+  {
+    "id": "STD-003",
+    "standard": "BICSI-002",
+    "section": "Electrical Systems",
+    "clause": "UPS systems should be sized to meet the critical IT load with appropriate redundancy.",
+    "keywords": [
+      "UPS",
+      "capacity",
+      "electrical"
+    ]
+  },
+  {
+    "id": "STD-004",
+    "standard": "BICSI-002",
+    "section": "Physical Infrastructure",
+    "clause": "Equipment racks shall allow adequate airflow and maintenance access.",
+    "keywords": [
+      "rack",
+      "airflow",
+      "maintenance"
+    ]
+  },
+  {
+    "id": "STD-005",
+    "standard": "Uptime Institute Tier",
+    "section": "Tier III",
+    "clause": "Tier III facilities shall support concurrent maintainability without affecting IT operations.",
+    "keywords": [
+      "Tier III",
+      "maintenance",
+      "availability"
+    ]
+  },
+  {
+    "id": "STD-006",
+    "standard": "Uptime Institute Tier",
+    "section": "Tier IV",
+    "clause": "Tier IV facilities shall provide fault tolerance with multiple independent distribution paths.",
+    "keywords": [
+      "Tier IV",
+      "fault tolerance",
+      "redundancy"
+    ]
+  }
+]
