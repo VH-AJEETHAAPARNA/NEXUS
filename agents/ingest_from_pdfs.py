@@ -1,8 +1,13 @@
+import importlib
 import os
 from dotenv import load_dotenv
 from pymongo import MongoClient
-import google.generativeai as genai
-import pdfplumber
+import google.genai as genai
+
+try:
+    pdfplumber = importlib.import_module("pdfplumber")
+except ImportError:
+    pdfplumber = None
 
 load_dotenv()
 
@@ -10,7 +15,7 @@ client = MongoClient(os.getenv("MONGO_URI"))
 db = client["nexus_db"]
 collection = db["documents"]
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def embed(text):
