@@ -1,0 +1,457 @@
+1
+SITE PLANNING DATA-LIEBERT® EXM™ 3-PHASE UPS: 50-250KVA/KW, 60HZ, 480VAC, SINGLE 
+& DUAL INPUT
+Notes for Tables
+•
+Nominal (Nom) current is based on full rated output load at nominal input voltage.
+•
+Maximum (Max) current (125% of nominal) is short duration for battery recharge 
+conditions.
+•
+UPS input and bypass cables must be run in separate conduit from output cables.
+•
+Nominal battery voltage is shown at 2.0 volts/cell per NEC 480-2.
+•
+Nominal rectifier AC input current (considered continuous) is based on full rated 
+output load. Maximum current includes nominal input current and maximum battery 
+recharge current (considered non-continuous). Continuous and non-continuous 
+currents are defined in NEC 215.
+Nominal AC output current (considered continuous) is based on full rated output 
+load. Output breakers are either supplied by the customer or by using the optional 
+Liebert Bypass Distribution Cabinet.
+•
+Minimum-sized grounding conductors to be per NEC 250-122. Parity-sized ground 
+conductors are recommended. References are per NEC 2008.
+•
+Wiring requirements: AC Input: 3-phase, 3 wire, plus ground
+AC Output:3-phase, 3-wire, plus ground
+•
+All wiring is to be in accordance with national and local electric codes.
+•
+Minimum access clearance is 36" (914mm) front; ventilation clearance is 
+24" (610mm) above and 0-5" (127mm) in the rear, depending on the anchoring 
+method.
+•
+Top or bottom cable entry for the 250kVA model and bottom cable entry only for the 50-
+200kVA model through removable access plates. Punch plate to suit conduit size, then 
+replace.
+•
+Weights shown do not include optional cabinets or features.
+•
+When a Liebert Maintenance Bypass Cabinet is not used, the customer must supply the 
+input circuit breaker with a 480VAC shunt trip on the bypass and rectifier feeds. The 
+shunt trip drive capability is 8A.
+•
+If site configuration includes a backup emergency generator, it is recommended that the 
+engine generator set be properly sized and equipped for a UPS application. Generator 
+options would typically include an isochronous governor (generator frequency regulation) 
+and a UPS-compatible regulator (generator voltage regulation). Consult generator 
+manufacturer for required generator options and sizing.
+•
+If site configuration includes an automatic transfer switch, refer to Liebert Power Line titled 
+“Criteria for Application of Automatic Transfer Switches (ATS) With Uninterruptible Power 
+Supply (UPS) Systems,” publication 91K-PLT-48-02. It is also recommended that the transfer 
+switch be equipped with auxiliary contacts to provide a UPS “on generator” signal. Consult 
+transfer switch manufacturer for required transfer switch options and sizing.
+•
+If site configuration requires an external isolated maintenance bypass circuit, it should be 
+noted that utility AC input might not be in phase with the UPS AC output. Consult a Vertiv 
+sales representative or applications engineer.
+1. Install in accordance with national and local
+    electrical codes. 
+2. Input and bypass must share the same single source. 
+3. UPS system input and output cables must be run
+    in separate conduits. 
+4. Control wiring must be run in separate conduits.
+MAINTENANCE BYPASS CABINET
+* Bypass
+AC Input
+3 Wire + GND
+AC Output 480V
+3 Wire + GND
+Static Bypass
+• BIB - Bypass Isolation Breaker
+• MBB - Maintenance Bypass Breaker
+• MIB - Maintenance Isolation Breaker
+* External Overcurrent Protection By Others
+Field-Supplied Wiring
+BATTERY
+UPS CABINET
+BIB
+MBB
+MIB
+Output
+Busbar
+2
+Table 1
+Site planning data - 50-250kVA, 60Hz, 480VAC, single input
+UPS 
+Rating
+Voltage
+AC Input
+Battery
+AC Output
+Mechanical Data
+Current, A
+Rec.
+OP
+D
+Nomina
+l
+VDC
+Maximu
+m
+Discharg
+e
+Current, A
+Dimensions
+W x D x H, in. (mm)
+Unit Weight
+200kVA 
+Frame
+lb. (kg)
+Unit Weight
+250kVA 
+Frame
+lb. (kg)
+Heat 
+Dissipation
+BTU/hr (kWH)
+Cooling Air
+CFM (m3/
+hr)
+kVA
+kW
+Inpu
+t
+Outpu
+t
+Nom
+.
+Ma
+x
+Nom
+.
+OP
+D
+50
+50
+480
+480
+63
+69
+90
+432
+145
+60
+80
+23-5/8 x 39-1/2 x 78-3/4
+(600 x 1000 x 2000)
+748 (339)
+868 (394)
+7854 (2.30)
+382 (649)
+100
+100
+480
+480
+126
+138
+175
+432
+290
+120
+150
+842 (382)
+962 (436)
+13,851 (4.06)
+763 (1296)
+150
+150
+480
+480
+189
+208
+300
+432
+435
+180
+225
+936 (425)
+1056 (479)
+18,019 (5.28)
+917 (1558)
+200
+200
+480
+480
+252
+277
+350
+432
+581
+241
+300
+1030 (467)
+1150 (522)
+25,491 (7.47)
+1318 (2273)
+250
+250
+480
+480
+315
+346
+450
+432
+726
+301
+400
+33 x 39-1/2 x 78-3/4
+(840 x 1000 x 2000)
+—
+1244 (564)
+34,627 (10.15)
+1667 (2832)
+Table 2 Site planning data - 50-250kVA, 60Hz, 480VAC, dual input
+UPS 
+Rating
+Voltage
+AC Input
+Bypass
+Current, A
+Battery
+AC 
+Output
+Mechanical Data
+Current, A
+Rec.
+OP
+D
+Nomin
+al
+VDC
+Maximu
+m
+Discharg
+e
+Current, A
+Dimensions
+W x D x H, in. (mm)
+Unit 
+Weight
+200kVA
+Frame
+lb. (kg)
+Unit 
+Weight
+250kVA
+Frame
+lb. (kg)
+Heat 
+Dissipation
+BTU/hr (kWH)
+Cooling Air
+CFM (m3/
+hr)
+kVA
+kW
+Inpu
+t
+Outpu
+t
+Nom
+.
+Max
+.
+Nom
+.
+Rec.
+OP
+D
+Nom
+.
+OP
+D
+50
+50
+480
+480
+63
+69
+90
+60
+80
+432
+145
+60
+80
+23-5/8 x 39-1/2 x 78-3/4
+(600 x 1000 x 2000)
+748 (339)
+868 (394)
+7854 (2.30)
+382 649)
+100
+100
+480
+480
+126
+138
+175
+120
+150
+432
+290
+120
+150
+842 (382)
+962 (436)
+13,851 (4.06)
+763 (1296)
+150
+150
+480
+480
+189
+208
+300
+180
+225
+432
+435
+180
+225
+936 (425)
+1056 (479)
+18,019 (5.28)
+917 (1558)
+200
+200
+480
+480
+252
+277
+350
+241
+300
+432
+581
+241
+300
+1030 (467)
+1150 (522)
+25,491 (7.47)
+1318 (2273)
+250
+250
+480
+480
+315
+346
+450
+301
+400
+432
+726
+301
+400
+33 x 39-1/2 x 78-3/4
+(840 x 1000 x 2000)
+—
+1244 (564)
+34,627 (10.15)
+1667 (2832)
+3
+Table 3 General specifications
+INPUT
+OUTPUT
+Voltage
+480VAC, 50/60Hz, 3-phase, 3-wire plus ground
+Voltage
+480VAC, 50/60Hz, 3-phase, 3-wire plus ground
+Voltage Range Without 
+Derating
++10%, -15%
+Voltage Adjustment Range
+±5%
+Frequency Range
+40-70Hz
+Voltage Regulation
+±1% for balanced load
+±2% regulation for unbalanced load
+THDi
+(Current Distortion)
+5% maximum reflected THD at full non-linear load
+3% maximum reflected THD at full linear load
+Dynamic Regulation
+±5% deviation for 100% load step
+±1% for loss or return of AC input
+Power Factor
+0.99 full load, 0.98 half load
+Transient Recovery Time
+60mSec (RMS method)
+ENVIRONMENTAL
+THDv
+For linear loads, 2% THD; Less than 5% THD for 100% nonlinear 
+loads without kVA/kW derating
+Operating Temperature
+UPS: 32° to 104°F (0-40°C)
+Battery: 68° to 86°F (20-30°C)
+Non-Operating Temperature -4° to 158°F (-20° to 70°C)
+Phasing Balance
+120° ±0.5° for balanced load
+120° ±1.5° for 100% unbalanced load
+Relative Humidity
+0-95% non-condensing
+Frequency Regulation
+±0.1% to ±0.25%
+Operating Altitude
+Up to 3300 ft. (1,000m) without derating
+Load Power Factor Range
+0.5 lagging to 0.9 leading without derating
+Acoustical Noise
+Less than 69 dBA Acoustical Noise, at 55 in. (1.4m)
+Overload
+100% load, continuous
+110% load, 60 minutes; 125% load, 10 minutes;
+150% load, 60 seconds, with true sinusoidal waveform
+STANDARDS
+Listed to UL 1778 UPS standards, and CSA certified. Meets 
+current requirements for safe, high-performance UPS operation.
+4
+VertivCo.com | Vertiv Headquarters, 1050 Dearborn Drive, Columbus, OH, 43085, USA
+© 2018 Vertiv Co. All rights reserved. Vertiv and the Vertiv logo are trademarks or registered trademarks of Vertiv Co. All other names and logos referred to are trade names, trademarks or registered
+trademarks of their respective owners. While every precaution has been taken to ensure accuracy and completeness herein, Vertiv Co. assumes no responsibility, and disclaims all liability, for damages
+resulting from use of this information or for any errors or omissions. Specifications are subject to change without notice.
+SL-26105_REV4_8-18
+Table 4 Variations to weights and dimensions for optional equipment
+ Rated Power, kVA
+50-200
+250
+ Dimensions, WxDxH, in. (mm)
+ UPS
+ 23-5/8 x 39-1/2 x 78-3/4
+(600 x 1000 x 2000)
+ 33 x 39-1/2 x 78-3/4
+(840 x 1000 x 2000)
+ UPS w/ 200mm MBC, 50-100kVA
+ 31-1/2 x 39-1/2 x 78-3/4
+(800 x 1000 x 2000)
+—
+ UPS w/ 300mm MBC, 150-250kVA
+ 35-1/2 x 39-1/2 x 78-3/4
+(900 x 1000 x 2000)
+ 44-7/8 x 39-1/2 x 78-3/4
+(1140 x 1000 x 2000)
+ Weight, lb (kg) 
+200 mm MBC w/SKRU and 4 Breakers (50-100kVA)
+240 (109)
+—
+300 mm MBC w/SKRU and 4 Breakers (150-250kVA)
+—
+332 (151)
+MBC skid weight
+134 (61)
+134 (61)
+Refer to Tables 1 and 2 for UPS weights.

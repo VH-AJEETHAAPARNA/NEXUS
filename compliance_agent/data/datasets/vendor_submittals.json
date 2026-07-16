@@ -1,0 +1,62 @@
+[
+  {
+    "vendor_id": "VENDOR-001",
+    "vendor_name": "ABC Power Systems",
+    "product": "Galaxy VX",
+    "capacity_kva": 1200,
+    "input_voltage": "380/400/415 Vac",
+    "output_voltage": "380/400/415 Vac",
+    "frequency": "50 Hz",
+    "efficiency": "97%",
+    "weight": "1920 kg",
+    "ip_rating": "IP20"
+  },
+  {
+    "vendor_id": "VENDOR-002",
+    "vendor_name": "XYZ Data Solutions",
+    "product": "Galaxy VL",
+    "capacity_kva": 500,
+    "input_voltage": "380/400/415 Vac",
+    "output_voltage": "380/400/415 Vac",
+    "frequency": "50 Hz",
+    "efficiency": "98%",
+    "weight": "960 kg",
+    "ip_rating": "IP20"
+  },
+  {
+    "vendor_id": "VENDOR-003",
+    "vendor_name": "PowerTech Ltd",
+    "product": "Galaxy VS",
+    "capacity_kva": 160,
+    "input_voltage": "380 Vac",
+    "output_voltage": "380 Vac",
+    "frequency": "50 Hz",
+    "efficiency": "96%",
+    "weight": "620 kg",
+    "ip_rating": "IP20"
+  },
+  {
+    "vendor_id": "VENDOR-004",
+    "vendor_name": "VertiPower",
+    "product": "Liebert EXM",
+    "capacity_kva": 250,
+    "input_voltage": "400 Vac",
+    "output_voltage": "400 Vac",
+    "frequency": "50 Hz",
+    "efficiency": "96%",
+    "weight": "900 kg",
+    "ip_rating": "IP20"
+  },
+  {
+    "vendor_id": "VENDOR-005",
+    "vendor_name": "EPC Solutions",
+    "product": "93PM",
+    "capacity_kva": 400,
+    "input_voltage": "400 Vac",
+    "output_voltage": "400 Vac",
+    "frequency": "50 Hz",
+    "efficiency": "96%",
+    "weight": "1050 kg",
+    "ip_rating": "IP20"
+  }
+]

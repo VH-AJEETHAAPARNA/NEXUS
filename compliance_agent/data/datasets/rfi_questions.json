@@ -1,0 +1,487 @@
+[
+  {
+    "id": "RFI-001",
+    "category": "UPS",
+    "question": "What is the maximum efficiency of the Galaxy VX UPS?",
+    "expected_document": "Galaxy VX.pdf",
+    "expected_answer": "Up to 99% efficiency.",
+    "expected_clause": "Efficiency",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-002",
+    "category": "UPS",
+    "question": "What is the rated capacity of the Galaxy VX UPS?",
+    "expected_document": "Galaxy VX.pdf",
+    "expected_answer": "1500 kVA",
+    "expected_clause": "Capacity",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-003",
+    "category": "UPS",
+    "question": "What input voltage does Galaxy VX support?",
+    "expected_document": "Galaxy VX.pdf",
+    "expected_answer": "380/400/415 Vac",
+    "expected_clause": "Input Voltage",
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RFI-004",
+    "category": "UPS",
+    "question": "What output voltage does Galaxy VX provide?",
+    "expected_document": "Galaxy VX.pdf",
+    "expected_answer": "380/400/415 Vac",
+    "expected_clause": "Output Voltage",
+    "difficulty": "Medium"
+  },
+  {
+    "id": "RFI-005",
+    "category": "UPS",
+    "question": "Does Galaxy VX support 50 Hz operation?",
+    "expected_document": "Galaxy VX.pdf",
+    "expected_answer": "Yes",
+    "expected_clause": "Frequency",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-006",
+    "category": "UPS",
+    "question": "What is the efficiency of Galaxy VL?",
+    "expected_document": "Galaxy VL.pdf",
+    "expected_answer": "Up to 99%",
+    "expected_clause": "Efficiency",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-007",
+    "category": "UPS",
+    "question": "What is the rated capacity of Galaxy VL?",
+    "expected_document": "Galaxy VL.pdf",
+    "expected_answer": "500 kVA",
+    "expected_clause": "Capacity",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-008",
+    "category": "UPS",
+    "question": "What is the efficiency of Galaxy VS?",
+    "expected_document": "Galaxy VS.pdf",
+    "expected_answer": "97%",
+    "expected_clause": "Efficiency",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-009",
+    "category": "UPS",
+    "question": "What is the rated capacity of Galaxy VS?",
+    "expected_document": "Galaxy VS.pdf",
+    "expected_answer": "200 kVA",
+    "expected_clause": "Capacity",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "RFI-010",
+    "category": "UPS",
+    "question": "What IP rating is specified for Galaxy VS?",
+    "expected_document": "Galaxy VS.pdf",
+    "expected_answer": "IP20",
+    "expected_clause": "IP Rating",
+    "difficulty": "Medium"
+  }
+]
+,
+{
+  "id": "RFI-011",
+  "category": "UPS",
+  "question": "What is the rated capacity of Easy UPS 3M?",
+  "expected_document": "Easy UPS 3M.pdf",
+  "expected_answer": "200 kVA",
+  "expected_clause": "Capacity",
+  "difficulty": "Easy"
+},
+{
+  "id": "RFI-012",
+  "category": "UPS",
+  "question": "What input voltage does Easy UPS 3M support?",
+  "expected_document": "Easy UPS 3M.pdf",
+  "expected_answer": "380/400/415 Vac",
+  "expected_clause": "Input Voltage",
+  "difficulty": "Medium"
+},
+{
+  "id": "RFI-013",
+  "category": "UPS",
+  "question": "What output voltage does Easy UPS 3M provide?",
+  "expected_document": "Easy UPS 3M.pdf",
+  "expected_answer": "380/400/415 Vac",
+  "expected_clause": "Output Voltage",
+  "difficulty": "Medium"
+},
+{
+  "id": "RFI-014",
+  "category": "UPS",
+  "question": "What operating frequency does Easy UPS 3M support?",
+  "expected_document": "Easy UPS 3M.pdf",
+  "expected_answer": "50/60 Hz",
+  "expected_clause": "Frequency",
+  "difficulty": "Easy"
+},
+{
+  "id": "RFI-015",
+  "category": "UPS",
+  "question": "What is the efficiency of Easy UPS 3L?",
+  "expected_document": "Easy UPS 3L.pdf",
+  "expected_answer": "Up to 96%",
+  "expected_clause": "Efficiency",
+  "difficulty": "Easy"
+},
+{
+  "id": "RFI-016",
+  "category": "UPS",
+  "question": "What is the maximum capacity of Easy UPS 3-Phase Modular?",
+  "expected_document": "Easy UPS 3-Phase Modular.pdf",
+  "expected_answer": "Modular UPS system",
+  "expected_clause": "Capacity",
+  "difficulty": "Medium"
+},
+{
+  "id": "RFI-017",
+  "category": "Rack Power",
+  "question": "What type of device is the APC Rack PDU?",
+  "expected_document": "APC Rack PDU.pdf",
+  "expected_answer": "Rack Power Distribution Unit",
+  "expected_clause": "Product Description",
+  "difficulty": "Easy"
+},
+{
+  "id": "RFI-018",
+  "category": "Rack Power",
+  "question": "Does the APC Rack PDU support rack mounting?",
+  "expected_document": "APC Rack PDU.pdf",
+  "expected_answer": "Yes",
+  "expected_clause": "Installation",
+  "difficulty": "Easy"
+},
+{
+  "id": "RFI-019",
+  "category": "Rack Power",
+  "question": "What is the primary purpose of the APC Rack PDU?",
+  "expected_document": "APC Rack PDU.pdf",
+  "expected_answer": "Power distribution within equipment racks",
+  "expected_clause": "Application",
+  "difficulty": "Medium"
+},
+{
+  "id": "RFI-020",
+  "category": "UPS",
+  "question": "Which Schneider UPS models in the project support three-phase power?",
+  "expected_document": "Schneider Electric Datasheets",
+  "expected_answer": "Galaxy VX, Galaxy VL, Galaxy VS, Easy UPS 3M, Easy UPS 3L, Easy UPS 3-Phase Modular",
+  "expected_clause": "General Specifications",
+  "difficulty": "Hard"
+}
+,
+{
+  "id": "RFI-021",
+  "category": "UPS",
+  "question": "What is the rated capacity of the Liebert EXM UPS?",
+  "expected_document": "Liebert EXM UPS.pdf",
+  "expected_answer": "250 kVA",
+  "expected_clause": "Capacity",
+  "difficulty": "Easy",
+  "tags": ["Vertiv", "UPS", "Capacity"]
+},
+{
+  "id": "RFI-022",
+  "category": "UPS",
+  "question": "What is the efficiency of the Liebert EXM UPS?",
+  "expected_document": "Liebert EXM UPS.pdf",
+  "expected_answer": "97%",
+  "expected_clause": "Efficiency",
+  "difficulty": "Easy",
+  "tags": ["Vertiv", "UPS", "Efficiency"]
+},
+{
+  "id": "RFI-023",
+  "category": "UPS",
+  "question": "What input voltage does the Liebert EXM UPS support?",
+  "expected_document": "Liebert EXM UPS.pdf",
+  "expected_answer": "400 Vac",
+  "expected_clause": "Input Voltage",
+  "difficulty": "Medium",
+  "tags": ["Vertiv", "Voltage"]
+},
+{
+  "id": "RFI-024",
+  "category": "UPS",
+  "question": "What is the rated capacity of the Liebert APM Plus?",
+  "expected_document": "Liebert APM Plus.pdf",
+  "expected_answer": "500 kVA",
+  "expected_clause": "Capacity",
+  "difficulty": "Easy",
+  "tags": ["Vertiv", "Capacity"]
+},
+{
+  "id": "RFI-025",
+  "category": "UPS",
+  "question": "What is the efficiency of the Liebert APM Plus?",
+  "expected_document": "Liebert APM Plus.pdf",
+  "expected_answer": "96%",
+  "expected_clause": "Efficiency",
+  "difficulty": "Easy",
+  "tags": ["Vertiv", "Efficiency"]
+},
+{
+  "id": "RFI-026",
+  "category": "UPS",
+  "question": "What is the rated capacity of the Liebert ITA2 UPS?",
+  "expected_document": "Liebert ITA2.pdf",
+  "expected_answer": "10 kVA",
+  "expected_clause": "Capacity",
+  "difficulty": "Easy",
+  "tags": ["Vertiv", "ITA2"]
+},
+{
+  "id": "RFI-027",
+  "category": "UPS",
+  "question": "What output voltage does the Liebert ITA2 provide?",
+  "expected_document": "Liebert ITA2.pdf",
+  "expected_answer": "230 Vac",
+  "expected_clause": "Output Voltage",
+  "difficulty": "Medium",
+  "tags": ["Vertiv", "Output Voltage"]
+},
+{
+  "id": "RFI-028",
+  "category": "Cooling",
+  "question": "What is the primary application of the Liebert CRV?",
+  "expected_document": "Liebert CRV.pdf",
+  "expected_answer": "Row-based precision cooling",
+  "expected_clause": "Application",
+  "difficulty": "Easy",
+  "tags": ["Cooling", "CRV"]
+},
+{
+  "id": "RFI-029",
+  "category": "Cooling",
+  "question": "Which Vertiv product provides precision cooling for server rooms?",
+  "expected_document": "Liebert CRV.pdf",
+  "expected_answer": "Liebert CRV",
+  "expected_clause": "Product Description",
+  "difficulty": "Medium",
+  "tags": ["Cooling", "Vertiv"]
+},
+{
+  "id": "RFI-030",
+  "category": "Cooling",
+  "question": "What type of cooling system is the Liebert DSE?",
+  "expected_document": "Liebert DSE.pdf",
+  "expected_answer": "Precision cooling system",
+  "expected_clause": "Cooling",
+  "difficulty": "Medium",
+  "tags": ["Cooling", "DSE"]
+},
+{
+  "id": "RFI-031",
+  "category": "Cooling",
+  "question": "What is the primary purpose of the Liebert PDX?",
+  "expected_document": "Liebert PDX.pdf",
+  "expected_answer": "Precision air conditioning",
+  "expected_clause": "Application",
+  "difficulty": "Medium",
+  "tags": ["Cooling", "PDX"]
+},
+{
+  "id": "RFI-032",
+  "category": "UPS",
+  "question": "Which Vertiv UPS in the project has the highest rated capacity?",
+  "expected_document": "Vertiv Datasheets",
+  "expected_answer": "Liebert APM Plus",
+  "expected_clause": "Capacity",
+  "difficulty": "Hard",
+  "tags": ["Comparison", "Vertiv"]
+},
+{
+  "id": "RFI-033",
+  "category": "UPS",
+  "question": "Which Vertiv UPS supports 400 Vac output?",
+  "expected_document": "Vertiv Datasheets",
+  "expected_answer": "Liebert EXM and Liebert APM Plus",
+  "expected_clause": "Output Voltage",
+  "difficulty": "Hard",
+  "tags": ["Voltage", "Comparison"]
+},
+{
+  "id": "RFI-034",
+  "category": "Cooling",
+  "question": "Name two Vertiv products used for data centre cooling.",
+  "expected_document": "Vertiv Datasheets",
+  "expected_answer": "Liebert CRV and Liebert DSE",
+  "expected_clause": "Cooling Solutions",
+  "difficulty": "Medium",
+  "tags": ["Cooling", "Comparison"]
+},
+{
+  "id": "RFI-035",
+  "category": "General",
+  "question": "Which Vertiv products in the project are UPS systems?",
+  "expected_document": "Vertiv Datasheets",
+  "expected_answer": "Liebert EXM, Liebert APM Plus and Liebert ITA2",
+  "expected_clause": "Product List",
+  "difficulty": "Hard",
+  "tags": ["Inventory", "Vertiv"]
+}
+,
+{
+  "id": "RFI-036",
+  "category": "UPS",
+  "question": "What is the rated capacity of the Eaton 93PM UPS?",
+  "expected_document": "Eaton 93PM.pdf",
+  "expected_answer": "500 kVA",
+  "expected_clause": "Capacity",
+  "difficulty": "Easy",
+  "tags": ["Eaton", "UPS", "Capacity"]
+},
+{
+  "id": "RFI-037",
+  "category": "UPS",
+  "question": "What is the efficiency of the Eaton 93PM UPS?",
+  "expected_document": "Eaton 93PM.pdf",
+  "expected_answer": "97%",
+  "expected_clause": "Efficiency",
+  "difficulty": "Easy",
+  "tags": ["Eaton", "Efficiency"]
+},
+{
+  "id": "RFI-038",
+  "category": "UPS",
+  "question": "What input voltage does the Eaton 93PM support?",
+  "expected_document": "Eaton 93PM.pdf",
+  "expected_answer": "400 Vac",
+  "expected_clause": "Input Voltage",
+  "difficulty": "Medium",
+  "tags": ["Eaton", "Voltage"]
+},
+{
+  "id": "RFI-039",
+  "category": "UPS",
+  "question": "What is the rated capacity of the Eaton 93E UPS?",
+  "expected_document": "Eaton 93E.pdf",
+  "expected_answer": "200 kVA",
+  "expected_clause": "Capacity",
+  "difficulty": "Easy",
+  "tags": ["Eaton", "Capacity"]
+},
+{
+  "id": "RFI-040",
+  "category": "UPS",
+  "question": "What output voltage does the Eaton 93E provide?",
+  "expected_document": "Eaton 93E.pdf",
+  "expected_answer": "400 Vac",
+  "expected_clause": "Output Voltage",
+  "difficulty": "Medium",
+  "tags": ["Eaton", "Output Voltage"]
+},
+{
+  "id": "RFI-041",
+  "category": "UPS",
+  "question": "What operating frequency does the Eaton 93E support?",
+  "expected_document": "Eaton 93E.pdf",
+  "expected_answer": "50 Hz",
+  "expected_clause": "Frequency",
+  "difficulty": "Easy",
+  "tags": ["Eaton", "Frequency"]
+},
+{
+  "id": "RFI-042",
+  "category": "UPS",
+  "question": "Which Eaton UPS has the higher rated capacity?",
+  "expected_document": "Eaton Datasheets",
+  "expected_answer": "Eaton 93PM",
+  "expected_clause": "Capacity Comparison",
+  "difficulty": "Medium",
+  "tags": ["Comparison", "Eaton"]
+},
+{
+  "id": "RFI-043",
+  "category": "UPS",
+  "question": "Which Eaton UPS provides better efficiency according to the datasheets?",
+  "expected_document": "Eaton Datasheets",
+  "expected_answer": "Eaton 93PM",
+  "expected_clause": "Efficiency",
+  "difficulty": "Medium",
+  "tags": ["Comparison", "Efficiency"]
+},
+{
+  "id": "RFI-044",
+  "category": "UPS",
+  "question": "Which Eaton UPS is more suitable for higher-capacity data centre deployments?",
+  "expected_document": "Eaton Datasheets",
+  "expected_answer": "Eaton 93PM",
+  "expected_clause": "Capacity",
+  "difficulty": "Hard",
+  "tags": ["Deployment", "Comparison"]
+},
+{
+  "id": "RFI-045",
+  "category": "General",
+  "question": "List all Eaton UPS models available in the project knowledge base.",
+  "expected_document": "Eaton Datasheets",
+  "expected_answer": "Eaton 93PM and Eaton 93E",
+  "expected_clause": "Product List",
+  "difficulty": "Easy",
+  "tags": ["Inventory", "Eaton"]
+}
+,
+{
+  "id": "RFI-046",
+  "category": "Cross-Document",
+  "question": "Which UPS model in the knowledge base has the highest rated capacity?",
+  "expected_document": "Schneider, Vertiv and Eaton Datasheets",
+  "expected_answer": "Schneider Electric Galaxy VX (1500 kVA)",
+  "expected_clause": "Capacity Comparison",
+  "difficulty": "Hard",
+  "tags": ["Comparison", "Capacity", "All Manufacturers"]
+},
+{
+  "id": "RFI-047",
+  "category": "Cross-Document",
+  "question": "Which UPS models support 380/400/415 Vac input voltage?",
+  "expected_document": "Schneider Electric Datasheets",
+  "expected_answer": "Galaxy VX, Galaxy VL, Galaxy VS, Easy UPS 3M, Easy UPS 3L and Easy UPS 3-Phase Modular",
+  "expected_clause": "Input Voltage",
+  "difficulty": "Hard",
+  "tags": ["Voltage", "Schneider", "Comparison"]
+},
+{
+  "id": "RFI-048",
+  "category": "Standards",
+  "question": "According to the project knowledge base, which standard provides guidance for data centre infrastructure design?",
+  "expected_document": "TIA-942 Standard",
+  "expected_answer": "TIA-942",
+  "expected_clause": "Overview",
+  "difficulty": "Medium",
+  "tags": ["TIA-942", "Standards"]
+},
+{
+  "id": "RFI-049",
+  "category": "Standards",
+  "question": "Which document contains guidance on data centre best practices and infrastructure requirements?",
+  "expected_document": "BICSI-002 Standard",
+  "expected_answer": "BICSI-002",
+  "expected_clause": "Overview",
+  "difficulty": "Medium",
+  "tags": ["BICSI", "Standards"]
+},
+{
+  "id": "RFI-050",
+  "category": "Cross-Document",
+  "question": "If no relevant information is found in the knowledge base, how should the RFI Intelligence Agent respond?",
+  "expected_document": "NEXUS Project Requirements",
+  "expected_answer": "The agent should respond with 'insufficient grounding' instead of generating an unsupported answer.",
+  "expected_clause": "RAG Response Policy",
+  "difficulty": "Hard",
+  "tags": ["RAG", "Grounding", "Project Requirement"]
+}
+]

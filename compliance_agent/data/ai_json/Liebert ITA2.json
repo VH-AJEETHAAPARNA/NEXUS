@@ -1,0 +1,11 @@
+{
+  "manufacturer": "Vertiv",
+  "product": "Liebert ITA2 UPS",
+  "capacity": "8 kVA / 10 kVA",
+  "input_voltage": "208/220 V (trifásico, 4 cables + tierra)",
+  "output_voltage": "208/120 V or 220/127 V (trifásico, 4 cables + tierra)",
+  "frequency": "60 Hz",
+  "efficiency": "Up to 93 %",
+  "weight": "50.7 lb (23 kg) net weight",
+  "ip_rating": "IP20"
+}

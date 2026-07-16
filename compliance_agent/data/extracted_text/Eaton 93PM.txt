@@ -1,0 +1,79 @@
+S DS =
+1.83 g
+S DS =
+1.83 g
+I P =
+1.5
+
+
+
+
+
+TRU Compliance, by Structural Integrity Associates, Inc.
+5215 Hellyer Ave., Suite 210
+San Jose, CA 95138
+844-TRU-0200
+acoughlin@structint.com
+ Telephone:
+ Decision Maker: 
+ Company:
+ License Number:
+ Address: 
+For more information, please contact the Equipment Manufacturer or the Seismic Certification Agency.
+Seismic Certification Parameters:
+Compliance Report Notes:
+ Importance Factor:
+ Mounting:
+ Seismic Level(s):
+CBC 2019, IBC 2018
+Shake table testing
+Base mounted - rigid
+Refer to 1800524-CR-001 for all requirements, limitations, and special conditions of approval.
+Seismic Certification Agency:
+This ISO 17065 Certification fulfills the requirements of the TRU Compliance Certification Standard for Seismic, Wind, 
+and Physical Security Performance, Revision 4, dated October 2, 2019 plus the standards referenced above.
+ Building Code:
+ICC-ES AC156 (2015)
+for z/h = 1.0 (rooftop installation)
+for z/h = 0.0 (ground level installation)
+Andy Coughlin, SE
+S6082 (California)
+Structural integrity and functional compliance verified following testing.
+Specific products included in this special seismic certification are outlined in 1800524-CR-001, issued by TRU 
+Compliance, a division of Structural Integrity Associates, Inc. Detailed information relating to certification levels, 
+construction details, options, and mounting arrangements are included therein.
+This compliance report is limited by, and necessarily dependent on, the construction of the product and the 
+accuracy of the information provided by the Equipment Manufacturer. Therefore, this report is valid only for the 
+components and systems as they were configured and manufactured at the time of testing or evaluation. Any 
+alterations to the product or its components could result in a decrease in seismic performance and thus render the 
+resultant conclusions void.
+SPECIAL SEISMIC CERTIFICATION 
+COMPLIANCE REPORT SUMMARY
+1800524-CRS-001 R4
+Manufacturer:
+Model Line:
+Product Type:
+Equipment Manufacturer:
+Eaton
+93 PM,  93 PM-L, 93 PM IAC, 93 PM IBC  Uninterruptible Power Supply (UPS)
+For specific models included in this seismic certification, see 1800524-CR-001.
+UPS
+ Certification Basis:
+ Test Criteria:
+    Verify current listings at www.trucompliance.com/certification-database
+Issue Date:
+July 30, 2020
+Expiration Date:
+December 31, 2025
+E-mail:
+ Company:
+ Telephone:
+ Website:
+Eaton
+3301 Spring Forest Road
+Raleigh, NC 27616
+ Address: 
+919-878-6081
+www.eaton.com
+TRU Compliance, by Structural Integrity Associates, Inc.
+844-TRU-0200  |  info@trucompliance.com
