@@ -8,17 +8,17 @@ from google import genai
 # -----------------------------
 # Load Environment Variables
 # -----------------------------
-load_dotenv("compliance_agent/.env")
+load_dotenv()
 # -----------------------------
 # Initialize Gemini Client
 # -----------------------------
-client = genai.Client(api_key="AIzaSyDSi3LKwabyQ1ZAg131cvBv2vwrz_eIrPM")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 # -----------------------------
 # Paths
 # -----------------------------
-INPUT_FOLDER = Path("compliance_agent/data/extracted_text")
-OUTPUT_FOLDER = Path("compliance_agent/data/ai_json")
+INPUT_FOLDER = Path("data/extracted_text")
+OUTPUT_FOLDER = Path("data/ai_json")
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 # -----------------------------

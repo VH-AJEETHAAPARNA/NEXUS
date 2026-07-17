@@ -3,10 +3,10 @@ import json
 from pathlib import Path
 
 # Folder containing extracted text files
-INPUT_FOLDER = Path("compliance_agent/data/extracted_text")
+INPUT_FOLDER = Path("data/extracted_text")
 
 # Folder to save extracted JSON
-OUTPUT_FOLDER = Path("compliance_agent/data/extracted_json")
+OUTPUT_FOLDER = Path("data/extracted_json")
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 

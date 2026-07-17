@@ -88,18 +88,16 @@
     "expected_answer": "IP20",
     "expected_clause": "IP Rating",
     "difficulty": "Medium"
-  }
-]
-,
-{
-  "id": "RFI-011",
-  "category": "UPS",
-  "question": "What is the rated capacity of Easy UPS 3M?",
-  "expected_document": "Easy UPS 3M.pdf",
-  "expected_answer": "200 kVA",
-  "expected_clause": "Capacity",
-  "difficulty": "Easy"
-},
+  },
+  {
+    "id": "RFI-011",
+    "category": "UPS",
+    "question": "What is the rated capacity of Easy UPS 3M?",
+    "expected_document": "Easy UPS 3M.pdf",
+    "expected_answer": "200 kVA",
+    "expected_clause": "Capacity",
+    "difficulty": "Easy"
+  },
 {
   "id": "RFI-012",
   "category": "UPS",

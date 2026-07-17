@@ -2,9 +2,9 @@ import json
 from pathlib import Path
 
 # File paths
-SPEC_FILE = Path("compliance_agent/data/datasets/specifications.json")
-VENDOR_FILE = Path("compliance_agent/data/datasets/vendor_submittals.json")
-REPORT_FOLDER = Path("compliance_agent/data/reports")
+SPEC_FILE = Path("data/datasets/specifications.json")
+VENDOR_FILE = Path("data/datasets/vendor_submittals.json")
+REPORT_FOLDER = Path("data/reports")
 REPORT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 

@@ -3,10 +3,10 @@ from pathlib import Path
 
 
 # Folder containing all specification PDFs
-INPUT_FOLDER = Path("compliance_agent/data/specs")
+INPUT_FOLDER = Path("data/specs")
 
 # Folder to save extracted text
-OUTPUT_FOLDER = Path("compliance_agent/data/extracted_text")
+OUTPUT_FOLDER = Path("data/extracted_text")
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
 
 
