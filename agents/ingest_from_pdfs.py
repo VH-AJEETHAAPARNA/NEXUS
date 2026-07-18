@@ -19,8 +19,11 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def embed(text):
-    result = genai.embed_content(model="models/text-embedding-004", content=text)
-    return result["embedding"]
+    result = client.models.embed_content(
+        model="gemini-embedding-001",
+        contents=text
+    )
+    return result.embeddings[0].values
 
 
 def extract_text_from_pdf(filepath, max_chars=1500):
@@ -40,13 +43,13 @@ def extract_text_from_pdf(filepath, max_chars=1500):
 # Add more entries here as Member 2 finalizes the dataset.
 PDF_SOURCES = [
     {
-        "path": "data/specs/Liebert_EXM_UPS.pdf",
+        "path": "data/specs/Vertiv/Liebert EXM UPS.pdf",
         "source_type": "spec",
         "equipment_category": "UPS",
         "clause_id": "SEC-4.2-UPS",
     },
     {
-        "path": "data/specs/Liebert_CRV.pdf",
+        "path": "data/specs/Vertiv/Liebert CRV.pdf",
         "source_type": "spec",
         "equipment_category": "CRAC",
         "clause_id": "SEC-5.1-CRAC",
