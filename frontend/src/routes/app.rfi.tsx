@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { askRFI, listRFIs } from "@/lib/nexus/api";
+import type { RFIRecord } from "@/lib/nexus/types";
 import { RFIAnswerCard } from "@/components/nexus/RFIAnswerCard";
 import { useAuth } from "@/lib/nexus/auth";
 import { getRoleDetails } from "@/lib/nexus/roleDetails";
@@ -18,9 +19,20 @@ function RFIPage() {
   const [loading, setLoading] = useState(false);
   const [tick, setTick] = useState(0); // re-render after mock store mutation
   const [lastId, setLastId] = useState<string | null>(null);
-
-  const rfis = listRFIs();
+  const [rfis, setRfis] = useState<RFIRecord[]>([]);
   const readOnly = role !== "engineer" && role !== "admin";
+
+  const loadRfis = async (): Promise<RFIRecord[]> => {
+    console.log("[RFI Page] Loading RFIs...");
+    const data = listRFIs();
+    console.log("[RFI Page] Loaded RFIs:", data.length, "records");
+    setRfis(data);
+    return data;
+  };
+
+  useEffect(() => {
+    loadRfis();
+  }, [tick]);
 
   const ask = async () => {
     const q = question.trim();
@@ -28,11 +40,15 @@ function RFIPage() {
     setLoading(true);
     try {
       const asker = (role && getRoleDetails(role)?.email) || undefined;
+      console.log("[RFI Page] Asking question:", q);
       await askRFI(q, asker);
-      const updated = listRFIs();
+      console.log("[RFI Page] Question asked, reloading list...");
+      const updated = await loadRfis();
       setLastId(updated[0]?.id ?? null);
       setQuestion("");
       setTick((t) => t + 1);
+    } catch (e) {
+      console.error("[RFI Page] Error asking question:", e);
     } finally {
       setLoading(false);
     }

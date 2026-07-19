@@ -61,7 +61,21 @@ def ask_rfi(req: RFIRequest):
 
     # Build response
     rfi_id = f"rfi-{len(_rfi_history) + 1:04d}"
-    _rfi_history.append({"id": rfi_id, "question": req.question})
+    now = __import__("datetime").datetime.now(
+        __import__("datetime").timezone.utc
+    ).isoformat()
+    _rfi_history.append({
+        "id": rfi_id,
+        "question": req.question,
+        "answer": result.get("answer", ""),
+        "citations": result.get("citations", []),
+        "confidence": confidence,
+        "duplicate_of": dup_id or result.get("duplicate_of"),
+        "clause_id": clause_id,
+        "linked_flag": result.get("linked_flag"),
+        "created_at": now,
+        "asked_by": req.asked_by or "",
+    })
 
     return RFIResponse(
         answer=result["answer"],
@@ -69,8 +83,15 @@ def ask_rfi(req: RFIRequest):
         duplicate_of=dup_id or result.get("duplicate_of"),
         confidence=confidence,
         clause_id=clause_id,
-        linked_flag=None,
+        linked_flag=result.get("linked_flag"),
     )
+
+
+@router.get("/history")
+def get_rfi_history():
+    """Return the most recent RFI history entries."""
+    # Return in reverse order (newest first)
+    return {"history": list(reversed(_rfi_history))}
 
 
 def _extract_clause_id(citations: List[str]) -> Optional[str]:

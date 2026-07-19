@@ -174,6 +174,41 @@ def generate_answer_from_context(
         return "insufficient grounding"
 
 
+def save_to_history(
+    question: str,
+    answer: str,
+    citations: List[str],
+    confidence: str,
+    duplicate_of: Optional[str] = None,
+    clause_id: Optional[str] = None,
+    linked_flag: Optional[str] = None,
+) -> None:
+    """Persist the RFI Q&A into MongoDB documents collection."""
+    collection = connect_collection()
+    if collection is None:
+        print("MongoDB not available; skipping save_to_history.")
+        return
+
+    try:
+        doc = {
+            "source_type": "rfi_history",
+            "question": question,
+            "answer": answer,
+            "citations": citations,
+            "confidence": confidence,
+            "duplicate_of": duplicate_of,
+            "clause_id": clause_id,
+            "linked_flag": linked_flag,
+            "created_at": __import__("datetime").datetime.now(
+                __import__("datetime").timezone.utc
+            ).isoformat(),
+        }
+        collection.insert_one(doc)
+        print("✓ Saved RFI to history.")
+    except Exception as e:
+        print(f"Failed to save RFI history: {e}")
+
+
 def answer_question(question: str) -> Dict[str, Optional[str]]:
 
     documents = retrieve_relevant_documents(question)
@@ -189,12 +224,20 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
         match = find_best_match(question)
 
         if match is None:
-            return {
+            result = {
                 "answer": "insufficient grounding",
                 "citations": [],
                 "duplicate_of": None,
                 "confidence": "low",
             }
+            save_to_history(
+                question=question,
+                answer=result["answer"],
+                citations=result["citations"],
+                confidence=result["confidence"],
+                duplicate_of=result["duplicate_of"],
+            )
+            return result
 
         score = question_similarity(
             question,
@@ -203,7 +246,7 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
 
         confidence = "high" if score >= 0.8 else "medium"
 
-        return {
+        result = {
             "answer": match.get(
                 "expected_answer",
                 "insufficient grounding",
@@ -212,6 +255,14 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
             "duplicate_of": None,
             "confidence": confidence,
         }
+        save_to_history(
+            question=question,
+            answer=result["answer"],
+            citations=result["citations"],
+            confidence=result["confidence"],
+            duplicate_of=result["duplicate_of"],
+        )
+        return result
 
     citations = [
         str(doc.get("document_id") or doc.get("id") or "")
@@ -219,12 +270,20 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
         if doc.get("document_id") or doc.get("id")
     ]
 
-    return {
+    result = {
         "answer": answer_text,
         "citations": citations,
         "duplicate_of": None,
         "confidence": "high",
     }
+    save_to_history(
+        question=question,
+        answer=result["answer"],
+        citations=result["citations"],
+        confidence=result["confidence"],
+        duplicate_of=result["duplicate_of"],
+    )
+    return result
 
 
 if __name__ == "__main__":

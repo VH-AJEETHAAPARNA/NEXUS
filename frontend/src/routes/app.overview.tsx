@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -27,8 +27,17 @@ export const Route = createFileRoute("/app/overview")({
 });
 
 function OverviewPage() {
-  const flags = listFlags();
-  const rfis = listRFIs();
+  const [loadError, setLoadError] = useState<string | null>(null);
+
+  let flags: ReturnType<typeof listFlags> = [];
+  let rfis: ReturnType<typeof listRFIs> = [];
+  try {
+    flags = listFlags();
+    rfis = listRFIs();
+  } catch (e) {
+    console.error("[OverviewPage] Failed to load data:", e);
+    setLoadError(e instanceof Error ? e.message : "Failed to load overview data");
+  }
 
   const deviations = flags.length;
   const duplicates = rfis.filter((r) => r.duplicate_of).length;
@@ -64,6 +73,25 @@ function OverviewPage() {
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([, v]) => v);
   }, [rfis, flags]);
+
+  if (loadError) {
+    return (
+      <div className="rounded-lg border border-dashed border-destructive/40 bg-destructive/5 p-8 text-center">
+        <p className="text-sm font-medium text-destructive">Unable to load project overview</p>
+        <p className="mt-1 text-xs text-muted-foreground">{loadError}</p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-4"
+          onClick={() => {
+            setLoadError(null);
+          }}
+        >
+          Retry
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <TooltipProvider>

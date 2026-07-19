@@ -35,9 +35,17 @@ function CompliancePage() {
   const [tick, setTick] = useState(0);
   const [severityFilter, setSeverityFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  const [loadError, setLoadError] = useState<string | null>(null);
 
-  const flags = listFlags();
-  const rfis = listRFIs();
+  let flags: ReturnType<typeof listFlags> = [];
+  let rfis: ReturnType<typeof listRFIs> = [];
+  try {
+    flags = listFlags();
+    rfis = listRFIs();
+  } catch (e) {
+    console.error("[CompliancePage] Failed to load data:", e);
+    setLoadError(e instanceof Error ? e.message : "Failed to load compliance data");
+  }
 
   const linkedPairs = useMemo(
     () =>
@@ -56,6 +64,26 @@ function CompliancePage() {
       .sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flags, severityFilter, statusFilter, tick]);
+
+  if (loadError) {
+    return (
+      <div className="rounded-lg border border-dashed border-destructive/40 bg-destructive/5 p-8 text-center">
+        <p className="text-sm font-medium text-destructive">Unable to load compliance data</p>
+        <p className="mt-1 text-xs text-muted-foreground">{loadError}</p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-4"
+          onClick={() => {
+            setLoadError(null);
+            setTick((t) => t + 1);
+          }}
+        >
+          Retry
+        </Button>
+      </div>
+    );
+  }
 
   const setStatus = (id: string, status: FlagStatus) => {
     updateFlagStatus(id, status);

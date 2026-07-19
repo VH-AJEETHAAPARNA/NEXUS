@@ -1,43 +1,81 @@
-import fs from "fs";
-import { MongoClient } from "mongodb";
-import OpenAI from "openai";
-import "dotenv/config";
-import { createRequire } from "module";
+const fs = require("fs");
+const pdfParse = require("pdf-parse");   // ✅ import directly
+const { MongoClient } = require("mongodb");
+require("dotenv").config();
+const { pipeline } = require("@xenova/transformers");
 
-const require = createRequire(import.meta.url);
-const pdfParse = require("pdf-parse");   // CommonJS inside ESM
+// Configuration
+const BATCH_SIZE = 20;
+const DELAY_MS = 200;
+const CHUNK_SIZE = 500;
 
-const mongo = new MongoClient(
-  "mongodb+srv://nexus_user:nexususer1470@nexus.dzb7gmg.mongodb.net/?appName=nexus"
-);
-
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const mongo = new MongoClient(process.env.MONGO_URI);
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function ingestDocument(filePath) {
-  await mongo.connect();
-  const db = mongo.db("nexus");
+  try {
+    await mongo.connect();
+    const db = mongo.db("nexus");
 
-  const dataBuffer = fs.readFileSync(filePath);
-  const pdfData = await pdfParse(dataBuffer);   // ✅ now works
-  const text = pdfData.text;
+    const dataBuffer = fs.readFileSync(filePath);
+    const pdfData = await pdfParse(dataBuffer);   // ✅ fixed
+    const text = pdfData.text;
 
-  const chunks = text.match(/.{1,500}/g);
+    console.log(`Extracted ${text.length} characters of text.`);
 
-  for (const chunk of chunks) {
-    const embedding = await client.embeddings.create({
-      model: "text-embedding-ada-002",
-      input: chunk
-    });
+    const chunks = [];
+    for (let i = 0; i < text.length; i += CHUNK_SIZE) {
+      chunks.push(text.substring(i, i + CHUNK_SIZE));
+    }
+    console.log(`Split into ${chunks.length} chunks.`);
 
-    await db.collection("specs").insertOne({
-      doc: "IS 456:2000",
-      text: chunk,
-      embedding: embedding.data[0].embedding
-    });
+    const totalBatches = Math.ceil(chunks.length / BATCH_SIZE);
+    console.log(`Processing in ${totalBatches} batches of up to ${BATCH_SIZE} chunks each.`);
+
+    console.log("Loading embedding model (Xenova/all-MiniLM-L6-v2)...");
+    const embedder = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
+    console.log("Model loaded successfully.\n");
+
+    for (let batchIndex = 0; batchIndex < totalBatches; batchIndex++) {
+      const currentBatch = batchIndex + 1;
+      console.log(`Processing batch ${currentBatch}/${totalBatches}`);
+
+      const startIdx = batchIndex * BATCH_SIZE;
+      const endIdx = Math.min(startIdx + BATCH_SIZE, chunks.length);
+
+      for (let i = startIdx; i < endIdx; i++) {
+        const chunk = chunks[i];
+        const chunkInBatch = i - startIdx + 1;
+        const chunksInBatch = endIdx - startIdx;
+        console.log(`Processing chunk ${chunkInBatch}/${chunksInBatch} in batch ${currentBatch}`);
+
+        const embedding = await embedder(chunk, { pooling: "mean", normalize: true });
+
+        await db.collection("specs").insertOne({
+          doc: "IS 456:2000",
+          text: chunk,
+          embedding: embedding.data,
+        });
+      }
+
+      console.log(`✅ Batch ${currentBatch}/${totalBatches} complete.\n`);
+
+      if (currentBatch < totalBatches) {
+        console.log(`Waiting ${DELAY_MS}ms before next batch...\n`);
+        await delay(DELAY_MS);
+      }
+    }
+
+    console.log("✅ Ingestion complete with local embeddings!");
+  } catch (err) {
+    console.error(`❌ Ingestion failed:`, err.message);
+    process.exit(1);
+  } finally {
+    await mongo.close();
   }
-
-  console.log("✅ Ingestion complete!");
-  await mongo.close();
 }
 
-ingestDocument("../data/standards/IS-456-2000.pdf");
+ingestDocument("../data/standards/IS-456-2000.pdf").catch((err) => {
+  console.error("❌ Ingestion failed:", err);
+  process.exit(1);
+});

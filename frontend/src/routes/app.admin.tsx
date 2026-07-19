@@ -45,11 +45,21 @@ function AdminPage() {
   const [redundancy, setRedundancy] = useState("");
   const [ipRating, setIpRating] = useState("");
   const [tick, setTick] = useState(0);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
-  const docCount = listDocuments().length;
-  const flagCount = listFlags().length;
-  const rfiCount = listRFIs().length;
-  const auditEvents = listAudit();
+  let docCount = 0;
+  let flagCount = 0;
+  let rfiCount = 0;
+  let auditEvents: ReturnType<typeof listAudit> = [];
+  try {
+    docCount = listDocuments().length;
+    flagCount = listFlags().length;
+    rfiCount = listRFIs().length;
+    auditEvents = listAudit();
+  } catch (e) {
+    console.error("[AdminPage] Failed to load data:", e);
+    setLoadError(e instanceof Error ? e.message : "Failed to load admin data");
+  }
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,6 +103,26 @@ function AdminPage() {
     setClause("");
     setTick((t) => t + 1);
   };
+
+  if (loadError) {
+    return (
+      <div className="rounded-lg border border-dashed border-destructive/40 bg-destructive/5 p-8 text-center">
+        <p className="text-sm font-medium text-destructive">Unable to load admin dashboard</p>
+        <p className="mt-1 text-xs text-muted-foreground">{loadError}</p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-4"
+          onClick={() => {
+            setLoadError(null);
+            setTick((t) => t + 1);
+          }}
+        >
+          Retry
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]" data-tick={tick}>
