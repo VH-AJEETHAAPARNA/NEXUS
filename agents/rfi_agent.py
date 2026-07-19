@@ -26,7 +26,11 @@ def normalize_text(text: str) -> str:
 
 
 def question_similarity(query: str, target: str) -> float:
-    return SequenceMatcher(None, normalize_text(query), normalize_text(target)).ratio()
+    return SequenceMatcher(
+        None,
+        normalize_text(query),
+        normalize_text(target),
+    ).ratio()
 
 
 def find_best_match(question: str) -> Optional[Dict[str, str]]:
@@ -34,6 +38,7 @@ def find_best_match(question: str) -> Optional[Dict[str, str]]:
         (question_similarity(question, item["question"]), item)
         for item in QUESTIONS
     ]
+
     scores.sort(key=lambda x: x[0], reverse=True)
 
     if not scores:
@@ -70,21 +75,23 @@ def connect_collection():
     return db["documents"]
 
 
-def retrieve_relevant_documents(question: str, limit: int = 3) -> List[Dict[str, object]]:
+def retrieve_relevant_documents(
+    question: str,
+    limit: int = 3,
+) -> List[Dict[str, object]]:
+
     collection = connect_collection()
 
     if collection is None:
         print("MongoDB collection not found.")
         return []
 
-    # Create embedding
     try:
         query_vector = embed(question)
     except Exception as e:
         print("Embedding error:", e)
         return []
 
-    # Try all possible index names
     for index_name in ["vector_index", "default", "docs_vector_index"]:
 
         try:
@@ -96,27 +103,38 @@ def retrieve_relevant_documents(question: str, limit: int = 3) -> List[Dict[str,
                         "path": "embedding",
                         "queryVector": query_vector,
                         "numCandidates": 100,
-                        "limit": limit
+                        "limit": limit,
                     }
-                }
+                },
+                {
+                    "$project": {
+                        "embedding": 0,
+                    }
+                },
             ]
 
             docs = list(collection.aggregate(pipeline))
 
             if docs:
-                print(f"✓ Found {len(docs)} document(s) using index '{index_name}'")
+                print(
+                    f"✓ Found {len(docs)} document(s) using index '{index_name}'"
+                )
                 return docs
 
-            else:
-                print(f"No documents returned from index '{index_name}'")
+            print(f"No documents returned from index '{index_name}'")
 
         except Exception as e:
-            print(f"Vector search failed for index '{index_name}': {e}")
+            print(
+                f"Vector search failed for index '{index_name}': {e}"
+            )
 
     return []
 
 
-def generate_answer_from_context(question: str, documents: List[Dict[str, object]]) -> str:
+def generate_answer_from_context(
+    question: str,
+    documents: List[Dict[str, object]],
+) -> str:
 
     if not documents:
         return "insufficient grounding"
@@ -171,7 +189,6 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
         match = find_best_match(question)
 
         if match is None:
-
             return {
                 "answer": "insufficient grounding",
                 "citations": [],
@@ -179,12 +196,18 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
                 "confidence": "low",
             }
 
-        score = question_similarity(question, match["question"])
+        score = question_similarity(
+            question,
+            match["question"],
+        )
 
         confidence = "high" if score >= 0.8 else "medium"
 
         return {
-            "answer": match.get("expected_answer", "insufficient grounding"),
+            "answer": match.get(
+                "expected_answer",
+                "insufficient grounding",
+            ),
             "citations": [match.get("id", "")],
             "duplicate_of": None,
             "confidence": confidence,

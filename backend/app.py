@@ -3,7 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 
 from backend.routes.compliance import router as compliance_router
+from backend.routes.dashboard import router as dashboard_router
 from backend.routes.rfi import router as rfi_router
+from backend.routes.users import router as users_router
 
 app = FastAPI(
     title="NEXUS AI Compliance Agent",
@@ -18,7 +20,9 @@ app.add_middleware(
 )
 
 app.include_router(compliance_router)
+app.include_router(dashboard_router)
 app.include_router(rfi_router)
+app.include_router(users_router)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -40,6 +44,7 @@ def home():
           <li><code>GET /health</code></li>
           <li><code>POST /api/rfi/ask</code></li>
           <li><code>POST /api/compliance/check</code></li>
+          <li><code>GET /api/dashboard/flags</code></li>
         </ul>
         <p>Use <code>python backend/test_api.py</code> to run a quick smoke test.</p>
       </body>

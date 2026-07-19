@@ -11,15 +11,15 @@ except ImportError:
 
 load_dotenv()
 
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client["nexus_db"]
+mongo_client = MongoClient(os.getenv("MONGO_URI"))
+db = mongo_client["nexus_db"]
 collection = db["documents"]
 
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+genai_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 def embed(text):
-    result = client.models.embed_content(
+    result = genai_client.models.embed_content(
         model="gemini-embedding-001",
         contents=text
     )

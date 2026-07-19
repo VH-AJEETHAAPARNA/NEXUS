@@ -1,8 +1,7 @@
-google-generativeai
-langgraph
-langchain
+google-genai
 pymongo
 python-dotenv
-streamlit
 fastapi
 uvicorn
+pdfplumber
+PyMuPDF
