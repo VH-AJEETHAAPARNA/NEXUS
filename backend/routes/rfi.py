@@ -46,45 +46,60 @@ _CONFIDENCE_MAP = {"high": "High", "medium": "Medium", "low": "Low"}
 
 
 @router.post("/ask", response_model=RFIResponse)
-def ask_rfi(req: RFIRequest):
-    # Check for duplicates first
-    dup_id = _detect_duplicate(req.question)
+async def ask_rfi(req: RFIRequest):
+    import logging
+    logger = logging.getLogger("rfi")
+    try:
+        logger.info("Received RFI ask request: question=%r, asked_by=%r", req.question, req.asked_by)
+        # Check for duplicates first
+        dup_id = _detect_duplicate(req.question)
+        if dup_id:
+            logger.info("Duplicate detected: dup_id=%r", dup_id)
 
-    result = answer_question(req.question)
+        result = await answer_question(req.question)
+        logger.info("answer_question completed: answer=%r, confidence=%r, citations=%r",
+                     result.get("answer"), result.get("confidence"), result.get("citations"))
 
-    # Normalise confidence to title-case for frontend
-    raw_confidence = result.get("confidence") or "Low"
-    confidence = _CONFIDENCE_MAP.get(raw_confidence.lower(), raw_confidence)
+        # Normalise confidence to title-case for frontend
+        raw_confidence = result.get("confidence") or "Low"
+        confidence = _CONFIDENCE_MAP.get(raw_confidence.lower(), raw_confidence)
 
-    # Determine clause_id from citations (heuristic: extract section references)
-    clause_id = _extract_clause_id(result.get("citations", []))
+        # Determine clause_id from citations (heuristic: extract section references)
+        clause_id = _extract_clause_id(result.get("citations", []))
 
-    # Build response
-    rfi_id = f"rfi-{len(_rfi_history) + 1:04d}"
-    now = __import__("datetime").datetime.now(
-        __import__("datetime").timezone.utc
-    ).isoformat()
-    _rfi_history.append({
-        "id": rfi_id,
-        "question": req.question,
-        "answer": result.get("answer", ""),
-        "citations": result.get("citations", []),
-        "confidence": confidence,
-        "duplicate_of": dup_id or result.get("duplicate_of"),
-        "clause_id": clause_id,
-        "linked_flag": result.get("linked_flag"),
-        "created_at": now,
-        "asked_by": req.asked_by or "",
-    })
+        # Build response
+        rfi_id = f"rfi-{len(_rfi_history) + 1:04d}"
+        now = __import__("datetime").datetime.now(
+            __import__("datetime").timezone.utc
+        ).isoformat()
+        _rfi_history.append({
+            "id": rfi_id,
+            "question": req.question,
+            "answer": result.get("answer", ""),
+            "citations": result.get("citations", []),
+            "confidence": confidence,
+            "duplicate_of": dup_id or result.get("duplicate_of"),
+            "clause_id": clause_id,
+            "linked_flag": result.get("linked_flag"),
+            "created_at": now,
+            "asked_by": req.asked_by or "",
+        })
 
-    return RFIResponse(
-        answer=result["answer"],
-        citations=result.get("citations", []),
-        duplicate_of=dup_id or result.get("duplicate_of"),
-        confidence=confidence,
-        clause_id=clause_id,
-        linked_flag=result.get("linked_flag"),
-    )
+        response = RFIResponse(
+            answer=result["answer"],
+            citations=result.get("citations", []),
+            duplicate_of=dup_id or result.get("duplicate_of"),
+            confidence=confidence,
+            clause_id=clause_id,
+            linked_flag=result.get("linked_flag"),
+        )
+        logger.info("Returning RFI response: answer=%r, confidence=%r", response.answer, response.confidence)
+        return response
+    except Exception as e:
+        import traceback
+        logger.error("Failed to process RFI: %s\n%s", str(e), traceback.format_exc())
+        from fastapi import HTTPException
+        raise HTTPException(status_code=500, detail=f"Failed to process RFI: {str(e)}")
 
 
 @router.get("/history")

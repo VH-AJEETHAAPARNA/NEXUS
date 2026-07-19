@@ -1,3 +1,4 @@
+import asyncio
 import unittest
 from unittest.mock import patch
 
@@ -19,7 +20,7 @@ class RFIAgentTests(unittest.TestCase):
         ]
         generate_mock.return_value = "The transformer rating is 1000 kVA."
 
-        result = rfi_agent.answer_question("What is the transformer rating?")
+        result = asyncio.run(rfi_agent.answer_question("What is the transformer rating?"))
 
         self.assertEqual(result["answer"], "The transformer rating is 1000 kVA.")
         self.assertEqual(result["citations"], ["spec-01"])

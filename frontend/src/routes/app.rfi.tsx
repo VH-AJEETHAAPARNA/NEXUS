@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { askRFI, listRFIs } from "@/lib/nexus/api";
+import { askRFI, loadRFIs, listRFIs } from "@/lib/nexus/api";
 import type { RFIRecord } from "@/lib/nexus/types";
 import { RFIAnswerCard } from "@/components/nexus/RFIAnswerCard";
 import { useAuth } from "@/lib/nexus/auth";
@@ -20,11 +20,12 @@ function RFIPage() {
   const [tick, setTick] = useState(0); // re-render after mock store mutation
   const [lastId, setLastId] = useState<string | null>(null);
   const [rfis, setRfis] = useState<RFIRecord[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const readOnly = role !== "engineer" && role !== "admin";
 
   const loadRfis = async (): Promise<RFIRecord[]> => {
     console.log("[RFI Page] Loading RFIs...");
-    const data = listRFIs();
+    const data = await loadRFIs();
     console.log("[RFI Page] Loaded RFIs:", data.length, "records");
     setRfis(data);
     return data;
@@ -38,6 +39,7 @@ function RFIPage() {
     const q = question.trim();
     if (!q) return;
     setLoading(true);
+    setError(null);
     try {
       const asker = (role && getRoleDetails(role)?.email) || undefined;
       console.log("[RFI Page] Asking question:", q);
@@ -48,7 +50,9 @@ function RFIPage() {
       setQuestion("");
       setTick((t) => t + 1);
     } catch (e) {
+      const msg = e instanceof Error ? e.message : "Unknown error";
       console.error("[RFI Page] Error asking question:", e);
+      setError(`Failed to get answer: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -77,6 +81,9 @@ function RFIPage() {
                 if ((e.metaKey || e.ctrlKey) && e.key === "Enter") ask();
               }}
             />
+            {error && (
+              <p className="mt-2 text-xs text-red-500">{error}</p>
+            )}
             <div className="mt-3 flex items-center justify-between border-t pt-3">
               <p className="text-[11px] text-muted-foreground">
                 ⌘/Ctrl + Enter to submit · answers cite the exact clause
