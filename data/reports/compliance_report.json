@@ -8,30 +8,30 @@
         "score": 55,
         "status": "FAIL",
         "findings": [
-            [
-                "Critical",
-                "capacity_kva",
-                1500,
-                1200
-            ],
-            [
-                "Minor",
-                "frequency",
-                "50/60 Hz",
-                "50 Hz"
-            ],
-            [
-                "Major",
-                "efficiency",
-                "99%",
-                "97%"
-            ],
-            [
-                "Minor",
-                "weight",
-                "1950 kg",
-                "1920 kg"
-            ]
+            {
+                "field": "capacity_kva",
+                "spec": 1500,
+                "vendor": 1200,
+                "severity": "Critical"
+            },
+            {
+                "field": "frequency",
+                "spec": "50/60 Hz",
+                "vendor": "50 Hz",
+                "severity": "Minor"
+            },
+            {
+                "field": "efficiency",
+                "spec": "99%",
+                "vendor": "97%",
+                "severity": "Major"
+            },
+            {
+                "field": "weight",
+                "spec": "1950 kg",
+                "vendor": "1920 kg",
+                "severity": "Minor"
+            }
         ]
     },
     {
@@ -43,24 +43,24 @@
         "score": 80,
         "status": "FAIL",
         "findings": [
-            [
-                "Minor",
-                "frequency",
-                "50/60 Hz",
-                "50 Hz"
-            ],
-            [
-                "Major",
-                "efficiency",
-                "99%",
-                "98%"
-            ],
-            [
-                "Minor",
-                "weight",
-                "950 kg",
-                "960 kg"
-            ]
+            {
+                "field": "frequency",
+                "spec": "50/60 Hz",
+                "vendor": "50 Hz",
+                "severity": "Minor"
+            },
+            {
+                "field": "efficiency",
+                "spec": "99%",
+                "vendor": "98%",
+                "severity": "Major"
+            },
+            {
+                "field": "weight",
+                "spec": "950 kg",
+                "vendor": "960 kg",
+                "severity": "Minor"
+            }
         ]
     },
     {
@@ -72,42 +72,42 @@
         "score": 35,
         "status": "FAIL",
         "findings": [
-            [
-                "Critical",
-                "capacity_kva",
-                200,
-                160
-            ],
-            [
-                "Major",
-                "input_voltage",
-                "380/400/415 Vac",
-                "380 Vac"
-            ],
-            [
-                "Major",
-                "output_voltage",
-                "380/400/415 Vac",
-                "380 Vac"
-            ],
-            [
-                "Minor",
-                "frequency",
-                "50/60 Hz",
-                "50 Hz"
-            ],
-            [
-                "Major",
-                "efficiency",
-                "97%",
-                "96%"
-            ],
-            [
-                "Minor",
-                "weight",
-                "650 kg",
-                "620 kg"
-            ]
+            {
+                "field": "capacity_kva",
+                "spec": 200,
+                "vendor": 160,
+                "severity": "Critical"
+            },
+            {
+                "field": "input_voltage",
+                "spec": "380/400/415 Vac",
+                "vendor": "380 Vac",
+                "severity": "Major"
+            },
+            {
+                "field": "output_voltage",
+                "spec": "380/400/415 Vac",
+                "vendor": "380 Vac",
+                "severity": "Major"
+            },
+            {
+                "field": "frequency",
+                "spec": "50/60 Hz",
+                "vendor": "50 Hz",
+                "severity": "Minor"
+            },
+            {
+                "field": "efficiency",
+                "spec": "97%",
+                "vendor": "96%",
+                "severity": "Major"
+            },
+            {
+                "field": "weight",
+                "spec": "650 kg",
+                "vendor": "620 kg",
+                "severity": "Minor"
+            }
         ]
     },
     {
@@ -119,18 +119,18 @@
         "score": 85,
         "status": "FAIL",
         "findings": [
-            [
-                "Major",
-                "efficiency",
-                "97%",
-                "96%"
-            ],
-            [
-                "Minor",
-                "weight",
-                "890 kg",
-                "900 kg"
-            ]
+            {
+                "field": "efficiency",
+                "spec": "97%",
+                "vendor": "96%",
+                "severity": "Major"
+            },
+            {
+                "field": "weight",
+                "spec": "890 kg",
+                "vendor": "900 kg",
+                "severity": "Minor"
+            }
         ]
     },
     {
@@ -142,24 +142,24 @@
         "score": 60,
         "status": "FAIL",
         "findings": [
-            [
-                "Critical",
-                "capacity_kva",
-                500,
-                400
-            ],
-            [
-                "Major",
-                "efficiency",
-                "97%",
-                "96%"
-            ],
-            [
-                "Minor",
-                "weight",
-                "1100 kg",
-                "1050 kg"
-            ]
+            {
+                "field": "capacity_kva",
+                "spec": 500,
+                "vendor": 400,
+                "severity": "Critical"
+            },
+            {
+                "field": "efficiency",
+                "spec": "97%",
+                "vendor": "96%",
+                "severity": "Major"
+            },
+            {
+                "field": "weight",
+                "spec": "1100 kg",
+                "vendor": "1050 kg",
+                "severity": "Minor"
+            }
         ]
     }
 ]

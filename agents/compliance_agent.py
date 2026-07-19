@@ -60,35 +60,6 @@ def merge_extracted_data(vendor: Dict[str, Any], extracted_by_product: Dict[str,
 
     return merged
 
-
-
-def normalize_text(text: Any) -> str:
-    return str(text or "").strip().lower()
-
-
-def fuzzy_match(a: str, b: str, threshold: float = 0.75) -> bool:
-    return SequenceMatcher(None, normalize_text(a), normalize_text(b)).ratio() >= threshold
-
-
-def match_vendor(query: str, vendor: Dict[str, Any]) -> bool:
-    product = normalize_text(vendor.get("product", ""))
-    vendor_id = normalize_text(vendor.get("vendor_id", ""))
-    vendor_name = normalize_text(vendor.get("vendor_name", ""))
-
-    if query == vendor_id:
-        return True
-    if query == product:
-        return True
-    if query in product:
-        return True
-    if query == vendor_name:
-        return True
-    if fuzzy_match(query, product):
-        return True
-    return False
-
-
-
 def diff_fields(submittal_id: str) -> Dict[str, Any]:
     specs = load_json(SPEC_FILE)
     vendors = load_json(VENDOR_FILE)
