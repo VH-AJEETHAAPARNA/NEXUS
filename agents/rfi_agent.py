@@ -35,10 +35,12 @@ def find_best_match(question: str) -> Optional[Dict[str, str]]:
         for item in QUESTIONS
     ]
     scores.sort(key=lambda x: x[0], reverse=True)
+
     if not scores:
         return None
 
     best_score, best_item = scores[0]
+
     if best_score < 0.45:
         return None
 
@@ -47,90 +49,129 @@ def find_best_match(question: str) -> Optional[Dict[str, str]]:
 
 def embed(text: str) -> List[float]:
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
     result = client.models.embed_content(
         model="gemini-embedding-001",
         contents=text,
     )
+
     return result.embeddings[0].values
 
 
 def connect_collection():
     mongo_uri = os.getenv("MONGO_URI")
+
     if not mongo_uri:
         return None
 
     client = MongoClient(mongo_uri)
     db = client["nexus_db"]
+
     return db["documents"]
 
 
 def retrieve_relevant_documents(question: str, limit: int = 3) -> List[Dict[str, object]]:
     collection = connect_collection()
+
     if collection is None:
+        print("MongoDB collection not found.")
         return []
 
+    # Create embedding
     try:
         query_vector = embed(question)
-    except Exception:
+    except Exception as e:
+        print("Embedding error:", e)
         return []
 
+    # Try all possible index names
     for index_name in ["vector_index", "default", "docs_vector_index"]:
+
         try:
+
             pipeline = [
                 {
                     "$vectorSearch": {
                         "index": index_name,
                         "path": "embedding",
                         "queryVector": query_vector,
-                        "limit": limit,
+                        "numCandidates": 100,
+                        "limit": limit
                     }
                 }
             ]
+
             docs = list(collection.aggregate(pipeline))
+
             if docs:
+                print(f"✓ Found {len(docs)} document(s) using index '{index_name}'")
                 return docs
-        except Exception:
-            continue
+
+            else:
+                print(f"No documents returned from index '{index_name}'")
+
+        except Exception as e:
+            print(f"Vector search failed for index '{index_name}': {e}")
 
     return []
 
 
 def generate_answer_from_context(question: str, documents: List[Dict[str, object]]) -> str:
+
     if not documents:
         return "insufficient grounding"
 
     context_parts = []
+
     for doc in documents:
         doc_id = doc.get("document_id") or doc.get("id") or "unknown"
         text = doc.get("text", "")
-        context_parts.append(f"Source: {doc_id}\n{text}")
+
+        context_parts.append(
+            f"Source: {doc_id}\n{text}"
+        )
 
     context = "\n\n".join(context_parts)
+
     prompt = (
-        "You are an RFI Intelligence Agent. Use the context below to answer the user's engineering question. "
-        "If the context does not contain enough evidence, say 'insufficient grounding'. "
-        "Be concise and include citation markers like [document_id].\n\n"
-        f"Question: {question}\n\nContext:\n{context}"
+        "You are an RFI Intelligence Agent.\n"
+        "Answer ONLY using the context below.\n"
+        "If the answer is unavailable, reply 'insufficient grounding'.\n\n"
+        f"Question:\n{question}\n\n"
+        f"Context:\n{context}"
     )
 
     try:
+
         client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
         response = client.models.generate_content(
             model="gemini-flash-lite-latest",
             contents=prompt,
         )
+
         return getattr(response, "text", "") or "insufficient grounding"
+
     except Exception:
         return "insufficient grounding"
 
 
 def answer_question(question: str) -> Dict[str, Optional[str]]:
+
     documents = retrieve_relevant_documents(question)
+
     answer_text = generate_answer_from_context(question, documents)
 
-    if not documents or not answer_text or answer_text.lower().startswith("insufficient grounding"):
+    if (
+        not documents
+        or not answer_text
+        or answer_text.lower().startswith("insufficient grounding")
+    ):
+
         match = find_best_match(question)
+
         if match is None:
+
             return {
                 "answer": "insufficient grounding",
                 "citations": [],
@@ -139,7 +180,9 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
             }
 
         score = question_similarity(question, match["question"])
+
         confidence = "high" if score >= 0.8 else "medium"
+
         return {
             "answer": match.get("expected_answer", "insufficient grounding"),
             "citations": [match.get("id", "")],
@@ -159,3 +202,21 @@ def answer_question(question: str) -> Dict[str, Optional[str]]:
         "duplicate_of": None,
         "confidence": "high",
     }
+
+
+if __name__ == "__main__":
+
+    while True:
+
+        question = input("\nAsk an RFI question (or type 'exit'): ")
+
+        if question.lower() == "exit":
+            break
+
+        result = answer_question(question)
+
+        print("\nAnswer:")
+        print(result["answer"])
+
+        print("\nConfidence:", result["confidence"])
+        print("Citations:", result["citations"])

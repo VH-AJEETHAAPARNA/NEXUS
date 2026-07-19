@@ -1,7 +1,6 @@
 import fitz  # PyMuPDF
 from pathlib import Path
 
-
 # Folder containing all specification PDFs
 INPUT_FOLDER = Path("data/specs")
 
