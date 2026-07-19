@@ -82,9 +82,15 @@ def retrieve_relevant_documents(question: str, limit: int = 3) -> List[Dict[str,
                         "index": index_name,
                         "path": "embedding",
                         "queryVector": query_vector,
+                        "numCandidates": limit * 10,
                         "limit": limit,
                     }
-                }
+                },
+                {
+                    "$project": {
+                        "embedding": 0,
+                    }
+                },
             ]
             docs = list(collection.aggregate(pipeline))
             if docs:
