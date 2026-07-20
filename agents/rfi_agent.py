@@ -2,6 +2,7 @@ import asyncio
 import json
 import logging
 import os
+import time
 from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -193,15 +194,20 @@ def save_to_history(
     duplicate_of: Optional[str] = None,
     clause_id: Optional[str] = None,
     linked_flag: Optional[str] = None,
-) -> None:
-    """Persist the RFI Q&A into MongoDB documents collection."""
+) -> Optional[str]:
+    """Persist the RFI Q&A into MongoDB documents collection.
+    Returns the document_id of the saved RFI, or None if save failed."""
     collection = connect_collection()
     if collection is None:
         print("MongoDB not available; skipping save_to_history.")
-        return
+        return None
 
     try:
+        # Generate a unique document_id for the RFI
+        document_id = f"rfi-{int(time.time() * 1000)}"
+        
         doc = {
+            "document_id": document_id,
             "source_type": "rfi_history",
             "question": question,
             "answer": answer,
@@ -215,9 +221,28 @@ def save_to_history(
             ).isoformat(),
         }
         collection.insert_one(doc)
-        print("✓ Saved RFI to history.")
+        print(f"✓ Saved RFI to history with ID: {document_id}")
+        return document_id
     except Exception as e:
         print(f"Failed to save RFI history: {e}")
+        return None
+
+
+def update_flag_linked_rfi(flag_id: str, rfi_id: str) -> bool:
+    """Update a compliance flag to link back to an RFI."""
+    try:
+        collection = connect_collection()
+        if collection is not None:
+            result = collection.update_one(
+                {"document_id": flag_id, "source_type": "compliance_flag"},
+                {"$set": {"linked_rfi": rfi_id}}
+            )
+            if result.modified_count > 0:
+                logger.info("Updated flag %s to link back to RFI %s", flag_id, rfi_id)
+                return True
+    except Exception as e:
+        logger.error("Failed to update flag with linked_rfi: %s", str(e))
+    return False
 
 
 async def answer_question(question: str) -> Dict[str, Optional[str]]:
@@ -228,6 +253,30 @@ async def answer_question(question: str) -> Dict[str, Optional[str]]:
 
     answer_text = await generate_answer_from_context(question, documents)
     logger.info("Generated answer text (first 100 chars): %r", answer_text[:100])
+
+    # Extract clause_id and linked_flag from retrieved documents
+    clause_id = None
+    linked_flag = None
+    
+    if documents:
+        # Get clause_id from the most relevant document
+        clause_id = documents[0].get("clause_id")
+        logger.info("Extracted clause_id from documents: %s", clause_id)
+        
+        # If we have a clause_id, look for matching flags
+        if clause_id:
+            try:
+                collection = connect_collection()
+                if collection is not None:
+                    matching_flag = collection.find_one({
+                        "source_type": "compliance_flag",
+                        "clause_id": clause_id
+                    })
+                    if matching_flag:
+                        linked_flag = matching_flag.get("document_id")
+                        logger.info("Found linked flag: %s", linked_flag)
+            except Exception as e:
+                logger.error("Failed to lookup linked flag: %s", str(e))
 
     if (
         not documents
@@ -245,14 +294,25 @@ async def answer_question(question: str) -> Dict[str, Optional[str]]:
                 "citations": [],
                 "duplicate_of": None,
                 "confidence": "low",
+                "clause_id": clause_id,
+                "linked_flag": linked_flag,
             }
-            save_to_history(
+            
+            # Save and implement bidirectional linking
+            rfi_id = save_to_history(
                 question=question,
                 answer=result["answer"],
                 citations=result["citations"],
                 confidence=result["confidence"],
                 duplicate_of=result["duplicate_of"],
+                clause_id=clause_id,
+                linked_flag=linked_flag,
             )
+            
+            if linked_flag and rfi_id:
+                update_flag_linked_rfi(linked_flag, rfi_id)
+            
+            result["rfi_id"] = rfi_id
             return result
 
         score = question_similarity(
@@ -262,6 +322,23 @@ async def answer_question(question: str) -> Dict[str, Optional[str]]:
         logger.info("Found seed match with score=%.2f", score)
 
         confidence = "high" if score >= 0.8 else "medium"
+        
+        # Use clause_id from match if available
+        if not clause_id and match.get("clause_id"):
+            clause_id = match["clause_id"]
+            # Look up linked flag for seed match
+            try:
+                collection = connect_collection()
+                if collection is not None:
+                    matching_flag = collection.find_one({
+                        "source_type": "compliance_flag",
+                        "clause_id": clause_id
+                    })
+                    if matching_flag:
+                        linked_flag = matching_flag.get("document_id")
+                        logger.info("Found linked flag for seed match: %s", linked_flag)
+            except Exception as e:
+                logger.error("Failed to lookup linked flag for seed match: %s", str(e))
 
         result = {
             "answer": match.get(
@@ -271,14 +348,25 @@ async def answer_question(question: str) -> Dict[str, Optional[str]]:
             "citations": [match.get("id", "")],
             "duplicate_of": None,
             "confidence": confidence,
+            "clause_id": clause_id,
+            "linked_flag": linked_flag,
         }
-        save_to_history(
+        
+        # Save and implement bidirectional linking
+        rfi_id = save_to_history(
             question=question,
             answer=result["answer"],
             citations=result["citations"],
             confidence=result["confidence"],
             duplicate_of=result["duplicate_of"],
+            clause_id=clause_id,
+            linked_flag=linked_flag,
         )
+        
+        if linked_flag and rfi_id:
+            update_flag_linked_rfi(linked_flag, rfi_id)
+        
+        result["rfi_id"] = rfi_id
         return result
 
     citations = [
@@ -293,14 +381,28 @@ async def answer_question(question: str) -> Dict[str, Optional[str]]:
         "citations": citations,
         "duplicate_of": None,
         "confidence": "high",
+        "clause_id": clause_id,
+        "linked_flag": linked_flag,
     }
-    save_to_history(
+    
+    # Save the RFI to history
+    rfi_id = save_to_history(
         question=question,
         answer=result["answer"],
         citations=result["citations"],
         confidence=result["confidence"],
         duplicate_of=result["duplicate_of"],
+        clause_id=clause_id,
+        linked_flag=linked_flag,
     )
+    
+    # If we have a linked flag, update it to point back to this RFI (bidirectional linking)
+    if linked_flag and rfi_id:
+        update_flag_linked_rfi(linked_flag, rfi_id)
+    
+    # Add the rfi_id to the result
+    result["rfi_id"] = rfi_id
+    
     logger.info("Returning result with confidence=%s", result["confidence"])
     return result
 

@@ -1,8 +1,16 @@
+import os
 from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Dict, List
 
+from dotenv import load_dotenv
+from pymongo import MongoClient
+
 from .compare_engine import compare, load_json
+
+load_dotenv()
+mongo_client = MongoClient(os.getenv("MONGO_URI"))
+db = mongo_client["nexus_db"]
 
 SPEC_FILE = Path("data/datasets/specifications.json")
 VENDOR_FILE = Path("data/datasets/vendor_submittals.json")
@@ -80,6 +88,22 @@ def merge_extracted_data(
     return merged
 
 
+def save_flag_to_mongo(equipment_category, field, expected, actual, severity, reason, clause_id, status="Open"):
+    next_id = db.documents.count_documents({"source_type": "compliance_flag"}) + 1
+    db.documents.insert_one({
+        "document_id": f"FLAG-{next_id:03d}",
+        "source_type": "compliance_flag",
+        "equipment_category": equipment_category,
+        "field": field,
+        "expected": expected,
+        "actual": actual,
+        "severity": severity,
+        "reason": reason,
+        "clause_id": clause_id,
+        "status": status,
+    })
+
+
 def diff_fields(submittal_id: str) -> Dict[str, Any]:
 
     print("Received:", submittal_id)
@@ -137,6 +161,17 @@ def diff_fields(submittal_id: str) -> Dict[str, Any]:
         }
         for item in findings
     ]
+
+    for item in findings:
+        save_flag_to_mongo(
+            equipment_category=matching_spec.get("category", "Unknown"),
+            field=item["field"],
+            expected=str(item["spec"]),
+            actual=str(item["vendor"]),
+            severity=item["severity"],
+            reason=f"Deviation in {item['field']}",
+            clause_id=matching_spec.get("id", "UNKNOWN"),
+        )
 
     return {
         "status": "fail" if deviations else "pass",
