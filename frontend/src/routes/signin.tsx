@@ -2,6 +2,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/nexus/auth";
 import { ShieldCheck, X, Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export const Route = createFileRoute("/signin")({
   head: () => ({
@@ -27,6 +29,9 @@ function SignInPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
+  const [forgotPasswordMessage, setForgotPasswordMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -66,6 +71,36 @@ function SignInPage() {
       if (!res.ok) {
         setError(res.reason ?? "Google sign-in failed");
       }
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const handleForgotPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (busy) return;
+    setError(null);
+    setForgotPasswordMessage(null);
+    
+    if (!forgotPasswordEmail.trim()) {
+      setError("Please enter your email address.");
+      return;
+    }
+    
+    setBusy(true);
+    try {
+      await sendPasswordResetEmail(auth, forgotPasswordEmail.trim());
+      setForgotPasswordMessage("Password reset email sent! Check your inbox.");
+      setForgotPasswordEmail("");
+      setTimeout(() => {
+        setShowForgotPassword(false);
+        setForgotPasswordMessage(null);
+      }, 3000);
+    } catch (err: any) {
+      const reason = err?.code
+        ? err.code.replace("auth/", "").replace(/-/g, " ")
+        : (err?.message ?? "Failed to send reset email");
+      setError(reason);
     } finally {
       setBusy(false);
     }
@@ -298,6 +333,22 @@ function SignInPage() {
             </button>
           </p>
 
+          {/* Forgot password link */}
+          {!isSignUp && (
+            <p
+              className="mt-3 text-center text-xs animate-nexus-in"
+              style={{ animationDelay: "350ms" }}
+            >
+              <button
+                type="button"
+                onClick={() => setShowForgotPassword(true)}
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Forgot password?
+              </button>
+            </p>
+          )}
+
           {showBanner && (
             <div
               className="mt-4 flex items-start gap-2 rounded-lg border border-primary/25 bg-primary/6 p-3 text-[11px] leading-relaxed text-foreground/80 animate-nexus-in"
@@ -315,6 +366,72 @@ function SignInPage() {
               >
                 <X className="h-3.5 w-3.5" />
               </button>
+            </div>
+          )}
+
+          {/* Forgot Password Modal */}
+          {showForgotPassword && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-nexus-in"
+              onClick={() => {
+                setShowForgotPassword(false);
+                setForgotPasswordMessage(null);
+                setError(null);
+              }}
+            >
+              <div
+                className="w-full max-w-sm rounded-lg border border-border bg-card p-6 shadow-xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="mb-4 flex items-center justify-between">
+                  <h2 className="text-lg font-semibold tracking-tight">Reset Password</h2>
+                  <button
+                    onClick={() => {
+                      setShowForgotPassword(false);
+                      setForgotPasswordMessage(null);
+                      setError(null);
+                    }}
+                    className="text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+                
+                <p className="mb-4 text-sm text-muted-foreground">
+                  Enter your registered email address and we'll send you a link to reset your password.
+                </p>
+
+                {forgotPasswordMessage && (
+                  <div
+                    className="mb-4 flex items-start gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-[11px] leading-relaxed text-emerald-600 animate-nexus-in"
+                  >
+                    <span className="flex-1">{forgotPasswordMessage}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleForgotPassword} className="space-y-3">
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <input
+                      type="email"
+                      placeholder="Email address"
+                      value={forgotPasswordEmail}
+                      onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                      className="h-11 w-full rounded-lg border-border bg-background pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                      autoComplete="email"
+                      required
+                      disabled={busy}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={busy}
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 disabled:opacity-60"
+                  >
+                    {busy ? "Sending…" : "Send Reset Link"}
+                  </button>
+                </form>
+              </div>
             </div>
           )}
 
