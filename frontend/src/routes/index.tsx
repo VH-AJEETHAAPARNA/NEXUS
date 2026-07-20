@@ -329,6 +329,88 @@ function Landing() {
         </div>
       </section>
 
+      {/* Our Story */}
+      <section id="story" className="border-t bg-linear-to-b from-muted/30 to-muted/10">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <Reveal delay={0}>
+            <div className="mx-auto max-w-3xl text-center">
+              <div className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+                Our Story
+              </div>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight">
+                Born from the Data Centre EPC Hackathon 2026
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="mx-auto mt-10 max-w-3xl space-y-4 text-sm leading-relaxed text-foreground/90">
+              <p>
+                NEXUS was built during the Data Centre EPC Hackathon 2026 with a clear mission: to
+                solve the chronic information fragmentation that plagues EPC projects. We discovered
+                that specification deviations and repeated RFIs weren't just annoyances — they were
+                systemic failures caused by disconnected data silos.
+              </p>
+              <p>
+                Our solution pairs two specialized AI agents — the RFI Intelligence Agent and the
+                Specification Compliance Agent — that share one unified knowledge base. The
+                differentiator is our cross-agent auto-linking via clause_id: when an RFI and a
+                compliance flag reference the same clause, NEXUS connects them automatically,
+                eliminating manual triage and ensuring nothing falls through the cracks.
+              </p>
+              <p>
+                The journey wasn't without challenges: dataset sourcing complexities, SDK drift
+                fixes, embedding dimension mismatches, and frontend credit exhaustion tested our
+                resolve. But with successful deployment on Render and a shared vision to make EPC
+                delivery smarter, faster, and more reliable for India's data centre boom, NEXUS
+                stands as a testament to what a focused team can achieve.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Hackathon Team */}
+      <section id="team" className="border-t">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <Reveal delay={0}>
+            <div className="mx-auto max-w-2xl text-center">
+              <div className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+                Hackathon Team
+              </div>
+              <h2 className="mt-2 text-3xl font-semibold tracking-tight">
+                Meet the Team Behind NEXUS
+              </h2>
+            </div>
+          </Reveal>
+          <div className="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal delay={0}>
+              <TeamCard
+                image="/images/team/ajee photo 2.jpg"
+                name="Ajeetha Aparna V H"
+                role="Team Lead, Backend, Integration & Frontend"
+                description="Architecting the full-stack solution and orchestrating cross-agent intelligence"
+              />
+            </Reveal>
+            <Reveal delay={80}>
+              <TeamCard
+                image="/images/team/abi_photo.jpeg"
+                name="Abirami S"
+                role="Specification Compliance Agent"
+                description="Building the compliance engine that catches spec deviations before installation"
+              />
+            </Reveal>
+            <Reveal delay={160}>
+              <TeamCard
+                image="/images/team/nithya_photo.jpeg"
+                name="Nithya Sree Bala"
+                role="RFI Intelligence Agent"
+                description="Developing the intelligent RFI system that answers questions with grounded citations"
+              />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* Professional Footer */}
       <footer className="border-t bg-muted/40">
         <div className="mx-auto max-w-6xl px-6 py-12">
@@ -438,11 +520,25 @@ function Landing() {
               <h3 className="text-sm font-semibold mb-3">Contact</h3>
               <div className="space-y-2 text-sm">
                 <a
-                  href="mailto:contact@nexus-epc.ai"
+                  href="mailto:vh.ajeethaaaparna@gmail.com"
                   className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-4 w-4" />
-                  contact@nexus-epc.ai
+                  vh.ajeethaaaparna@gmail.com
+                </a>
+                <a
+                  href="mailto:abi707804@gmail.com"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  abi707804@gmail.com
+                </a>
+                <a
+                  href="mailto:nithyaselvam768@gmail.com"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  nithyaselvam768@gmail.com
                 </a>
                 <p className="text-muted-foreground">Built in India</p>
               </div>
@@ -657,6 +753,45 @@ function RoadmapCard({
       </div>
       <h3 className="mt-3 text-sm font-semibold text-foreground/80">{title}</h3>
       <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{body}</p>
+    </div>
+  );
+}
+
+function TeamCard({
+  image,
+  name,
+  role,
+  description,
+}: {
+  image: string;
+  name: string;
+  role: string;
+  description: string;
+}) {
+  return (
+    <div className="group rounded-xl border bg-card p-6 text-center transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1">
+      <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full border-2 border-primary/20 bg-muted/50">
+        <img
+          src={image}
+          alt={name}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = "none";
+            target.parentElement!.innerHTML = `
+              <div class="flex h-full w-full items-center justify-center bg-primary/10 text-2xl font-bold text-primary">
+                ${name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
+              </div>
+            `;
+          }}
+        />
+      </div>
+      <h3 className="text-base font-semibold">{name}</h3>
+      <p className="mt-1 text-xs font-medium uppercase tracking-wider text-primary">{role}</p>
+      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{description}</p>
     </div>
   );
 }
