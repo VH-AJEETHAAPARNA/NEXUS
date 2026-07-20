@@ -31,9 +31,7 @@ export function RFIAnswerCard({ record, defaultOpen = false, compact = false }: 
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium leading-snug text-foreground">
-            {record.question}
-          </p>
+          <p className="text-sm font-medium leading-snug text-foreground">{record.question}</p>
           <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{verdict}</p>
         </div>
         <div className="flex shrink-0 flex-col items-end gap-1">

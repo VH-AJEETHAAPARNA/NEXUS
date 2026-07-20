@@ -10,23 +10,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  ingestDocument,
-  listDocuments,
-  listFlags,
-  listRFIs,
-  resetDemoData,
-} from "@/lib/nexus/api";
+import { ingestDocument, listDocuments, listFlags, listRFIs, resetDemoData } from "@/lib/nexus/api";
 import type { NexusDocument } from "@/lib/nexus/types";
 import { toast } from "sonner";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
-import {
-  audit,
-  clearAudit,
-  FIREWALL_URL,
-  listAudit,
-  verifyCsrf,
-} from "@/lib/nexus/firewall";
+import { audit, clearAudit, FIREWALL_URL, listAudit, verifyCsrf } from "@/lib/nexus/firewall";
 import { useAuth } from "@/lib/nexus/auth";
 
 export const Route = createFileRoute("/app/admin")({
@@ -255,17 +243,19 @@ function AdminPage() {
         <div className="rounded-xl border bg-card p-4">
           <div className="text-sm font-semibold">Recent activity</div>
           <ul className="mt-3 space-y-2 text-xs">
-            {buildActivity().slice(0, 5).map((a) => (
-              <li key={a.id} className="flex items-start gap-2">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                <div className="min-w-0 flex-1">
-                  <p className="leading-snug text-foreground">{a.label}</p>
-                  <p className="text-[10px] text-muted-foreground">
-                    {new Date(a.at).toLocaleString()}
-                  </p>
-                </div>
-              </li>
-            ))}
+            {buildActivity()
+              .slice(0, 5)
+              .map((a) => (
+                <li key={a.id} className="flex items-start gap-2">
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <div className="min-w-0 flex-1">
+                    <p className="leading-snug text-foreground">{a.label}</p>
+                    <p className="text-[10px] text-muted-foreground">
+                      {new Date(a.at).toLocaleString()}
+                    </p>
+                  </div>
+                </li>
+              ))}
             {buildActivity().length === 0 && (
               <li className="text-muted-foreground">No activity yet.</li>
             )}
@@ -317,8 +307,6 @@ function AdminPage() {
             Clear audit log
           </Button>
         </div>
-
-
 
         <div className="rounded-xl border bg-card p-4">
           <div className="text-sm font-semibold">Demo controls</div>

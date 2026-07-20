@@ -91,4 +91,3 @@ export function AnimatedNumber({ value }: { value: string | number }) {
     </span>
   );
 }
-

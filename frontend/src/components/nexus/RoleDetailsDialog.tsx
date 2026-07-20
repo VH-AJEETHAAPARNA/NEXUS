@@ -80,14 +80,15 @@ export function RoleDetailsDialog({
           </div>
           <DialogTitle>{title ?? "A few quick details"}</DialogTitle>
           <DialogDescription>
-            {description ??
-              "Saved on this device only — used to personalise this role's session."}
+            {description ?? "Saved on this device only — used to personalise this role's session."}
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={submit} className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="rd-name" className="text-xs">Full name</Label>
+            <Label htmlFor="rd-name" className="text-xs">
+              Full name
+            </Label>
             <Input
               id="rd-name"
               value={name}
@@ -98,7 +99,9 @@ export function RoleDetailsDialog({
             {errors.name && <p className="text-[11px] text-destructive">{errors.name}</p>}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="rd-company" className="text-xs">Company</Label>
+            <Label htmlFor="rd-company" className="text-xs">
+              Company
+            </Label>
             <Input
               id="rd-company"
               value={company}
@@ -108,7 +111,9 @@ export function RoleDetailsDialog({
             {errors.company && <p className="text-[11px] text-destructive">{errors.company}</p>}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="rd-email" className="text-xs">Work email</Label>
+            <Label htmlFor="rd-email" className="text-xs">
+              Work email
+            </Label>
             <Input
               id="rd-email"
               type="email"

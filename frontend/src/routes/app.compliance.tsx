@@ -44,7 +44,8 @@ function CompliancePage() {
     rfis = listRFIs();
   } catch (e) {
     console.error("[CompliancePage] Failed to load data:", e);
-    setLoadError(e instanceof Error ? e.message : "Failed to load compliance data");
+    const errorMessage = e instanceof Error ? e.message : "Failed to load compliance data";
+    setLoadError(errorMessage);
   }
 
   const linkedPairs = useMemo(
@@ -123,42 +124,45 @@ function CompliancePage() {
             Cross-agent links
           </h2>
           <div className="grid gap-3 md:grid-cols-2">
-            {linkedPairs.map(({ flag, rfi }) => (
-              <div
-                key={flag.id}
-                className="animate-badge-pulse relative rounded-xl border-2 border-primary/40 bg-primary/[0.03] p-4"
-              >
-                <div className="mb-3 inline-flex items-center gap-1.5 rounded-md bg-primary px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
-                  <Link2 className="h-3 w-3" /> Auto-linked — same clause under review
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-lg border bg-card p-3">
-                    <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                      Compliance flag
-                    </div>
-                    <div className="mt-1 flex items-center gap-2">
-                      <SeverityBadge value={flag.severity} />
-                      <span className="text-xs font-medium">{flag.equipment_category}</span>
-                    </div>
-                    <p className="mt-2 text-sm">
-                      <span className="font-medium">{flag.field}</span>: expected{" "}
-                      <span className="font-mono">{flag.expected_value}</span>, got{" "}
-                      <span className="font-mono">{flag.actual_value}</span>
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">{flag.reason}</p>
+            {linkedPairs.map(({ flag, rfi }) => {
+              if (!rfi) return null;
+              return (
+                <div
+                  key={flag.id}
+                  className="animate-badge-pulse relative rounded-xl border-2 border-primary/40 bg-primary/3 p-4"
+                >
+                  <div className="mb-3 inline-flex items-center gap-1.5 rounded-md bg-primary px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary-foreground">
+                    <Link2 className="h-3 w-3" /> Auto-linked — same clause under review
                   </div>
-                  <div className="rounded-lg border bg-card p-3">
-                    <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                      Linked RFI
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-lg border bg-card p-3">
+                      <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                        Compliance flag
+                      </div>
+                      <div className="mt-1 flex items-center gap-2">
+                        <SeverityBadge value={flag.severity} />
+                        <span className="text-xs font-medium">{flag.equipment_category}</span>
+                      </div>
+                      <p className="mt-2 text-sm">
+                        <span className="font-medium">{flag.field}</span>: expected{" "}
+                        <span className="font-mono">{flag.expected_value}</span>, got{" "}
+                        <span className="font-mono">{flag.actual_value}</span>
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">{flag.reason}</p>
                     </div>
-                    <p className="mt-1 line-clamp-3 text-sm">{rfi!.question}</p>
-                    <p className="mt-1 text-[11px] text-muted-foreground">
-                      Confidence: {rfi!.confidence} · Clause {flag.clause_id}
-                    </p>
+                    <div className="rounded-lg border bg-card p-3">
+                      <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+                        Linked RFI
+                      </div>
+                      <p className="mt-1 line-clamp-3 text-sm">{rfi.question}</p>
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        Confidence: {rfi.confidence} · Clause {flag.clause_id}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
@@ -170,7 +174,7 @@ function CompliancePage() {
           </h2>
           <div className="flex gap-2">
             <Select value={severityFilter} onValueChange={setSeverityFilter}>
-              <SelectTrigger className="h-8 w-[140px] text-xs">
+              <SelectTrigger className="h-8 w-35 text-xs">
                 <SelectValue placeholder="Severity" />
               </SelectTrigger>
               <SelectContent>
@@ -182,7 +186,7 @@ function CompliancePage() {
               </SelectContent>
             </Select>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="h-8 w-[140px] text-xs">
+              <SelectTrigger className="h-8 w-35 text-xs">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
@@ -212,7 +216,10 @@ function CompliancePage() {
             <TableBody>
               {filtered.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={8} className="py-10 text-center text-sm text-muted-foreground">
+                  <TableCell
+                    colSpan={8}
+                    className="py-10 text-center text-sm text-muted-foreground"
+                  >
                     No flags match the current filters.
                   </TableCell>
                 </TableRow>
@@ -226,7 +233,7 @@ function CompliancePage() {
                     <TableCell>
                       <SeverityBadge value={f.severity} />
                     </TableCell>
-                    <TableCell className="max-w-[280px] text-xs text-muted-foreground">
+                    <TableCell className="max-w-70 text-xs text-muted-foreground">
                       {f.reason}
                     </TableCell>
                     <TableCell className="text-xs">
@@ -246,7 +253,7 @@ function CompliancePage() {
                           value={f.status}
                           onValueChange={(v) => setStatus(f.id, v as FlagStatus)}
                         >
-                          <SelectTrigger className="h-7 w-[130px] text-xs">
+                          <SelectTrigger className="h-7 w-32 text-xs">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>

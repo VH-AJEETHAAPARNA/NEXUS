@@ -33,6 +33,7 @@ function RFIPage() {
 
   useEffect(() => {
     loadRfis();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tick]);
 
   const ask = async () => {
@@ -75,15 +76,13 @@ function RFIPage() {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="e.g. Can we substitute a 450kVA UPS for the specified 500kVA unit?"
-              className="min-h-[90px] resize-none border-0 bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
+              className="min-h-90 resize-none border-0 bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
               disabled={loading}
               onKeyDown={(e) => {
                 if ((e.metaKey || e.ctrlKey) && e.key === "Enter") ask();
               }}
             />
-            {error && (
-              <p className="mt-2 text-xs text-red-500">{error}</p>
-            )}
+            {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
             <div className="mt-3 flex items-center justify-between border-t pt-3">
               <p className="text-[11px] text-muted-foreground">
                 ⌘/Ctrl + Enter to submit · answers cite the exact clause

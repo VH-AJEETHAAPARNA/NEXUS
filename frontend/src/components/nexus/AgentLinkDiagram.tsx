@@ -19,10 +19,9 @@ export function AgentLinkDiagram() {
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.15 },
-    );
+    const obs = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), {
+      threshold: 0.15,
+    });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
@@ -40,9 +39,7 @@ export function AgentLinkDiagram() {
       ["idle", 3450],
     ];
 
-    const timers = timings.map(([p, ms]) =>
-      setTimeout(() => setPhase(p), ms),
-    );
+    const timers = timings.map(([p, ms]) => setTimeout(() => setPhase(p), ms));
 
     // Full loop restart
     const loop = setTimeout(() => setPhase("pulse-down"), 4800);
@@ -92,14 +89,18 @@ export function AgentLinkDiagram() {
 
         {/* ====== SHARED KNOWLEDGE BASE LINE ====== */}
         <line
-          x1="100" y1="165" x2="460" y2="165"
+          x1="100"
+          y1="165"
+          x2="460"
+          y2="165"
           stroke="var(--color-border)"
           strokeWidth="2"
           strokeDasharray="6 4"
           opacity="0.6"
         />
         <text
-          x="280" y="190"
+          x="280"
+          y="190"
           textAnchor="middle"
           fill="var(--color-muted-foreground)"
           fontSize="11"
@@ -114,7 +115,9 @@ export function AgentLinkDiagram() {
         <g>
           {/* Outer ring glow */}
           <circle
-            cx="155" cy="60" r="36"
+            cx="155"
+            cy="60"
+            r="36"
             fill="none"
             stroke="var(--color-primary)"
             strokeWidth="1.5"
@@ -123,7 +126,9 @@ export function AgentLinkDiagram() {
           />
           {/* Node body */}
           <circle
-            cx="155" cy="60" r="28"
+            cx="155"
+            cy="60"
+            r="28"
             fill="var(--color-primary)"
             opacity="0.08"
             stroke="var(--color-primary)"
@@ -137,11 +142,28 @@ export function AgentLinkDiagram() {
             strokeWidth="1.2"
             strokeLinejoin="round"
           />
-          <line x1="151" y1="59" x2="159" y2="59" stroke="var(--color-primary)" strokeWidth="0.8" opacity="0.6" />
-          <line x1="151" y1="62" x2="157" y2="62" stroke="var(--color-primary)" strokeWidth="0.8" opacity="0.6" />
+          <line
+            x1="151"
+            y1="59"
+            x2="159"
+            y2="59"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            opacity="0.6"
+          />
+          <line
+            x1="151"
+            y1="62"
+            x2="157"
+            y2="62"
+            stroke="var(--color-primary)"
+            strokeWidth="0.8"
+            opacity="0.6"
+          />
           {/* Label */}
           <text
-            x="155" y="104"
+            x="155"
+            y="104"
             textAnchor="middle"
             fill="var(--color-primary)"
             fontSize="12"
@@ -156,7 +178,9 @@ export function AgentLinkDiagram() {
         <g>
           {/* Outer ring glow */}
           <circle
-            cx="405" cy="60" r="36"
+            cx="405"
+            cy="60"
+            r="36"
             fill="none"
             stroke="var(--color-primary)"
             strokeWidth="1.5"
@@ -165,7 +189,9 @@ export function AgentLinkDiagram() {
           />
           {/* Node body */}
           <circle
-            cx="405" cy="60" r="28"
+            cx="405"
+            cy="60"
+            r="28"
             fill="var(--color-primary)"
             opacity="0.08"
             stroke="var(--color-primary)"
@@ -189,7 +215,8 @@ export function AgentLinkDiagram() {
           />
           {/* Label */}
           <text
-            x="405" y="104"
+            x="405"
+            y="104"
             textAnchor="middle"
             fill="var(--color-primary)"
             fontSize="12"
@@ -202,14 +229,20 @@ export function AgentLinkDiagram() {
 
         {/* ====== VERTICAL CONNECTOR LINES (static) ====== */}
         <line
-          x1="155" y1="96" x2="155" y2="165"
+          x1="155"
+          y1="96"
+          x2="155"
+          y2="165"
           stroke="var(--color-border)"
           strokeWidth="1"
           strokeDasharray="3 3"
           opacity="0.35"
         />
         <line
-          x1="405" y1="96" x2="405" y2="165"
+          x1="405"
+          y1="96"
+          x2="405"
+          y2="165"
           stroke="var(--color-border)"
           strokeWidth="1"
           strokeDasharray="3 3"
@@ -219,7 +252,8 @@ export function AgentLinkDiagram() {
         {/* ====== PULSE DOTS traveling down ====== */}
         {/* Left pulse */}
         <circle
-          cx="155" r="4"
+          cx="155"
+          r="4"
           fill="var(--color-primary)"
           opacity={pulsing ? 1 : 0}
           style={{
@@ -240,7 +274,8 @@ export function AgentLinkDiagram() {
         </circle>
         {/* Right pulse (slightly delayed) */}
         <circle
-          cx="405" r="4"
+          cx="405"
+          r="4"
           fill="var(--color-primary)"
           opacity={pulsing ? 1 : 0}
           style={{
@@ -263,7 +298,9 @@ export function AgentLinkDiagram() {
 
         {/* ====== GLOW POINT on the knowledge base line ====== */}
         <circle
-          cx="280" cy="165" r={glowing ? 18 : 0}
+          cx="280"
+          cy="165"
+          r={glowing ? 18 : 0}
           fill="url(#nx-glow-grad)"
           opacity={glowing ? 1 : 0}
           style={{
@@ -271,7 +308,9 @@ export function AgentLinkDiagram() {
           }}
         />
         <circle
-          cx="280" cy="165" r="4"
+          cx="280"
+          cy="165"
+          r="4"
           fill="var(--color-primary)"
           opacity={glowing ? 1 : 0}
           style={{ transition: "opacity 300ms ease" }}
@@ -295,11 +334,19 @@ export function AgentLinkDiagram() {
         />
 
         {/* Small dots at arc endpoints */}
-        <circle cx="170" cy="60" r="3" fill="var(--color-primary)"
+        <circle
+          cx="170"
+          cy="60"
+          r="3"
+          fill="var(--color-primary)"
           opacity={fadingOut ? 0 : arcVisible ? 0.8 : 0}
           style={{ transition: "opacity 300ms ease" }}
         />
-        <circle cx="390" cy="60" r="3" fill="var(--color-primary)"
+        <circle
+          cx="390"
+          cy="60"
+          r="3"
+          fill="var(--color-primary)"
           opacity={fadingOut ? 0 : arcVisible ? 0.8 : 0}
           style={{ transition: "opacity 300ms ease" }}
         />
@@ -310,12 +357,17 @@ export function AgentLinkDiagram() {
           style={{ transition: "opacity 400ms ease" }}
         >
           <rect
-            x="237" y="2" width="86" height="22" rx="4"
+            x="237"
+            y="2"
+            width="86"
+            height="22"
+            rx="4"
             fill="var(--color-primary)"
             opacity="0.12"
           />
           <text
-            x="280" y="17"
+            x="280"
+            y="17"
             textAnchor="middle"
             fill="var(--color-primary)"
             fontSize="11"

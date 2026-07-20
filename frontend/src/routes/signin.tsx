@@ -7,7 +7,10 @@ export const Route = createFileRoute("/signin")({
   head: () => ({
     meta: [
       { title: "Sign in — NEXUS" },
-      { name: "description", content: "Sign in to NEXUS, the AI Intelligence Platform for Data Centre EPC delivery." },
+      {
+        name: "description",
+        content: "Sign in to NEXUS, the AI Intelligence Platform for Data Centre EPC delivery.",
+      },
     ],
   }),
   component: SignInPage,
@@ -88,7 +91,10 @@ function SignInPage() {
       <aside className="relative hidden overflow-hidden bg-[oklch(0.16_0.008_260)] text-[oklch(0.985_0.002_90)] lg:col-span-3 lg:block">
         <FacilityBackdrop />
         <div className="relative z-10 flex h-full flex-col justify-between p-12">
-          <div className="flex items-center gap-3 animate-nexus-in" style={{ animationDelay: "80ms" }}>
+          <div
+            className="flex items-center gap-3 animate-nexus-in"
+            style={{ animationDelay: "80ms" }}
+          >
             <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground text-sm font-bold">
               N
             </div>
@@ -115,7 +121,8 @@ function SignInPage() {
               className="text-3xl font-semibold leading-tight tracking-tight animate-nexus-in"
               style={{ animationDelay: "220ms" }}
             >
-              Two AI agents.<br />
+              Two AI agents.
+              <br />
               <span className="text-white/60">One shared knowledge base.</span>
             </h2>
             <p
@@ -212,7 +219,7 @@ function SignInPage() {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-11 w-full rounded-lg border border-border bg-card pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="h-11 w-full rounded-lg border-border bg-card pl-10 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 autoComplete="email"
                 required
               />
@@ -224,7 +231,7 @@ function SignInPage() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-11 w-full rounded-lg border border-border bg-card pl-10 pr-10 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="h-11 w-full rounded-lg border-border bg-card pl-10 pr-10 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 autoComplete={isSignUp ? "new-password" : "current-password"}
                 required
               />
@@ -242,7 +249,7 @@ function SignInPage() {
               disabled={busy}
               className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary text-sm font-medium text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/90 disabled:opacity-60"
             >
-              {busy ? "Please wait…" : (isSignUp ? "Create account" : "Sign in with email")}
+              {busy ? "Please wait…" : isSignUp ? "Create account" : "Sign in with email"}
             </button>
           </form>
 
@@ -281,7 +288,10 @@ function SignInPage() {
             {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
             <button
               type="button"
-              onClick={() => { setIsSignUp(!isSignUp); setError(null); }}
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setError(null);
+              }}
               className="font-medium text-primary underline-offset-4 hover:underline"
             >
               {isSignUp ? "Sign in" : "Create one"}
@@ -290,7 +300,7 @@ function SignInPage() {
 
           {showBanner && (
             <div
-              className="mt-4 flex items-start gap-2 rounded-lg border border-primary/25 bg-primary/[0.06] p-3 text-[11px] leading-relaxed text-foreground/80 animate-nexus-in"
+              className="mt-4 flex items-start gap-2 rounded-lg border border-primary/25 bg-primary/6 p-3 text-[11px] leading-relaxed text-foreground/80 animate-nexus-in"
               style={{ animationDelay: "380ms" }}
             >
               <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
@@ -368,7 +378,14 @@ function FacilityBackdrop() {
               <line x1="0" y1="60" x2="60" y2="60" />
               <line x1="0" y1="80" x2="60" y2="80" />
               <line x1="0" y1="100" x2="60" y2="100" />
-              <circle cx="8" cy="10" r="1.5" fill="currentColor" className="nx-blink" style={{ animationDelay: `${i * 220}ms` }} />
+              <circle
+                cx="8"
+                cy="10"
+                r="1.5"
+                fill="currentColor"
+                className="nx-blink"
+                style={{ animationDelay: `${i * 220}ms` }}
+              />
               <circle cx="14" cy="10" r="1.5" fill="currentColor" opacity="0.4" />
             </g>
           ))}
@@ -376,7 +393,9 @@ function FacilityBackdrop() {
           {/* UPS block */}
           <g transform="translate(60, 90)" className="nx-fade" style={{ animationDelay: "300ms" }}>
             <rect x="0" y="0" width="130" height="90" rx="3" />
-            <text x="10" y="20" fontSize="9" fill="currentColor" stroke="none" letterSpacing="2">UPS-01</text>
+            <text x="10" y="20" fontSize="9" fill="currentColor" stroke="none" letterSpacing="2">
+              UPS-01
+            </text>
             <line x1="10" y1="34" x2="120" y2="34" />
             <line x1="10" y1="50" x2="80" y2="50" />
             <line x1="10" y1="66" x2="100" y2="66" />
@@ -386,7 +405,9 @@ function FacilityBackdrop() {
           {/* Switchgear */}
           <g transform="translate(230, 90)" className="nx-fade" style={{ animationDelay: "500ms" }}>
             <rect x="0" y="0" width="150" height="90" rx="3" />
-            <text x="10" y="20" fontSize="9" fill="currentColor" stroke="none" letterSpacing="2">SWGR-A</text>
+            <text x="10" y="20" fontSize="9" fill="currentColor" stroke="none" letterSpacing="2">
+              SWGR-A
+            </text>
             <line x1="10" y1="34" x2="140" y2="34" />
             <line x1="30" y1="34" x2="30" y2="80" />
             <line x1="60" y1="34" x2="60" y2="80" />
@@ -401,22 +422,39 @@ function FacilityBackdrop() {
           {/* CRAC */}
           <g transform="translate(420, 90)" className="nx-fade" style={{ animationDelay: "700ms" }}>
             <rect x="0" y="0" width="120" height="90" rx="3" />
-            <text x="10" y="20" fontSize="9" fill="currentColor" stroke="none" letterSpacing="2">CRAC-3</text>
+            <text x="10" y="20" fontSize="9" fill="currentColor" stroke="none" letterSpacing="2">
+              CRAC-3
+            </text>
             <circle cx="60" cy="55" r="20" />
             <line x1="60" y1="35" x2="60" y2="75" />
             <line x1="40" y1="55" x2="80" y2="55" />
           </g>
 
           {/* connectors */}
-          <path d="M 125 180 L 125 210" strokeDasharray="3 3" className="nx-fade" style={{ animationDelay: "900ms" }} />
-          <path d="M 305 180 L 305 210" strokeDasharray="3 3" className="nx-fade" style={{ animationDelay: "1000ms" }} />
-          <path d="M 480 180 L 480 210" strokeDasharray="3 3" className="nx-fade" style={{ animationDelay: "1100ms" }} />
+          <path
+            d="M 125 180 L 125 210"
+            strokeDasharray="3 3"
+            className="nx-fade"
+            style={{ animationDelay: "900ms" }}
+          />
+          <path
+            d="M 305 180 L 305 210"
+            strokeDasharray="3 3"
+            className="nx-fade"
+            style={{ animationDelay: "1000ms" }}
+          />
+          <path
+            d="M 480 180 L 480 210"
+            strokeDasharray="3 3"
+            className="nx-fade"
+            style={{ animationDelay: "1100ms" }}
+          />
         </g>
       </svg>
 
       {/* scanline */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-full">
-        <div className="nx-scan absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+        <div className="nx-scan absolute inset-x-0 h-px bg-linear-to-r from-transparent via-primary/60 to-transparent" />
       </div>
     </>
   );
@@ -425,10 +463,22 @@ function FacilityBackdrop() {
 function GoogleGlyph() {
   return (
     <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
-      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
-      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
-      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+      <path
+        fill="#EA4335"
+        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+      />
+      <path
+        fill="#4285F4"
+        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+      />
     </svg>
   );
 }

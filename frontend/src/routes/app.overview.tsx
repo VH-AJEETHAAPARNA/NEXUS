@@ -1,12 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info, Download } from "lucide-react";
 import { listFlags, listRFIs } from "@/lib/nexus/api";
 import { toast } from "sonner";
@@ -58,20 +53,24 @@ function OverviewPage() {
 
     for (const r of rfis) {
       const k = dayKey(r.created_at);
-      const entry = byDay.get(k) ?? { day: label(r.created_at), RFIs: 0, Resolved: 0 };
-      entry.RFIs += 1;
-      byDay.set(k, entry);
+      const existing = byDay.get(k);
+      if (existing) {
+        existing.RFIs += 1;
+      } else {
+        byDay.set(k, { day: label(r.created_at), RFIs: 1, Resolved: 0 });
+      }
     }
     for (const f of flags) {
       if (f.status !== "Resolved") continue;
       const k = dayKey(f.created_at);
-      const entry = byDay.get(k) ?? { day: label(f.created_at), RFIs: 0, Resolved: 0 };
-      entry.Resolved += 1;
-      byDay.set(k, entry);
+      const existing = byDay.get(k);
+      if (existing) {
+        existing.Resolved += 1;
+      } else {
+        byDay.set(k, { day: label(f.created_at), RFIs: 0, Resolved: 1 });
+      }
     }
-    return [...byDay.entries()]
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([, v]) => v);
+    return [...byDay.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([, v]) => v);
   }, [rfis, flags]);
 
   if (loadError) {
@@ -203,12 +202,13 @@ function OverviewPage() {
             Status summary
           </h2>
           <p className="mt-2 text-base leading-relaxed text-foreground">
-            <span className="font-semibold">{critical}</span> Critical issue{critical === 1 ? "" : "s"}{" "}
-            open, <span className="font-semibold">{resolved}</span> resolved this week.{" "}
+            <span className="font-semibold">{critical}</span> Critical issue
+            {critical === 1 ? "" : "s"} open, <span className="font-semibold">{resolved}</span>{" "}
+            resolved this week.{" "}
             {duplicates > 0 && (
               <>
-                The RFI agent has prevented{" "}
-                <span className="font-semibold">{duplicates}</span> repeat question
+                The RFI agent has prevented <span className="font-semibold">{duplicates}</span>{" "}
+                repeat question
                 {duplicates === 1 ? "" : "s"} from reaching engineering.
               </>
             )}
@@ -246,7 +246,7 @@ function KPI({
           <TooltipTrigger>
             <Info className="h-3 w-3 text-muted-foreground" />
           </TooltipTrigger>
-          <TooltipContent className="max-w-[240px] text-xs">{tooltip}</TooltipContent>
+          <TooltipContent className="max-w-60 text-xs">{tooltip}</TooltipContent>
         </Tooltip>
       </div>
       <div className="mt-2 text-3xl font-semibold tracking-tight tabular-nums">

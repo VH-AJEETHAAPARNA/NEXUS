@@ -1,10 +1,9 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
+@theme {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -164,7 +163,8 @@
     box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-primary) 0%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 6px color-mix(in oklab, var(--color-primary) 22%, transparent),
+    box-shadow:
+      0 0 0 6px color-mix(in oklab, var(--color-primary) 22%, transparent),
       0 0 20px 2px color-mix(in oklab, var(--color-primary) 30%, transparent);
   }
 }
@@ -184,45 +184,145 @@
 }
 
 @keyframes nexus-blink {
-  0%, 60%, 100% { opacity: 1; }
-  30% { opacity: 0.2; }
+  0%,
+  60%,
+  100% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.2;
+  }
 }
 
 @keyframes nexus-count-settle {
-  0% { transform: scale(1.06); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes nexus-crossfade {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@utility animate-fade-up {
+.animate-fade-up {
   animation: nexus-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@utility animate-nexus-in {
+.animate-nexus-in {
   animation: nexus-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@utility animate-badge-pulse {
+.animate-badge-pulse {
   animation: nexus-glow-pulse 2s cubic-bezier(0.16, 1, 0.3, 1) 1;
 }
 
-@utility animate-count-settle {
+.animate-count-settle {
   animation: nexus-count-settle 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@utility animate-crossfade {
+.animate-crossfade {
   animation: nexus-crossfade 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@utility hover-lift {
-  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
-  &:hover {
-    transform: scale(1.02);
+.hover-lift {
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px -8px color-mix(in oklab, var(--color-primary) 25%, transparent);
+}
+
+.hover-glow {
+  transition: box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px 4px color-mix(in oklab, var(--color-primary) 30%, transparent);
+}
+
+@keyframes nexus-shimmer {
+  0% {
+    background-position: -200% 0;
   }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes nexus-typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes nexus-blink-caret {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--color-primary);
+  }
+}
+
+@keyframes nexus-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes nexus-parallax-shift {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-muted) 0%,
+    color-mix(in oklab, var(--color-primary) 8%, var(--color-muted)) 50%,
+    var(--color-muted) 100%
+  );
+  background-size: 200% 100%;
+  animation: nexus-shimmer 3s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: nexus-scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-primary);
+  animation:
+    nexus-typewriter 2s steps(20) forwards,
+    nexus-blink-caret 0.8s step-end infinite;
 }
 
 /* Sign-in schematic helpers */

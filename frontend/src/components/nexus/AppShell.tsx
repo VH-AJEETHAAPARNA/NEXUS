@@ -42,7 +42,10 @@ export function AppShell() {
   const [pendingRole, setPendingRole] = useState<Role | null>(null);
 
   useEffect(() => {
-    if (!role) { setDetails(null); return; }
+    if (!role) {
+      setDetails(null);
+      return;
+    }
     setDetails(getRoleDetails(role));
     const onChange = () => setDetails(getRoleDetails(role));
     window.addEventListener("nexus:role-details-changed", onChange);
@@ -87,7 +90,9 @@ export function AppShell() {
         }
       });
     });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [pathname, user, role, signOut, navigate]);
 
   if (!hydrated || !user || !role) return null;
@@ -148,7 +153,10 @@ export function AppShell() {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => { setPendingRole(role); setEditOpen(true); }}
+              onClick={() => {
+                setPendingRole(role);
+                setEditOpen(true);
+              }}
               className="hidden text-[11px] text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline md:inline"
             >
               Not you? Edit details
@@ -224,4 +232,3 @@ export function AppShell() {
     </div>
   );
 }
-

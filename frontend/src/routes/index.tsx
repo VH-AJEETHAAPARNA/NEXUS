@@ -15,8 +15,15 @@ import {
   CalendarClock,
   Truck,
   ClipboardList,
+  Mail,
+  Linkedin,
+  Github,
+  Twitter,
+  ExternalLink,
 } from "lucide-react";
-import { Reveal } from "@/hooks/use-reveal";
+import { useState } from "react";
+import { Reveal, useCountUp, AnimatedNumber } from "@/hooks/use-reveal";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import { AgentLinkDiagram } from "@/components/nexus/AgentLinkDiagram";
 
 export const Route = createFileRoute("/")({
@@ -37,7 +44,7 @@ function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
-      <header className="border-b bg-background/95 backdrop-blur">
+      <header className="border-b bg-background/95 backdrop-blur sticky top-0 z-50">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
           <Link to="/" className="flex items-center gap-2">
             <div className="grid h-7 w-7 place-items-center rounded-md bg-foreground text-background text-xs font-bold">
@@ -60,51 +67,68 @@ function Landing() {
       </header>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pb-20 pt-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal delay={0}>
-            <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-primary">
-              <Sparkles className="h-3 w-3" /> AI Intelligence Platform
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="text-5xl font-bold tracking-tight text-primary sm:text-6xl">
-              Two AI agents
-            </h1>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mx-auto mt-4 max-w-2xl text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-              One shared knowledge base, auto-linked findings
-            </p>
-          </Reveal>
-          <Reveal delay={240}>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              NEXUS pairs an RFI Intelligence Agent with a Specification Compliance Agent
-              so data centre EPC teams catch spec deviations before install and stop
-              re-answering the same questions.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <div className="mt-8 mb-2">
-              <AgentLinkDiagram />
-            </div>
-          </Reveal>
-          <Reveal delay={380}>
-            <div className="mt-8 flex justify-center gap-3">
-              <Link
-                to="/signin"
-                className="hover-lift inline-flex items-center gap-1.5 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-              >
-                Get started <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-              <a
-                href="#how-it-works"
-                className="hover-lift inline-flex items-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-              >
-                See how it works
-              </a>
-            </div>
-          </Reveal>
+      <section className="relative overflow-hidden">
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 -z-10 bg-linear-to-b from-primary/5 via-transparent to-transparent animate-shimmer" />
+
+        <div className="mx-auto max-w-6xl px-6 pb-20 pt-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal delay={0}>
+              <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-primary">
+                <Sparkles className="h-3 w-3" /> AI Intelligence Platform
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <h1 className="text-5xl font-bold tracking-tight text-primary sm:text-6xl">
+                Two AI agents
+              </h1>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="mx-auto mt-4 max-w-2xl text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+                One shared knowledge base, auto-linked findings
+              </p>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                NEXUS pairs an RFI Intelligence Agent with a Specification Compliance Agent so data
+                centre EPC teams catch spec deviations before install and stop re-answering the same
+                questions.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="mt-8 mb-2">
+                <AgentLinkDiagram />
+              </div>
+            </Reveal>
+            <Reveal delay={380}>
+              <div className="mt-8 flex justify-center gap-3">
+                <Link
+                  to="/signin"
+                  className="hover-lift inline-flex items-center gap-1.5 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  Get started <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <a
+                  href="#how-it-works"
+                  className="hover-lift inline-flex items-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                >
+                  See how it works
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Counter Section */}
+      <section className="border-y bg-muted/30">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            <StatItem value={67} suffix="%" label="Projects Overrun" />
+            <StatItem value={40} suffix="%" label="Time Saved on RFIs" />
+            <StatItem value={100} suffix="%" label="Audit Trail" />
+            <StatItem value={2} suffix="x" label="Faster Compliance" />
+          </div>
         </div>
       </section>
 
@@ -128,13 +152,13 @@ function Landing() {
               </li>
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
-                Engineers repeatedly ask questions that were answered weeks earlier, buried
-                in RFI logs and PDFs.
+                Engineers repeatedly ask questions that were answered weeks earlier, buried in RFI
+                logs and PDFs.
               </li>
               <li className="flex gap-3">
                 <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/60" />
-                Procurement misalignment and commissioning failures compound into schedule
-                slip and margin erosion.
+                Procurement misalignment and commissioning failures compound into schedule slip and
+                margin erosion.
               </li>
             </ul>
           </div>
@@ -224,6 +248,21 @@ function Landing() {
         </div>
       </section>
 
+      {/* Live Demo Section */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+            See it in action
+          </div>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight">
+            Ask a question. Get a grounded answer.
+          </h2>
+        </div>
+        <div className="mx-auto mt-10 max-w-3xl">
+          <LiveDemo />
+        </div>
+      </section>
+
       {/* Roles */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
@@ -259,9 +298,9 @@ function Landing() {
             </div>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">Built to extend</h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Predictive Schedule Risk, Supply Chain Visibility, and Commissioning QA agents
-              plug into the same shared knowledge base and cross-agent trigger bus already
-              powering NEXUS.
+              Predictive Schedule Risk, Supply Chain Visibility, and Commissioning QA agents plug
+              into the same shared knowledge base and cross-agent trigger bus already powering
+              NEXUS.
             </p>
           </div>
           <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
@@ -290,13 +329,229 @@ function Landing() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-6 py-6 text-xs text-muted-foreground">
-          <div>© 2026 NEXUS · Built for the Data Centre EPC Hackathon 2026</div>
-          <div>Prototype — demo data only</div>
+      {/* Professional Footer */}
+      <footer className="border-t bg-muted/40">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {/* Column 1 — Brand */}
+            <div className="lg:col-span-1">
+              <Link to="/" className="flex items-center gap-2 mb-3">
+                <div className="grid h-7 w-7 place-items-center rounded-md bg-foreground text-background text-xs font-bold">
+                  N
+                </div>
+                <div className="leading-tight">
+                  <div className="text-sm font-semibold tracking-tight">NEXUS</div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                    EPC Intelligence
+                  </div>
+                </div>
+              </Link>
+              <p className="text-sm text-muted-foreground mb-3">
+                EPC Intelligence for Data Centre Construction
+              </p>
+              <div className="space-y-1 text-xs text-muted-foreground/80">
+                <p>© 2026 NEXUS · Built for the Data Centre EPC Hackathon 2026</p>
+                <p>Prototype — demo data only</p>
+              </div>
+            </div>
+
+            {/* Column 2 — Product */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Product</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link
+                    to="/signin"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    RFI Assistant
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signin"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Compliance Agent
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#how-it-works"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    How it Works
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#capabilities"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Capabilities
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3 — Company */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Company</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a
+                    href="#about"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#team"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Hackathon Team
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#story"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    Our Story
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4 — Contact */}
+            <div>
+              <h3 className="text-sm font-semibold mb-3">Contact</h3>
+              <div className="space-y-2 text-sm">
+                <a
+                  href="mailto:contact@nexus-epc.ai"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  contact@nexus-epc.ai
+                </a>
+                <p className="text-muted-foreground">Built in India</p>
+              </div>
+              <div className="mt-4 flex gap-3">
+                <a
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+                <a
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="mt-10 border-t border-border/60 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-muted-foreground">
+            <p>© 2026 NEXUS. All rights reserved.</p>
+            <div className="flex gap-4">
+              <a href="#" className="hover:text-foreground transition-colors">
+                Privacy
+              </a>
+              <a href="#" className="hover:text-foreground transition-colors">
+                Terms
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function StatItem({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+  const count = useCountUp(value, 1500);
+  return (
+    <div className="text-center">
+      <div className="text-3xl font-bold text-primary">
+        <AnimatedNumber value={count} />
+        {suffix}
+      </div>
+      <div className="mt-1 text-xs text-muted-foreground uppercase tracking-wider">{label}</div>
+    </div>
+  );
+}
+
+function LiveDemo() {
+  const question = "What is UPS redundancy?";
+  const answer =
+    "UPS redundancy refers to the configuration of Uninterruptible Power Supply systems to ensure continuous power availability. According to Section 3.2.1 of the Electrical Standards, N+1 redundancy is required for critical loads, meaning one additional UPS module beyond the maximum load capacity.";
+
+  const { displayedText: questionText } = useTypewriter({
+    phrases: [question],
+    typingSpeed: 60,
+    pauseDuration: 1000,
+    loop: false,
+  });
+
+  const { displayedText: answerText, isDeleting } = useTypewriter({
+    phrases: [answer],
+    typingSpeed: 20,
+    deletingSpeed: 0,
+    pauseDuration: 0,
+    loop: false,
+  });
+
+  return (
+    <div className="rounded-xl border bg-card p-6 shadow-sm">
+      <div className="flex items-start gap-3 mb-4">
+        <div className="grid h-8 w-8 place-items-center rounded-md bg-primary/10 text-primary shrink-0">
+          <FileSearch className="h-4 w-4" />
+        </div>
+        <div className="flex-1">
+          <div className="text-sm font-medium mb-1">RFI Agent</div>
+          <div className="text-sm text-foreground/90 font-mono">
+            {questionText}
+            <span className="inline-block w-0.5 h-4 bg-primary ml-0.5 animate-pulse" />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3 ml-4 border-l-2 border-primary/20 pl-4">
+        <div className="grid h-8 w-8 place-items-center rounded-md bg-primary/10 text-primary shrink-0">
+          <ShieldCheck className="h-4 w-4" />
+        </div>
+        <div className="flex-1">
+          <div className="text-sm font-medium mb-1">Compliance Agent</div>
+          <div className="text-sm text-foreground/90 leading-relaxed">
+            {answerText}
+            {!isDeleting && answerText.length < answer.length && (
+              <span className="inline-block w-0.5 h-4 bg-primary ml-0.5 animate-pulse" />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -308,12 +563,12 @@ function Step({
   body,
 }: {
   n: number;
-  icon: React.ReactNode;
+  icon: React.ReactElement;
   title: string;
   body: string;
 }) {
   return (
-    <div className="relative rounded-xl border bg-card p-6">
+    <div className="relative rounded-xl border bg-card p-6 hover-lift">
       <div className="absolute -top-3 left-6 rounded-md bg-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-primary-foreground">
         Step {n}
       </div>
@@ -337,12 +592,17 @@ function Feature({
   body: string;
   highlight?: boolean;
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       className={
-        "rounded-xl border bg-card p-5 " +
-        (highlight ? "ring-2 ring-primary/40 shadow-sm" : "")
+        "rounded-xl border bg-card p-5 transition-all duration-300 cursor-pointer " +
+        (highlight ? "ring-2 ring-primary/40 shadow-sm" : "") +
+        (isHovered ? "shadow-lg scale-[1.02]" : "")
       }
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="grid h-8 w-8 place-items-center rounded-md bg-primary/10 text-primary">
         {icon}
@@ -356,13 +616,20 @@ function Feature({
         )}
       </div>
       <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{body}</p>
+      {isHovered && (
+        <div className="mt-3 pt-3 border-t border-border/50 text-xs text-muted-foreground animate-crossfade">
+          <strong className="text-foreground">Learn more:</strong> This capability integrates
+          seamlessly with the NEXUS knowledge base to provide real-time insights and automated
+          workflows.
+        </div>
+      )}
     </div>
   );
 }
 
 function RoleChip({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg border bg-card px-4 py-3">
+    <div className="flex items-center gap-2 rounded-lg border bg-card px-4 py-3 hover-lift">
       <div className="grid h-7 w-7 place-items-center rounded-md bg-primary/10 text-primary">
         {icon}
       </div>
@@ -381,7 +648,7 @@ function RoadmapCard({
   body: string;
 }) {
   return (
-    <div className="relative rounded-xl border-2 border-dashed border-foreground/15 bg-transparent p-5">
+    <div className="relative rounded-xl border-2 border-dashed border-foreground/15 bg-transparent p-5 hover-lift">
       <div className="absolute -top-2.5 right-4 rounded-md border border-foreground/20 bg-background px-2 py-0.5 text-[9px] font-semibold uppercase tracking-widest text-muted-foreground">
         Coming next
       </div>
