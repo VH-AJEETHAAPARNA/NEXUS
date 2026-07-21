@@ -127,6 +127,18 @@ async def retrieve_relevant_documents(
 
             if docs:
                 logger.info("Found %d document(s) using index '%s'", len(docs), index_name)
+                # Log diagnostic breakdown of retrieved documents
+                source_counts = {}
+                for doc in docs:
+                    st = doc.get("source_type", "unknown")
+                    source_counts[st] = source_counts.get(st, 0) + 1
+                    logger.debug(
+                        "Retrieved doc: source_type=%s, document_id=%s, clause_id=%s",
+                        st,
+                        doc.get("document_id", "?"),
+                        doc.get("clause_id", "?"),
+                    )
+                logger.info("Retrieval breakdown: %s", source_counts)
                 return docs
 
             logger.info("No documents returned from index '%s'", index_name)
@@ -162,8 +174,17 @@ async def generate_answer_from_context(
 
     prompt = (
         "You are an RFI Intelligence Agent.\n"
-        "Answer ONLY using the context below.\n"
-        "If the answer is unavailable, reply 'insufficient grounding'.\n\n"
+        "Answer the question using ONLY the context below.\n\n"
+        "RULES:\n"
+        "1. If the context contains the exact answer, provide it and cite the source.\n"
+        "2. If the context contains related information that partially addresses the "
+        "question, explain what IS available from the provided sources and note any "
+        "limitations. Do NOT simply say 'insufficient grounding' when the context "
+        "contains relevant information \u2014 instead, say what the context says.\n"
+        "3. ONLY reply 'insufficient grounding' if the context is entirely unrelated "
+        "to the question or completely empty of relevant information.\n"
+        "4. NEVER fabricate specific numbers, clauses, or requirements not present "
+        "in the context.\n\n"
         f"Question:\n{question}\n\n"
         f"Context:\n{context}"
     )

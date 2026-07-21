@@ -1,33 +1,44 @@
-# Compliance Agent — Live State Integration
+# RFI Assistant Retrieval Fix - Implementation Plan
 
-## Steps
+## Root Causes Identified
 
-- [x] Read and analyze all relevant files
-- [x] Brainstorm plan and get approval
+1. **Overly strict prompt** — `generate_answer_from_context()` says "Answer ONLY using the context below. If the answer is unavailable, reply 'insufficient grounding'" which causes Gemini to return "insufficient grounding" even when context contains useful related information.
 
-### Implementation
+2. **Structured JSON data not ingested** — `specifications.json` (16 detailed spec entries) and `standards.json` (6 standard clauses with clause IDs) are used only by the compliance agent, never ingested into the vector store for RFI retrieval.
 
-- [x] 1. **api.ts** — Add global data-change event emitter (subscribe/notify)
-- [x] 2. **api.ts** — Add `recordActivity()` calls for:
-  - "Compliance analysis started" ✓
-  - "Compliance analysis completed" ✓
-  - "New deviation detected" ✓
-  - "Status updated" (updated wording) ✓
-  - "Compliance report exported" ✓
-- [x] 3. **api.ts** — Add `notifyChange()` calls in:
-  - `ingestDocument()` after new flags created ✓
-  - `updateFlagStatus()` after status change ✓
-  - `mockAsk()` after new RFI created ✓
-  - `ingestSubmittal()` after new flag created ✓
-  - `resetDemoData()` after reset ✓
-- [x] 4. **app.compliance.tsx** — Subscribe to data changes to auto-refresh table ✓
-- [x] 5. **app.overview.tsx** — Subscribe to data changes to auto-refresh KPIs ✓
-- [x] 6. **app.rfi.tsx** — Subscribe to data changes for live reload ✓
+3. **Missing retrieval diagnostics** — No per-query logging of which collections were searched, how many chunks retrieved, or similarity scores.
 
-## Verification
-- [ ] Ingest document → Compliance table auto-updates
-- [ ] Dashboard KPIs auto-update
-- [ ] Recent Activity records compliance events
-- [ ] Export reflects latest data
-- [ ] Build compiles without errors
+## Implementation Tasks
+
+### Task 1: Ingest structured JSON into vector store
+- [x] Create `agents/ingest_structured_data.py`
+- [x] Read `specifications.json` and `standards.json`
+- [x] For each spec entry: create document with structured text, embedding, source_type="spec", document_id=spec id, clause_id=spec id
+- [x] For each standard entry: create document with structured text, embedding, source_type="standard", document_id=standard id, clause_id=standard id
+- [x] Use same embedding model (gemini-embedding-001) and same collection (nexus_db.documents)
+- [x] Run ingestion — 16 spec + 6 standard entries added
+
+### Task 2: Fix generate_answer_from_context() prompt
+- [x] Update prompt to explain what IS present instead of flat "insufficient grounding"
+- [x] Keep "insufficient grounding" ONLY when context is truly unrelated to question
+- [x] Allow citing specific documents/clauses found in context
+
+### Task 3: Add retrieval diagnostics logging
+- [x] Add logging: which collections were searched, how many chunks from each, top scores
+- [x] Keep as debug-only server logs (not exposed in API response)
+
+### Task 4: Test the fixes
+- [x] Test "CRAC clearance per BICSI 002?" — returns 518-char answer (NOT insufficient grounding), cites STD-004, STD-001.pdf, STD-003 ✓
+- [x] Test "Switchgear redundancy per Section 4.2?" — returns 349-char answer citing STD-001, STD-006, test_ups_spec.txt ✓
+- [x] Test "What is the rated capacity of the Galaxy VX UPS?" — returns "1500 Kva (Source: SPEC-001)" ✓
+- [x] Test "What does BICSI-002 cover regarding electrical systems?" — returns 697-char structured answer citing STD-003, STD-004, STD-001.pdf ✓
+- [x] Test out-of-scope question — Gemini correctly returns "insufficient grounding" for truly unrelated queries ✓
+
+## Final Verification Results
+
+All tests pass. The RFI Assistant now:
+1. Returns substantive answers for specs/submittals/standards queries (not "insufficient grounding")
+2. Includes proper citations (`SPEC-001`, `STD-004`, etc.)
+3. Properly falls back to seed knowledge base for unrelated questions
+4. Logs per-query retrieval diagnostics (source_type breakdown, document_ids, clause_ids) for easy debugging
 
