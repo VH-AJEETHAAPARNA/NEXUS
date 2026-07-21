@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { askRFI, loadRFIs, listRFIs } from "@/lib/nexus/api";
+import { askRFI, loadRFIs, listRFIs, subscribeDataChanges } from "@/lib/nexus/api";
 import type { RFIRecord } from "@/lib/nexus/types";
 import { RFIAnswerCard } from "@/components/nexus/RFIAnswerCard";
 import { useAuth } from "@/lib/nexus/auth";
@@ -40,6 +40,12 @@ function RFIPage() {
     loadRfis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tick]);
+
+  // Subscribe to data changes so the list refreshes when new flags/RFIs are created elsewhere
+  useEffect(() => {
+    const unsub = subscribeDataChanges(() => setTick((t) => t + 1));
+    return unsub;
+  }, []);
 
   const ask = async () => {
     const q = question.trim();

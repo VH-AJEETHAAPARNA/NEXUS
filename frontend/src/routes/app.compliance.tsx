@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SeverityBadge } from "@/components/nexus/Badges";
-import { listFlags, listRFIs, updateFlagStatus } from "@/lib/nexus/api";
+import { listFlags, listRFIs, subscribeDataChanges, updateFlagStatus } from "@/lib/nexus/api";
 import { recordActivity } from "@/lib/nexus/activity";
 import type { FlagStatus, Severity } from "@/lib/nexus/types";
 import { useAuth } from "@/lib/nexus/auth";
@@ -42,6 +42,12 @@ function CompliancePage() {
   const [severityFilter, setSeverityFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [loadError, setLoadError] = useState<string | null>(null);
+
+  // Subscribe to data changes so the table auto-refreshes after ingestion, status updates, etc.
+  useEffect(() => {
+    const unsub = subscribeDataChanges(() => setTick((t) => t + 1));
+    return unsub;
+  }, []);
 
   let flags: ReturnType<typeof listFlags> = [];
   let rfis: ReturnType<typeof listRFIs> = [];
@@ -161,11 +167,11 @@ function CompliancePage() {
 
                   recordActivity({
                     category: "export",
-                    action: "QMS audit report exported",
+                    action: "Compliance report exported",
                     detail: `qms-audit-report-${new Date().toISOString().slice(0, 10)}.csv (${flags.length} flags)`,
                   });
 
-                  toast.success("QMS audit report exported", {
+                  toast.success("Compliance report exported", {
                     description: `CSV with ${flags.length} flag${flags.length === 1 ? "" : "s"} has been downloaded.`,
                   });
                 } catch (err) {

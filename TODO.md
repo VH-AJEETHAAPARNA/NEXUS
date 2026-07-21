@@ -1,25 +1,33 @@
-# Fix Issues Implementation — Complete ✅
+# Compliance Agent — Live State Integration
 
-## Step 1: Create Activity Log Service (`frontend/src/lib/nexus/activity.ts`)
-- [x] Create centralized activity store (localStorage-backed + in-memory)
-- [x] Export `recordActivity()`, `listActivities()`, `clearActivities()`
+## Steps
 
-## Step 2: Add `created_at` to NexusDocument type
-- [x] Edit `frontend/src/lib/nexus/types.ts`
+- [x] Read and analyze all relevant files
+- [x] Brainstorm plan and get approval
 
-## Step 3: Integrate activity recording into API
-- [x] Edit `frontend/src/lib/nexus/api.ts` — record activities in mock operations (ingest, reset, flag status, RFI)
-- [x] Edit `frontend/src/lib/nexus/seed.ts` — add `created_at` to seed documents
+### Implementation
 
-## Step 4: Implement Export in Overview Page
-- [x] Edit `frontend/src/routes/app.overview.tsx` — generate CSV download for client summary
+- [x] 1. **api.ts** — Add global data-change event emitter (subscribe/notify)
+- [x] 2. **api.ts** — Add `recordActivity()` calls for:
+  - "Compliance analysis started" ✓
+  - "Compliance analysis completed" ✓
+  - "New deviation detected" ✓
+  - "Status updated" (updated wording) ✓
+  - "Compliance report exported" ✓
+- [x] 3. **api.ts** — Add `notifyChange()` calls in:
+  - `ingestDocument()` after new flags created ✓
+  - `updateFlagStatus()` after status change ✓
+  - `mockAsk()` after new RFI created ✓
+  - `ingestSubmittal()` after new flag created ✓
+  - `resetDemoData()` after reset ✓
+- [x] 4. **app.compliance.tsx** — Subscribe to data changes to auto-refresh table ✓
+- [x] 5. **app.overview.tsx** — Subscribe to data changes to auto-refresh KPIs ✓
+- [x] 6. **app.rfi.tsx** — Subscribe to data changes for live reload ✓
 
-## Step 5: Implement Export in Compliance Page
-- [x] Edit `frontend/src/routes/app.compliance.tsx` — generate CSV download for QMS audit report
-
-## Step 6: Update Recent Activity in Admin Page
-- [x] Edit `frontend/src/routes/app.admin.tsx` — use new activity store, include export events
-
-## Step 7: Build & Verify
-- [ ] Build verification in progress (npx vite build running)
+## Verification
+- [ ] Ingest document → Compliance table auto-updates
+- [ ] Dashboard KPIs auto-update
+- [ ] Recent Activity records compliance events
+- [ ] Export reflects latest data
+- [ ] Build compiles without errors
 

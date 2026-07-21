@@ -17,8 +17,8 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
-const MotionOverlay = motion.create(DialogPrimitive.Overlay);
-const MotionContent = motion.create(DialogPrimitive.Content);
+const MotionOverlay = motion.create(DialogPrimitive.Overlay) as React.ElementType;
+const MotionContent = motion.create(DialogPrimitive.Content) as React.ElementType;
 
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,

@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info, Download } from "lucide-react";
-import { listFlags, listRFIs } from "@/lib/nexus/api";
+import { listFlags, listRFIs, subscribeDataChanges } from "@/lib/nexus/api";
 import { recordActivity } from "@/lib/nexus/activity";
 import { toast } from "sonner";
 import { AnimatedNumber } from "@/hooks/use-reveal";
@@ -28,7 +28,14 @@ export const Route = createFileRoute("/app/overview")({
 
 function OverviewPage() {
   const prefersReduced = usePrefersReducedMotion();
+  const [tick, setTick] = useState(0);
   const [loadError, setLoadError] = useState<string | null>(null);
+
+  // Subscribe to data changes so KPIs auto-refresh after ingestion, flag updates, etc.
+  useEffect(() => {
+    const unsub = subscribeDataChanges(() => setTick((t) => t + 1));
+    return unsub;
+  }, []);
 
   let flags: ReturnType<typeof listFlags> = [];
   let rfis: ReturnType<typeof listRFIs> = [];
