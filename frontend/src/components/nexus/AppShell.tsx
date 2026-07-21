@@ -14,6 +14,9 @@ import { ChevronDown, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getRoleDetails, type RoleDetails } from "@/lib/nexus/roleDetails";
 import { RoleDetailsDialog } from "@/components/nexus/RoleDetailsDialog";
+import { motion, AnimatePresence } from "framer-motion";
+import { pageTransition } from "@/lib/animations";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 
 const ROLE_NAV: Record<Role, Array<{ to: string; label: string }>> = {
   engineer: [{ to: "/app/rfi", label: "RFI Assistant" }],
@@ -97,6 +100,7 @@ export function AppShell() {
 
   if (!hydrated || !user || !role) return null;
 
+  const prefersReducedMotion = usePrefersReducedMotion();
   const nav = ROLE_NAV[role];
 
   const switchRole = async (r: Role) => {
@@ -137,10 +141,10 @@ export function AppShell() {
                     key={n.to}
                     to={n.to}
                     className={
-                      "rounded-md px-3 py-1.5 text-sm transition-colors " +
+                      "rounded-md px-3 py-1.5 text-sm transition-all duration-200 " +
                       (active
                         ? "bg-primary/10 font-medium text-primary"
-                        : "text-muted-foreground hover:text-foreground")
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent/50")
                     }
                   >
                     {n.label}
@@ -207,9 +211,17 @@ export function AppShell() {
       </header>
 
       <main className="mx-auto max-w-7xl px-6 py-8">
-        <div key={role} className="animate-crossfade">
-          <Outlet />
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={pathname}
+            variants={!prefersReducedMotion ? pageTransition : undefined}
+            initial={!prefersReducedMotion ? "initial" : undefined}
+            animate="animate"
+            exit={!prefersReducedMotion ? "exit" : undefined}
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       <RoleDetailsDialog

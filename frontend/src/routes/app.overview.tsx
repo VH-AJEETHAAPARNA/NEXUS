@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info, Download } from "lucide-react";
 import { listFlags, listRFIs } from "@/lib/nexus/api";
+import { recordActivity } from "@/lib/nexus/activity";
 import { toast } from "sonner";
 import { AnimatedNumber } from "@/hooks/use-reveal";
 import {
@@ -15,6 +16,10 @@ import {
   CartesianGrid,
   Tooltip as RTooltip,
 } from "recharts";
+import { StaggerContainer, StaggerItem } from "@/components/ui/motion-card";
+import { fadeIn } from "@/lib/animations";
+import { motion } from "framer-motion";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 
 export const Route = createFileRoute("/app/overview")({
   head: () => ({ meta: [{ title: "Overview — NEXUS" }] }),
@@ -22,6 +27,7 @@ export const Route = createFileRoute("/app/overview")({
 });
 
 function OverviewPage() {
+  const prefersReduced = usePrefersReducedMotion();
   const [loadError, setLoadError] = useState<string | null>(null);
 
   let flags: ReturnType<typeof listFlags> = [];
@@ -95,133 +101,207 @@ function OverviewPage() {
   return (
     <TooltipProvider>
       <div className="space-y-8">
-        <header className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h1 className="text-xl font-semibold tracking-tight">Project Overview</h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Delivery health at a glance. Drill in for the underlying flags and RFIs.
-            </p>
-          </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() =>
-              toast.success("Client summary exported", {
-                description: "Plain-language weekly summary generated.",
-              })
-            }
-          >
-            <Download className="mr-1.5 h-3.5 w-3.5" /> Export client summary
-          </Button>
-        </header>
+        <motion.div
+          variants={!prefersReduced ? fadeIn : undefined}
+          initial={!prefersReduced ? "hidden" : undefined}
+          animate="visible"
+        >
+          <header className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h1 className="text-xl font-semibold tracking-tight">Project Overview</h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Delivery health at a glance. Drill in for the underlying flags and RFIs.
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                try {
+                  const rows: string[][] = [
+                    ["Metric", "Value"],
+                    ["Deviations caught", String(deviations)],
+                    ["Duplicate RFIs detected", String(duplicates)],
+                    ["Grounded or Honestly Declined", `${groundingRate}%`],
+                    ["Estimated hours saved", `${hoursSaved}h`],
+                    ["Critical issues open", String(critical)],
+                    ["Resolved issues", String(resolved)],
+                    ["Total RFIs", String(rfis.length)],
+                    ["Total compliance flags", String(flags.length)],
+                    ["Exported at", new Date().toISOString()],
+                  ];
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <KPI
-            label="Deviations caught"
-            value={deviations}
-            tooltip="Total compliance flags raised by the Specification Compliance Agent across all ingested submittals."
-          />
-          <KPI
-            label="Duplicate RFIs detected"
-            value={duplicates}
-            tooltip="RFIs the agent recognised as semantically similar to a prior question and answered from cache."
-          />
-          <KPI
-            label="Grounded or Honestly Declined"
-            value={`${groundingRate}%`}
-            tooltip="Every answer either cites a real source or explicitly says it couldn't find one — we never guess. Share of RFIs meeting that bar."
-          />
-          <KPI
-            label="Estimated hours saved"
-            value={`${hoursSaved}h`}
-            tooltip="Basis: 2h per duplicate RFI avoided + 8h per deviation caught before install (rework avoided)."
-          />
-        </div>
+                  // Add trend data
+                  if (trendData.length > 0) {
+                    rows.push([], ["--- Activity Trend ---"]);
+                    rows.push(["Day", "RFIs", "Resolved"]);
+                    for (const d of trendData) {
+                      rows.push([d.day, String(d.RFIs), String(d.Resolved)]);
+                    }
+                  }
 
-        <section className="rounded-xl border bg-card p-5">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-              Activity trend
-            </h2>
-            <span className="text-[11px] text-muted-foreground">
-              RFIs answered & flags resolved per day
-            </span>
-          </div>
-          <div className="mt-4 h-56 w-full">
-            {trendData.length === 0 ? (
-              <div className="grid h-full place-items-center text-xs text-muted-foreground">
-                No activity yet.
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={trendData} margin={{ top: 8, right: 12, bottom: 0, left: -18 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
-                  <XAxis
-                    dataKey="day"
-                    tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }}
-                    tickLine={false}
-                    axisLine={{ stroke: "var(--color-border)" }}
-                  />
-                  <YAxis
-                    allowDecimals={false}
-                    tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }}
-                    tickLine={false}
-                    axisLine={{ stroke: "var(--color-border)" }}
-                  />
-                  <RTooltip
-                    contentStyle={{
-                      background: "var(--color-card)",
-                      border: "1px solid var(--color-border)",
-                      borderRadius: 8,
-                      fontSize: 12,
-                    }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="RFIs"
-                    stroke="var(--color-primary)"
-                    strokeWidth={2}
-                    dot={{ r: 3, fill: "var(--color-primary)" }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Resolved"
-                    stroke="var(--color-foreground)"
-                    strokeWidth={2}
-                    strokeDasharray="4 3"
-                    dot={{ r: 3 }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </section>
+                  const csv = rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(",")).join("\n");
+                  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement("a");
+                  a.href = url;
+                  a.download = `nexus-client-summary-${new Date().toISOString().slice(0, 10)}.csv`;
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  URL.revokeObjectURL(url);
 
-        <section className="rounded-xl border bg-card p-5">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-            Status summary
-          </h2>
-          <p className="mt-2 text-base leading-relaxed text-foreground">
-            <span className="font-semibold">{critical}</span> Critical issue
-            {critical === 1 ? "" : "s"} open, <span className="font-semibold">{resolved}</span>{" "}
-            resolved this week.{" "}
-            {duplicates > 0 && (
-              <>
-                The RFI agent has prevented <span className="font-semibold">{duplicates}</span>{" "}
-                repeat question
-                {duplicates === 1 ? "" : "s"} from reaching engineering.
-              </>
-            )}
-          </p>
-          <div className="mt-4">
-            <Link
-              to="/app/compliance"
-              className="text-sm font-medium text-primary underline underline-offset-4"
+                  recordActivity({
+                    category: "export",
+                    action: "Client summary exported",
+                    detail: `client-summary-${new Date().toISOString().slice(0, 10)}.csv`,
+                  });
+
+                  toast.success("Client summary exported", {
+                    description: "CSV file has been downloaded.",
+                  });
+                } catch (err) {
+                  console.error("[OverviewPage] Export failed:", err);
+                  toast.error("Export failed", {
+                    description: err instanceof Error ? err.message : "Could not generate the report.",
+                  });
+                }
+              }}
             >
-              View details →
-            </Link>
-          </div>
-        </section>
+              <Download className="mr-1.5 h-3.5 w-3.5" /> Export client summary
+            </Button>
+          </header>
+        </motion.div>
+
+        <StaggerContainer className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <StaggerItem>
+            <KPI
+              label="Deviations caught"
+              value={deviations}
+              tooltip="Total compliance flags raised by the Specification Compliance Agent across all ingested submittals."
+            />
+          </StaggerItem>
+          <StaggerItem>
+            <KPI
+              label="Duplicate RFIs detected"
+              value={duplicates}
+              tooltip="RFIs the agent recognised as semantically similar to a prior question and answered from cache."
+            />
+          </StaggerItem>
+          <StaggerItem>
+            <KPI
+              label="Grounded or Honestly Declined"
+              value={`${groundingRate}%`}
+              tooltip="Every answer either cites a real source or explicitly says it couldn't find one — we never guess. Share of RFIs meeting that bar."
+            />
+          </StaggerItem>
+          <StaggerItem>
+            <KPI
+              label="Estimated hours saved"
+              value={`${hoursSaved}h`}
+              tooltip="Basis: 2h per duplicate RFI avoided + 8h per deviation caught before install (rework avoided)."
+            />
+          </StaggerItem>
+        </StaggerContainer>
+
+        <motion.div
+          variants={!prefersReduced ? fadeIn : undefined}
+          initial={!prefersReduced ? "hidden" : undefined}
+          animate="visible"
+          transition={{ delay: 0.15 }}
+        >
+          <section className="rounded-xl border bg-card p-5">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                Activity trend
+              </h2>
+              <span className="text-[11px] text-muted-foreground">
+                RFIs answered & flags resolved per day
+              </span>
+            </div>
+            <div className="mt-4 h-56 w-full">
+              {trendData.length === 0 ? (
+                <div className="grid h-full place-items-center text-xs text-muted-foreground">
+                  No activity yet.
+                </div>
+              ) : (
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={trendData} margin={{ top: 8, right: 12, bottom: 0, left: -18 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
+                    <XAxis
+                      dataKey="day"
+                      tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }}
+                      tickLine={false}
+                      axisLine={{ stroke: "var(--color-border)" }}
+                    />
+                    <YAxis
+                      allowDecimals={false}
+                      tick={{ fontSize: 11, fill: "var(--color-muted-foreground)" }}
+                      tickLine={false}
+                      axisLine={{ stroke: "var(--color-border)" }}
+                    />
+                    <RTooltip
+                      contentStyle={{
+                        background: "var(--color-card)",
+                        border: "1px solid var(--color-border)",
+                        borderRadius: 8,
+                        fontSize: 12,
+                      }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="RFIs"
+                      stroke="var(--color-primary)"
+                      strokeWidth={2}
+                      dot={{ r: 3, fill: "var(--color-primary)" }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="Resolved"
+                      stroke="var(--color-foreground)"
+                      strokeWidth={2}
+                      strokeDasharray="4 3"
+                      dot={{ r: 3 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+            </div>
+          </section>
+        </motion.div>
+
+        <motion.div
+          variants={!prefersReduced ? fadeIn : undefined}
+          initial={!prefersReduced ? "hidden" : undefined}
+          animate="visible"
+          transition={{ delay: 0.25 }}
+        >
+          <section className="rounded-xl border bg-card p-5">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              Status summary
+            </h2>
+            <p className="mt-2 text-base leading-relaxed text-foreground">
+              <span className="font-semibold">{critical}</span> Critical issue
+              {critical === 1 ? "" : "s"} open, <span className="font-semibold">{resolved}</span>{" "}
+              resolved this week.{" "}
+              {duplicates > 0 && (
+                <>
+                  The RFI agent has prevented <span className="font-semibold">{duplicates}</span>{" "}
+                  repeat question
+                  {duplicates === 1 ? "" : "s"} from reaching engineering.
+                </>
+              )}
+            </p>
+            <div className="mt-4">
+              <Link
+                to="/app/compliance"
+                className="text-sm font-medium text-primary underline underline-offset-4"
+              >
+                View details →
+              </Link>
+            </div>
+          </section>
+        </motion.div>
       </div>
     </TooltipProvider>
   );

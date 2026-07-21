@@ -1,8 +1,10 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { motion, type HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -36,11 +38,28 @@ export interface ButtonProps
   asChild?: boolean;
 }
 
+const MotionButton = motion.create("button");
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const prefersReducedMotion = usePrefersReducedMotion();
+
+    if (asChild) {
+      const Comp = Slot;
+      return (
+        <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      );
+    }
+
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <MotionButton
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...(props as HTMLMotionProps<"button">)}
+        whileHover={!prefersReducedMotion ? { scale: 1.02 } : undefined}
+        whileTap={!prefersReducedMotion ? { scale: 0.97 } : undefined}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      />
     );
   },
 );

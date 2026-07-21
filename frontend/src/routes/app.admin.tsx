@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,11 +12,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ingestDocument, listDocuments, listFlags, listRFIs, resetDemoData } from "@/lib/nexus/api";
+import { listActivities } from "@/lib/nexus/activity";
 import type { NexusDocument } from "@/lib/nexus/types";
 import { toast } from "sonner";
 import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { audit, clearAudit, FIREWALL_URL, listAudit, verifyCsrf } from "@/lib/nexus/firewall";
 import { useAuth } from "@/lib/nexus/auth";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
+import { fadeIn } from "@/lib/animations";
+import { StaggerContainer, StaggerItem } from "@/components/ui/motion-card";
 
 export const Route = createFileRoute("/app/admin")({
   head: () => ({ meta: [{ title: "Admin — NEXUS" }] }),
@@ -24,6 +29,7 @@ export const Route = createFileRoute("/app/admin")({
 
 function AdminPage() {
   const { csrf } = useAuth();
+  const prefersReduced = usePrefersReducedMotion();
   const [title, setTitle] = useState("");
   const [type, setType] = useState<NexusDocument["type"]>("submittal");
   const [equipment, setEquipment] = useState("UPS");
@@ -113,15 +119,22 @@ function AdminPage() {
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]" data-tick={tick}>
-      <section>
-        <div className="mb-4">
-          <h1 className="text-xl font-semibold tracking-tight">Document ingestion</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Add a spec, submittal, or standard to the shared knowledge base. Submittals are
-            automatically checked against the matching spec by the Compliance Agent.
-          </p>
-        </div>
+    <StaggerContainer className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]" data-tick={tick}>
+      <StaggerItem>
+        <section>
+          <motion.div
+            variants={!prefersReduced ? fadeIn : undefined}
+            initial={!prefersReduced ? "hidden" : undefined}
+            animate="visible"
+          >
+            <div className="mb-4">
+              <h1 className="text-xl font-semibold tracking-tight">Document ingestion</h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Add a spec, submittal, or standard to the shared knowledge base. Submittals are
+                automatically checked against the matching spec by the Compliance Agent.
+              </p>
+            </div>
+          </motion.div>
 
         <form onSubmit={submit} className="grid gap-4 rounded-xl border bg-card p-5">
           <input type="hidden" name="csrf_token" value={csrf} readOnly />
@@ -222,112 +235,115 @@ function AdminPage() {
             <Button type="submit">Ingest document</Button>
           </div>
         </form>
-      </section>
+        </section>
+      </StaggerItem>
 
-      <aside className="space-y-4">
-        <div className="rounded-xl border bg-card p-4">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <CheckCircle2 className="h-4 w-4 text-green-600" /> System status
-          </div>
-          <dl className="mt-3 space-y-1.5 text-xs">
-            <Row k="RFI Intelligence Agent" v="Online" ok />
-            <Row k="Compliance Agent" v="Online" ok />
-            <Row k="Last sync" v={new Date().toLocaleTimeString()} />
-            <Row k="Documents ingested" v={String(docCount)} />
-            <Row k="Compliance flags" v={String(flagCount)} />
-            <Row k="RFIs on record" v={String(rfiCount)} />
-            <Row k="Backend" v="Mock (in-memory)" />
-          </dl>
-        </div>
-
-        <div className="rounded-xl border bg-card p-4">
-          <div className="text-sm font-semibold">Recent activity</div>
-          <ul className="mt-3 space-y-2 text-xs">
-            {buildActivity()
-              .slice(0, 5)
-              .map((a) => (
-                <li key={a.id} className="flex items-start gap-2">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <div className="min-w-0 flex-1">
-                    <p className="leading-snug text-foreground">{a.label}</p>
-                    <p className="text-[10px] text-muted-foreground">
-                      {new Date(a.at).toLocaleString()}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            {buildActivity().length === 0 && (
-              <li className="text-muted-foreground">No activity yet.</li>
-            )}
-          </ul>
-        </div>
-
-        <div className="rounded-xl border bg-card p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-sm font-semibold">
-              <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Security
+      <StaggerItem>
+        <aside className="space-y-4">
+          <div className="rounded-xl border bg-card p-4">
+            <div className="flex items-center gap-2 text-sm font-semibold">
+              <CheckCircle2 className="h-4 w-4 text-green-600" /> System status
             </div>
-            <span className="rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-primary">
-              {FIREWALL_URL ? "Firewall connected" : "Firewall: mock"}
-            </span>
+            <dl className="mt-3 space-y-1.5 text-xs">
+              <Row k="RFI Intelligence Agent" v="Online" ok />
+              <Row k="Compliance Agent" v="Online" ok />
+              <Row k="Last sync" v={new Date().toLocaleTimeString()} />
+              <Row k="Documents ingested" v={String(docCount)} />
+              <Row k="Compliance flags" v={String(flagCount)} />
+              <Row k="RFIs on record" v={String(rfiCount)} />
+              <Row k="Backend" v="Mock (in-memory)" />
+            </dl>
           </div>
-          <dl className="mt-3 grid gap-1.5 text-xs">
-            <Row k="Endpoint" v={FIREWALL_URL || "VITE_FIREWALL_URL (unset)"} />
-            <Row k="CSRF token" v={csrf ? `${csrf.slice(0, 8)}…` : "—"} />
-            <Row k="Idle timeout" v="15 min" />
-            <Row k="Rate limit" v="5 sign-ins / min" />
-            <Row k="Audit events" v={String(auditEvents.length)} />
-          </dl>
-          <div className="mt-3 max-h-40 overflow-auto rounded-md border bg-muted/30 p-2 text-[10px]">
-            {auditEvents.length === 0 ? (
-              <p className="text-muted-foreground">No audit events yet.</p>
-            ) : (
-              <ul className="space-y-1">
-                {auditEvents.slice(0, 15).map((a) => (
-                  <li key={a.id} className="flex items-baseline justify-between gap-2">
-                    <span className="truncate font-mono text-foreground">{a.kind}</span>
-                    <span className="shrink-0 text-muted-foreground">
-                      {new Date(a.at).toLocaleTimeString()}
-                    </span>
+
+          <div className="rounded-xl border bg-card p-4">
+            <div className="text-sm font-semibold">Recent activity</div>
+            <ul className="mt-3 space-y-2 text-xs">
+              {buildActivity()
+                .slice(0, 5)
+                .map((a) => (
+                  <li key={a.id} className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <div className="min-w-0 flex-1">
+                      <p className="leading-snug text-foreground">{a.label}</p>
+                      <p className="text-[10px] text-muted-foreground">
+                        {new Date(a.at).toLocaleString()}
+                      </p>
+                    </div>
                   </li>
                 ))}
-              </ul>
-            )}
+              {buildActivity().length === 0 && (
+                <li className="text-muted-foreground">No activity yet.</li>
+              )}
+            </ul>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="mt-2 h-7 text-[11px]"
-            onClick={() => {
-              clearAudit();
-              setTick((t) => t + 1);
-              toast.success("Audit log cleared");
-            }}
-          >
-            Clear audit log
-          </Button>
-        </div>
 
-        <div className="rounded-xl border bg-card p-4">
-          <div className="text-sm font-semibold">Demo controls</div>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Reset the mock knowledge base back to seed data — useful between demo runs.
-          </p>
-          <Button
-            variant="outline"
-            size="sm"
-            className="mt-3"
-            onClick={() => {
-              resetDemoData();
-              setTick((t) => t + 1);
-              toast.success("Demo data reset to seed state");
-            }}
-          >
-            Reset demo data
-          </Button>
-        </div>
-      </aside>
-    </div>
+          <div className="rounded-xl border bg-card p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-sm font-semibold">
+                <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Security
+              </div>
+              <span className="rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-primary">
+                {FIREWALL_URL ? "Firewall connected" : "Firewall: mock"}
+              </span>
+            </div>
+            <dl className="mt-3 grid gap-1.5 text-xs">
+              <Row k="Endpoint" v={FIREWALL_URL || "VITE_FIREWALL_URL (unset)"} />
+              <Row k="CSRF token" v={csrf ? `${csrf.slice(0, 8)}…` : "—"} />
+              <Row k="Idle timeout" v="15 min" />
+              <Row k="Rate limit" v="5 sign-ins / min" />
+              <Row k="Audit events" v={String(auditEvents.length)} />
+            </dl>
+            <div className="mt-3 max-h-40 overflow-auto rounded-md border bg-muted/30 p-2 text-[10px]">
+              {auditEvents.length === 0 ? (
+                <p className="text-muted-foreground">No audit events yet.</p>
+              ) : (
+                <ul className="space-y-1">
+                  {auditEvents.slice(0, 15).map((a) => (
+                    <li key={a.id} className="flex items-baseline justify-between gap-2">
+                      <span className="truncate font-mono text-foreground">{a.kind}</span>
+                      <span className="shrink-0 text-muted-foreground">
+                        {new Date(a.at).toLocaleTimeString()}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="mt-2 h-7 text-[11px]"
+              onClick={() => {
+                clearAudit();
+                setTick((t) => t + 1);
+                toast.success("Audit log cleared");
+              }}
+            >
+              Clear audit log
+            </Button>
+          </div>
+
+          <div className="rounded-xl border bg-card p-4">
+            <div className="text-sm font-semibold">Demo controls</div>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Reset the mock knowledge base back to seed data — useful between demo runs.
+            </p>
+            <Button
+              variant="outline"
+              size="sm"
+              className="mt-3"
+              onClick={() => {
+                resetDemoData();
+                setTick((t) => t + 1);
+                toast.success("Demo data reset to seed state");
+              }}
+            >
+              Reset demo data
+            </Button>
+          </div>
+        </aside>
+      </StaggerItem>
+    </StaggerContainer>
   );
 }
 
@@ -339,6 +355,17 @@ interface Activity {
 
 function buildActivity(): Activity[] {
   const items: Activity[] = [];
+
+  // Include all activities from the centralized activity log
+  for (const a of listActivities()) {
+    items.push({
+      id: a.id,
+      at: a.at,
+      label: a.detail ? `${a.action} — ${a.detail}` : a.action,
+    });
+  }
+
+  // Also include flag and RFI events from the mock store for backward compatibility
   for (const f of listFlags()) {
     items.push({
       id: `f-${f.id}`,

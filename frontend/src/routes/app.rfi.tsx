@@ -7,6 +7,10 @@ import type { RFIRecord } from "@/lib/nexus/types";
 import { RFIAnswerCard } from "@/components/nexus/RFIAnswerCard";
 import { useAuth } from "@/lib/nexus/auth";
 import { getRoleDetails } from "@/lib/nexus/roleDetails";
+import { StaggerContainer, StaggerItem } from "@/components/ui/motion-card";
+import { motion } from "framer-motion";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
+import { fadeIn } from "@/lib/animations";
 
 export const Route = createFileRoute("/app/rfi")({
   head: () => ({ meta: [{ title: "RFI Assistant — NEXUS" }] }),
@@ -15,6 +19,7 @@ export const Route = createFileRoute("/app/rfi")({
 
 function RFIPage() {
   const { role } = useAuth();
+  const prefersReduced = usePrefersReducedMotion();
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
   const [tick, setTick] = useState(0); // re-render after mock store mutation
@@ -62,39 +67,59 @@ function RFIPage() {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
       <section>
-        <div className="mb-4">
-          <h1 className="text-xl font-semibold tracking-tight">RFI Assistant</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Ask a question. Answers are grounded in ingested specs, submittals and standards.
-            Duplicate detection prevents re-asking previously answered questions.
-          </p>
-        </div>
+        <motion.div
+          variants={!prefersReduced ? fadeIn : undefined}
+          initial={!prefersReduced ? "hidden" : undefined}
+          animate="visible"
+        >
+          <div className="mb-4">
+            <h1 className="text-xl font-semibold tracking-tight">RFI Assistant</h1>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Ask a question. Answers are grounded in ingested specs, submittals and standards.
+              Duplicate detection prevents re-asking previously answered questions.
+            </p>
+          </div>
+        </motion.div>
 
         {!readOnly && (
-          <div className="rounded-xl border bg-card p-4">
-            <Textarea
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              placeholder="e.g. Can we substitute a 450kVA UPS for the specified 500kVA unit?"
-              className="min-h-90 resize-none border-0 bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
-              disabled={loading}
-              onKeyDown={(e) => {
-                if ((e.metaKey || e.ctrlKey) && e.key === "Enter") ask();
-              }}
-            />
-            {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
-            <div className="mt-3 flex items-center justify-between border-t pt-3">
-              <p className="text-[11px] text-muted-foreground">
-                ⌘/Ctrl + Enter to submit · answers cite the exact clause
-              </p>
-              <Button size="sm" onClick={ask} disabled={loading || !question.trim()}>
-                {loading ? "Thinking…" : "Ask agent"}
-              </Button>
+          <motion.div
+            variants={!prefersReduced ? fadeIn : undefined}
+            initial={!prefersReduced ? "hidden" : undefined}
+            animate="visible"
+            transition={{ delay: 0.08 }}
+          >
+            <div className="rounded-xl border bg-card p-4">
+              <Textarea
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+                placeholder="e.g. Can we substitute a 450kVA UPS for the specified 500kVA unit?"
+                className="min-h-90 resize-none border-0 bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
+                disabled={loading}
+                onKeyDown={(e) => {
+                  if ((e.metaKey || e.ctrlKey) && e.key === "Enter") ask();
+                }}
+              />
+              {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
+              <div className="mt-3 flex items-center justify-between border-t pt-3">
+                <p className="text-[11px] text-muted-foreground">
+                  ⌘/Ctrl + Enter to submit · answers cite the exact clause
+                </p>
+                <Button size="sm" onClick={ask} disabled={loading || !question.trim()}>
+                  {loading ? "Thinking…" : "Ask agent"}
+                </Button>
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
-        <div className="mt-6" data-tick={tick}>
+        <motion.div
+          className="mt-6"
+          data-tick={tick}
+          variants={!prefersReduced ? fadeIn : undefined}
+          initial={!prefersReduced ? "hidden" : undefined}
+          animate="visible"
+          transition={{ delay: 0.15 }}
+        >
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
               {readOnly ? "RFI history (read-only)" : "Your RFI history"}
@@ -107,16 +132,24 @@ function RFIPage() {
               Ask your first question below.
             </div>
           ) : (
-            <div className="space-y-2">
+            <StaggerContainer className="space-y-2">
               {rfis.map((r) => (
-                <RFIAnswerCard key={r.id} record={r} defaultOpen={r.id === lastId} compact />
+                <StaggerItem key={r.id}>
+                  <RFIAnswerCard record={r} defaultOpen={r.id === lastId} compact />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           )}
-        </div>
+        </motion.div>
       </section>
 
-      <aside className="hidden lg:block">
+      <motion.aside
+        className="hidden lg:block"
+        variants={!prefersReduced ? fadeIn : undefined}
+        initial={!prefersReduced ? "hidden" : undefined}
+        animate="visible"
+        transition={{ delay: 0.2 }}
+      >
         <div className="sticky top-20 rounded-xl border bg-card p-4">
           <h3 className="text-sm font-semibold">How the agent grounds answers</h3>
           <ul className="mt-3 space-y-2 text-xs text-muted-foreground">
@@ -137,7 +170,7 @@ function RFIPage() {
             </ul>
           </div>
         </div>
-      </aside>
+      </motion.aside>
     </div>
   );
 }
